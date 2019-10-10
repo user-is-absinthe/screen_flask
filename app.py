@@ -13,6 +13,9 @@ app.config.from_object(Config)
 database = SQLAlchemy(app)
 migrate = Migrate(app, database)
 
+# для создания миграции в базе не забудь импортировать здесь модель
+# или, возможно, не здесь, а где-то еще
+# (но импортировать надо после задания переменной database, такая штука
 from models import User
 
 # название файла импорта, название переменной, к которой присваиваем Blueprint
