@@ -1,0 +1,25 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>Приветствуем вас в "Решето"</title>
+      {% endif %}
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <div><a href="{{ url_for('hello_world') }} ">На главную</a></div>
+        <div><a href="{{ url_for('login.login_page') }}">Войти</a> </div>
+        <div><a href="{{ url_for('test_page.start_test_page') }}">Test</a> </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

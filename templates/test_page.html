@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+<body>
+
+{% block content %}
+    <h1>Test page</h1>
+    <h3>{{ test_phrase_one }}</h3>
+    {% for garbage in stock %}
+        <div><p>{{ garbage }}</p></div>
+    {% endfor %}
+{% endblock %}
