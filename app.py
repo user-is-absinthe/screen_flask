@@ -16,7 +16,11 @@ migrate = Migrate(app, database)
 # для создания миграции в базе не забудь импортировать здесь модель
 # или, возможно, не здесь, а где-то еще
 # (но импортировать надо после задания переменной database, такая штука
+# flask db migrate -m "message"
+# flask db upgrade
 from models import User
+from models import Collection
+from models import Document
 
 # название файла импорта, название переменной, к которой присваиваем Blueprint
 app.register_blueprint(test_page.test_blueprint)
