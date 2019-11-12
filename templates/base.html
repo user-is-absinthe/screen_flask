@@ -17,7 +17,13 @@
           {% endif %}
         {% endwith %}
         <div><a href="{{ url_for('hello_world') }} ">На главную</a></div>
-        <div><a href="{{ url_for('login.login_page') }}">Войти</a> </div>
+{#        <div><a href="{{ url_for('login.login_page') }}">Войти</a> </div>#}
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login.login_page') }}">Войти</a>
+        {% else %}
+        <a href="{{ url_for('login.logout_page') }}">Выйти</a>
+        {% endif %}
+
         <div><a href="{{ url_for('test_page.start_test_page') }}">Test</a> </div>
         <hr>
         {% block content %}{% endblock %}
