@@ -20,8 +20,9 @@ login_manager.login_view = 'login.login_page'
 # flask db migrate -m "message"
 # flask db upgrade
 from models import User
-from models import Collection
 from models import Document
+from models import Relation
+from models import Attribute
 
 from pages import login
 from pages import test_page
