@@ -16,17 +16,20 @@ class User(UserMixin, database.Model):
     user_rating = database.Column(database.Integer)
 
     # relation_with_document = database.relationship('Relation', backref='author', lazy='dynamic')
-    user_to_relation = database.relationship('Relation', backref='users', lazy='dynamic')
-    user_to_attribute = database.relationship('Attribute', backref='attributes', lazy='dynamic')
+    user_to_relation = database.relationship('Relation', backref='users_to_relations', lazy='dynamic')
+    user_to_attribute = database.relationship('Attribute', backref='users_to_attributes', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
-    def set_pass(self, password):
+    def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         self.password_hash = check_password_hash(self.password_hash, password)
+
+    def get_role(self):
+        return self.user_role
 
 
 class Document(database.Model):
@@ -40,8 +43,8 @@ class Document(database.Model):
     path_to_instruction = database.Column(database.String(256))
 
     # relation_with_document = database.relationship('Relation', backref='author', lazy='dynamic')
-    document_to_relation = database.relationship('Relation', backref='documents', lazy='dynamic')
-    document_to_attribute = database.relationship('Attribute', backref='attributes', lazy='dynamic')
+    document_to_relation = database.relationship('Relation', backref='documents_to_relation', lazy='dynamic')
+    document_to_attribute = database.relationship('Attribute', backref='document_to_attribute', lazy='dynamic')
 
     def __repr__(self):
         return '<Document {}>'.format(self.path_to_file)

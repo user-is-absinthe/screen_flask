@@ -41,4 +41,4 @@ def login_page():
 @login_blueprint.route('/logout')
 def logout_page():
     logout_user()
-    return redirect(url_for('hello_world'))
+    return redirect(url_for('login'))
