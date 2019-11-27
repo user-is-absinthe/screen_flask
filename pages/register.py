@@ -10,8 +10,6 @@ from flask_login import current_user
 
 from models import User
 
-# from pages import login
-
 
 register_blueprint = Blueprint(
     'register',
