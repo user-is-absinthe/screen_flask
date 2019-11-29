@@ -22,9 +22,10 @@ scribe_blueprint = Blueprint(
 @scribe_blueprint.route('/scribe', methods=['GET', 'POST'])
 @login_required
 def scribe_page():
-    # username, user_role = current_user.username, current_user.user_role
+    username, user_role = current_user.username, current_user.user_role
     user_relations = current_user.user_to_relation
 
+    user_docs_ids = list()
     user_docs_name = list()
     user_docs_status = list()
     user_collections = list()
@@ -33,6 +34,7 @@ def scribe_page():
     user_xml = list()
 
     for r in user_relations:
+        user_docs_ids.append(r.document_id)
         user_docs_name.append(Document.query.get(r.document_id).get_name())
         user_docs_status.append(Document.query.get(r.document_id).get_status())
         user_collections.append(Document.query.get(r.document_id).get_rubric())
@@ -42,7 +44,16 @@ def scribe_page():
         user_xml.append(external_modules.opener(Document.query.get(r.document_id).get_xml()))
     user_collections = list(set(user_collections))
 
-    form = ScribeForm
+    form = ScribeForm()
+
+    if form.validate_on_submit():
+        print(form.texts.data)
+        # list_ids, list_xmls = form.texts.data
+        # for index, id_doc in enumerate(list_ids):
+        #     # session
+        #     Document.query.get(int(id_doc))
+        # pass
+
     # return render_template(
     #     'scriber.html',
     #     title='страница редакции',
@@ -62,10 +73,32 @@ def scribe_page():
     #     otladka=0
     # )
 
-    return render_template(
-        'scribe_page/editor.html',
-        texts=user_texts[0],
+    # print(
+    #     'docs\n',
+    #     user_docs_ids,
+    #     '\nnames\n',
+    #     user_docs_name,
+    #     '\ndocs_status\n',
+    #     user_docs_status,
+    #     '\ncollections\n',
+    #     user_collections,
+    #     '\ninstructions\n',
+    #     user_instructions,
+    #     '\ntexts\n',
+    #     user_texts,
+    #     '\nxml\n',
+    #     user_xml,
+    # )
 
-        collections=user_collections,
+    return render_template(
+        'editor.html',
+        list_doc_text=user_texts,
+        list_ann=user_xml,
+        list_collection=user_collections,
+        list_doc_name=user_docs_name,
+        user_role=(username, user_role),
+        list_tags=user_instructions,
+        list_id=user_docs_ids,
+        # collections=user_collections,
         form_html=form,
     )

@@ -3,6 +3,9 @@ var ColorTagArray = ["#E52B50", "#9966CC", "#007FFF"];
 var LabelsList = ["Лицо", "Организация", "Местоположение"];
 var idChooseDeleteOrChangeTag = "";
 var MapIdSelectAnnotateText = new Map();
+var ListColl = ["Коллекция 1"];
+var ListDoc = ["Документ 1","Документ 2","Документ 3"];
+var UserDocStatus =[true,true,false];
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -47,10 +50,14 @@ function SelectAnnotateText(a) {
                             DataId2 -= 1;
                             SelectedString = SelectedString.substring(0, SelectedString.length - 1);
                         }
-                    }
-                    
+                    }                    
+                    console.log(selection.anchorNode.parentElement.innerText.substring(0, DataId1).length);
                     text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
                     FullText = selection.anchorNode.parentElement.innerHTML.substring(0, DataId1) + text + selection.anchorNode.parentElement.innerHTML.substring(DataId2, selection.anchorNode.parentElement.innerHTML.length);
+                    var LineBreakCharacter = (selection.anchorNode.parentElement.innerHTML.substring(0, DataId1).split(/\r\n|\r|\n/g).length - 1);
+                    DataId1 += LineBreakCharacter;
+                    DataId2 += LineBreakCharacter;
+                    console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
                     console.log(MapIdSelectAnnotateText);
                     return a.innerHTML = FullText;
@@ -61,25 +68,38 @@ function SelectAnnotateText(a) {
                     var IndexpreviousSibling = selection.anchorNode.parentElement.innerHTML.indexOf(selection.anchorNode.previousSibling.outerHTML);
 
                     if (selection.anchorOffset + previousSiblingDataId < selection.focusOffset + previousSiblingDataId) {
+                        var selectionfocusOffset = selection.focusOffset;
+                        var selectionanchorOffset = selection.anchorOffset;
                         var DataId1 = selection.anchorOffset + previousSiblingDataId;
                         var DataId2 = selection.focusOffset + previousSiblingDataId;
+                        console.log(selection.toString());
                         if (selection.toString()[0] == " ") {
+                            selectionanchorOffset = selectionanchorOffset + 1;
                             DataId1 += 1;
                             SelectedString = SelectedString.substring(1, SelectedString.length);
                         }
                         if (selection.toString()[selection.toString().length - 1] == " ") {
+                            selectionfocusOffset = selectionfocusOffset - 1;
                             DataId2 -= 1;
                             SelectedString = SelectedString.substring(0, SelectedString.length - 1);
                         }
                     }
                     else {
+                        var selectionfocusOffset = selection.focusOffset;
+                        var selectionanchorOffset = selection.anchorOffset;
                         var DataId2 = selection.anchorOffset + previousSiblingDataId;
                         var DataId1 = selection.focusOffset + previousSiblingDataId;
+                        console.log(selection.toString());
                         if (selection.toString()[0] == " ") {
+                            console.log(1);
+                            selectionfocusOffset = selectionfocusOffset + 1;
                             DataId1 += 1;
                             SelectedString = SelectedString.substring(1, SelectedString.length);
                         }
                         if (selection.toString()[selection.toString().length - 1] == " ") {
+                            console.log(2);
+                            
+                            selectionanchorOffset = selectionanchorOffset - 1;
                             DataId2 -= 1;
                             SelectedString = SelectedString.substring(0, SelectedString.length - 1);
                         }
@@ -87,13 +107,20 @@ function SelectAnnotateText(a) {
                     if (selection.anchorNode != selection.focusNode) {
                         return;
                     }
-                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + selection.toString() + "</span>";
+                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
                     if (selection.anchorOffset + previousSiblingDataId < selection.focusOffset + previousSiblingDataId) {
-                        FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selection.anchorOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selection.focusOffset, selection.anchorNode.parentElement.innerHTML.length);
+                        FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionanchorOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionfocusOffset, selection.anchorNode.parentElement.innerHTML.length);
                     }
                     else {
-                        FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selection.focusOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selection.anchorOffset, selection.anchorNode.parentElement.innerHTML.length);
+                        FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionfocusOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionanchorOffset, selection.anchorNode.parentElement.innerHTML.length);
                     }
+                    console.log(selection.anchorNode.parentElement);
+                    console.log(selection.anchorNode.parentElement.textContent);
+                    console.log(selection.anchorNode.parentElement.textContent.substring(0, DataId1));
+                    var LineBreakCharacter = (selection.anchorNode.parentElement.textContent.substring(0, DataId1).split(/\r\n|\r|\n|\n\n/g).length - 1);
+                    DataId1 += LineBreakCharacter;
+                    DataId2 += LineBreakCharacter;
+                    console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
                     console.log(MapIdSelectAnnotateText);
                     return a.innerHTML = FullText;
@@ -147,6 +174,9 @@ function DeleteAnnotation(a,b) {
 
 function Start(a) {
     console.log("Start");
+    console.log(a);
+    // console.log(a.getAttribute('data-meta'));
+
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
     element.setAttribute('class', 'item');
@@ -169,6 +199,36 @@ function Start(a) {
         childelement.insertAdjacentHTML('afterBegin', LabelsList[i]);
         element.appendChild(childelement);
         MenuListbox[0].appendChild(element);        
+    }
+    var ElemColl = document.getElementById('listcol');
+    var ElemDoc = document.getElementById('listdoc');
+    for (let i = 0; i < ListColl.length; i++) {
+        let newchild = document.createElement('div');
+        newchild.setAttribute('role', 'button');
+        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('tabindex', '0');
+        newchild.innerText = ListColl[i];
+        ElemColl.appendChild(newchild)
+    }
+    for (let i = 0; i < ListDoc.length; i++) {
+        let newchild = document.createElement('div');
+        newchild.setAttribute('role', 'button');
+        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('tabindex', '0');        
+        let newchildchild = document.createElement('img');
+        newchildchild.setAttribute('width', '50');
+        newchildchild.setAttribute('alt', 'logo');
+        if (UserDocStatus[i]){
+            newchildchild.setAttribute('src', './gg.png');
+        }
+        else {
+            newchildchild.setAttribute('src', './rk.png');
+        }
+        newchildchild.setAttribute('style', 'width: 25px;height: 25px;');
+        console.log(newchildchild);
+        newchild.appendChild(newchildchild);
+        newchild.appendChild(document.createTextNode(ListDoc[i]));
+        ElemDoc.appendChild(newchild);
     }
 }
 
@@ -224,4 +284,8 @@ function HiddeGenerelMenu(a) {
     document.getElementsByClassName('MuiButtonBase-root MuiIconButton-root jss107 jss108 MuiIconButton-colorInherit MuiIconButton-edgeStart')[0].setAttribute('class', 'MuiButtonBase-root MuiIconButton-root jss107 MuiIconButton-colorInherit MuiIconButton-edgeStart');
     document.getElementsByClassName('MuiDrawer-root MuiDrawer-docked jss98 jss109')[0].setAttribute('class', 'MuiDrawer-root MuiDrawer-docked jss98 jss110');
     document.getElementsByClassName('MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss109 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft')[0].setAttribute('class', 'MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss110 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft');
+}
+
+function Submit(a){
+    console.log('Submit');
 }
