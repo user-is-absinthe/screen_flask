@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Имя пользователя: {{ current_user.username }}</h1>
+    Роль: {{ current_user.user_role }}
+    <h1>Collections:</h1>
+    {% for c in collections %}
+        <div><p>{{ c }}</p></div>
+    {% endfor %}
+
+    <br>
+
+    <table>
+        <tr><td>название доумента</td><td>статус документа</td></tr>
+        {% for index in range(len_docs_name) %}
+            <tr><td>{{ docs_name[index] }}</td><td>{{ docs_status[index] }}</td></tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    Инструкции:
+    {{ instrictions }}
+    <br>
+    Тексты:<br>
+    {{ texts }}
+    <br>
+    Разметка, если есть:
+    {{ xml }}
+    <br><br><br>
+    {{ form_html.texts }}
+    <br>
+    {{ form_html.submit }}
+
+    <br><br>
+    {{ otladka }}
+
+{% endblock %}

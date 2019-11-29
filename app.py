@@ -27,11 +27,13 @@ from models import Attribute
 from pages import login
 from pages import test_page
 from pages import register
+from pages import scriber
 
 # название файла импорта, название переменной, к которой присваиваем Blueprint
 app.register_blueprint(test_page.test_blueprint)
 app.register_blueprint(login.login_blueprint)
 app.register_blueprint(register.register_blueprint)
+app.register_blueprint(scriber.scribe_blueprint)
 
 
 @app.route('/')

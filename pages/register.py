@@ -21,7 +21,7 @@ register_blueprint = Blueprint(
 @register_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('login.login_page'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(
@@ -30,10 +30,6 @@ def register():
             user_rating=0
         )
         user.set_password(form.password.data)
-        # user.username = form.username.data
-        # user.set_password(form.password.data)
-        # user.user_role = form.user_role.data
-        # user.user_rating = 0
 
         database.session.add(user)
         database.session.commit()

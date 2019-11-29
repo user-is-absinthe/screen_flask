@@ -15,4 +15,11 @@ test_blueprint = Blueprint(
 def start_test_page():
     test = 'one two three'
     test_list = ['one', 'two', 'three']
-    return render_template('test_page.html', title='Test page', test_phrase_one=test, stock=test_list)
+    test_any = 123
+    return render_template(
+        'test_page.html',
+        title='Test page',
+        test_phrase_one=test,
+        stock=test_list,
+
+    )

@@ -15,8 +15,8 @@ class User(UserMixin, database.Model):
     user_rating = database.Column(database.Integer)
 
     # relation_with_document = database.relationship('Relation', backref='author', lazy='dynamic')
-    user_to_relation = database.relationship('Relation', backref='users_to_relations', lazy='dynamic')
-    user_to_attribute = database.relationship('Attribute', backref='users_to_attributes', lazy='dynamic')
+    user_to_relation = database.relationship('Relation', backref='users_to_relations')
+    user_to_attribute = database.relationship('Attribute', backref='users_to_attributes')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -25,15 +25,22 @@ class User(UserMixin, database.Model):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        self.password_hash = check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password_hash, password)
 
     def get_role(self):
         return self.user_role
+
+    def get_id(self):
+        return self.id_user
+
+    def get_username(self):
+        return self.username
 
 
 class Document(database.Model):
     __tablename__ = 'document'
     id_document = database.Column(database.Integer, primary_key=True)
+    document_name = database.Column(database.String(40))
     rubric = database.Column(database.String(140))
     description = database.Column(database.String(1000))
     status = database.Column(database.String(64))
@@ -42,11 +49,32 @@ class Document(database.Model):
     path_to_instruction = database.Column(database.String(256))
 
     # relation_with_document = database.relationship('Relation', backref='author', lazy='dynamic')
-    document_to_relation = database.relationship('Relation', backref='documents_to_relation', lazy='dynamic')
-    document_to_attribute = database.relationship('Attribute', backref='document_to_attribute', lazy='dynamic')
+    document_to_relation = database.relationship('Relation', backref='documents_to_relation')
+    document_to_attribute = database.relationship('Attribute', backref='document_to_attribute')
 
     def __repr__(self):
         return '<Document {}>'.format(self.path_to_file)
+
+    def get_id(self):
+        return self.id_document
+
+    def get_name(self):
+        return self.document_name
+
+    def get_status(self):
+        return self.status
+
+    def get_rubric(self):
+        return self.rubric
+
+    def get_instruction(self):
+        return self.path_to_instruction
+
+    def get_text(self):
+        return self.path_to_file
+
+    def get_xml(self):
+        return self.path_to_xml_file
 
 
 class Relation(database.Model):

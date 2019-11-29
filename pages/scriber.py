@@ -1,0 +1,71 @@
+from flask import Blueprint
+from flask import render_template
+from flask_login import login_required
+from flask_login import current_user
+
+from models import Document
+from models import User
+from models import load_user
+
+from forms import ScribeForm
+
+from modules import external_modules
+
+
+scribe_blueprint = Blueprint(
+    'scribe_bp',
+    __name__,
+    template_folder='templates'
+)
+
+
+@scribe_blueprint.route('/scribe', methods=['GET', 'POST'])
+@login_required
+def scribe_page():
+    # username, user_role = current_user.username, current_user.user_role
+    user_relations = current_user.user_to_relation
+
+    user_docs_name = list()
+    user_docs_status = list()
+    user_collections = list()
+    user_instructions = list()
+    user_texts = list()
+    user_xml = list()
+
+    for r in user_relations:
+        user_docs_name.append(Document.query.get(r.document_id).get_name())
+        user_docs_status.append(Document.query.get(r.document_id).get_status())
+        user_collections.append(Document.query.get(r.document_id).get_rubric())
+        user_instructions.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
+        # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
+        user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_text()))
+        user_xml.append(external_modules.opener(Document.query.get(r.document_id).get_xml()))
+    user_collections = list(set(user_collections))
+
+    form = ScribeForm
+    # return render_template(
+    #     'scriber.html',
+    #     title='страница редакции',
+    #
+    #     collections=user_collections,
+    #     len_docs_name=len(user_docs_name),
+    #     docs_name=user_docs_name,
+    #     docs_status=user_docs_status,
+    #     instrictions=user_instructions,
+    #     texts=user_texts,
+    #     xml=user_xml,
+    #
+    #     form_html=form,
+    #
+    #     # otladka=Document.query.get(r.document_id)
+    #     # otladka=User.query.get(1).get_username()
+    #     otladka=0
+    # )
+
+    return render_template(
+        'scribe_page/editor.html',
+        texts=user_texts[0],
+
+        collections=user_collections,
+        form_html=form,
+    )
