@@ -28,3 +28,10 @@ class RegistrationForm(FlaskForm):
 class ScribeForm(FlaskForm):
     texts = StringField('All texts')
     submit = SubmitField('Готово')
+
+
+class GenRules(FlaskForm):
+    field_name = StringField('FieldName', validators=[DataRequired()])
+    color_to_name = StringField('Color', validators=[DataRequired()])
+    submit = SubmitField('Готово')
+    pass
