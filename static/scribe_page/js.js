@@ -8,7 +8,7 @@ var ListDoc = ["Документ 1","Документ 2","Документ 3"];
 var UserDocStatus =[true,true,false];
 var ListAnn = ["Документ 1","Документ 2","Документ 3"];
 var ListAnnId = ["4-10","34-43","56-65"];
-var ListAnnLabels = [1,2,3]
+var ListAnnLabels = [1,2,0]
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -240,7 +240,7 @@ function Start(a) {
         newchild.setAttribute('role', 'button');
         newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
         newchild.setAttribute('tabindex', '0');
-        newchild.innerText = ListAnn[i] + ' <' + LabelsList[ListAnnId[i]] + '>';
+        newchild.innerText = ListAnn[i] + ' <' + LabelsList[ListAnnLabels[i]] + '>';
         newchild.setAttribute('data-id',ListAnnId[i]);
         newchild.setAttribute('data-label',ListAnnLabels[i]);
         ElemAnn.appendChild(newchild);
