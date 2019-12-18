@@ -211,7 +211,10 @@ function Start(a) {
         newchild.setAttribute('role', 'button');
         newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
         newchild.setAttribute('tabindex', '0');
-        newchild.innerText = ListColl[i];
+        let newchildspan = document.createElement('span');
+        newchildspan.setAttribute('class', 'MuiChip-label');
+        newchildspan.innerText = ListColl[i];
+        newchild.appendChild(newchildspan);
         ElemColl.appendChild(newchild)
     }
     for (let i = 0; i < ListDoc.length; i++) {
@@ -231,18 +234,24 @@ function Start(a) {
         newchildchild.setAttribute('style', 'width: 25px;height: 25px;');
         console.log(newchildchild);
         newchild.appendChild(newchildchild);
-        newchild.appendChild(document.createTextNode(ListDoc[i]));
+        let newchildspan = document.createElement('span');
+        newchildspan.setAttribute('class', 'MuiChip-label');
+        newchildspan.innerText = ListDoc[i];
+        newchild.appendChild(newchildspan);
         ElemDoc.appendChild(newchild);
-        newchild.innerText = ListAnn[i];
     }
     for (let i = 0; i < ListAnn.length; i++) {
         let newchild = document.createElement('div');
         newchild.setAttribute('role', 'button');
         newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
         newchild.setAttribute('tabindex', '0');
-        newchild.innerText = ListAnn[i] + ' <' + LabelsList[ListAnnLabels[i]] + '>';
         newchild.setAttribute('data-id',ListAnnId[i]);
         newchild.setAttribute('data-label',ListAnnLabels[i]);
+        newchild.setAttribute('style','background-color: ' + ColorTagArray[ListAnnLabels[i]]);
+        let newchildspan = document.createElement('span');
+        newchildspan.setAttribute('class', 'MuiChip-label');
+        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+        newchild.appendChild(newchildspan);
         ElemAnn.appendChild(newchild);
     }
 }

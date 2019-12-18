@@ -3148,7 +3148,7 @@
         color: rgba(0, 0, 0, 0.87);
         border: none;
         cursor: default;
-        height: 32px;
+        min-height: 32px;
         display: inline-flex;
         outline: 0;
         padding: 0;
@@ -3309,11 +3309,12 @@
       }
       
       .MuiChip-label {
+        word-break: normal;
         cursor: inherit;
         display: flex;
         align-items: center;
         user-select: none;
-        white-space: nowrap;
+        white-space: normal;
         padding-left: 12px;
         padding-right: 12px;
       }
@@ -4072,7 +4073,7 @@
         margin-bottom: 8px;
         justify-content: left;
         background-color: transparent;
-          word-break: keep-all;
+          word-wrap: break-word;
       }
       
       .jss3136 {
@@ -5044,9 +5045,9 @@
 		letter-spacing: 0;
 		}
 		.jss1423 {
-			padding-left: 32px;
-			margin-bottom: 16px;
-			padding-right: 32px;
+			padding-left: 5px;
+			margin-bottom: 10px;
+			padding-right: 5px;
 		}
 
 		.MuiCollapse-entered {
