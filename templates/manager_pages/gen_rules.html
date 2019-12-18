@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Правила генерировать сюда</h1>
+    <form action="" method="post" novalidate>
+    <p>
+        {{ form.field_name }} - {{ form.color_to_name }}
+        <br>
+        Добавить штуку с дополнением полей.
+    </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

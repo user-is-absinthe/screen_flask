@@ -6,13 +6,10 @@ from flask_login import login_required
 from flask_login import current_user
 
 from models import Document
-from models import User
-from models import load_user
 
 from forms import ScribeForm
 
-from modules import external_modules
-
+import external_modules
 
 scribe_blueprint = Blueprint(
     'scribe_bp',
@@ -27,6 +24,8 @@ scribe_blueprint = Blueprint(
 def scribe_page():
     username, user_role = current_user.username, current_user.user_role
     user_relations = current_user.user_to_relation
+
+    path_to_instruction = r'static/instruction_mini.txt'
 
     user_docs_ids = list()
     user_docs_name = list()
@@ -104,4 +103,5 @@ def scribe_page():
         list_id=user_docs_ids,
         # collections=user_collections,
         form_html=form,
+        link_to_doc=path_to_instruction,
     )

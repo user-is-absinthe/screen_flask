@@ -4998,36 +4998,63 @@
           <div class="MuiContainer-root MuiContainer-maxWidthLg">
             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around">
               <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12" style="text-align: center;">
-                <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="file:///C:/Users/User/Desktop/site/my_editor1.html" style="cursor: pointer;"><img class="jss47" src="static/logout_files/logo2.jpg"></a>
+                <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="file:///C:/Users/User/Desktop/site/my_editor1.html" style="cursor: pointer;"><img class="jss47" src="logout_files/logo2.jpg"></a>
               </div>
               <div class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-justify-xs-center">
                   <div class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded" style="min-width: 390px;">
-                    <form action = "" method = "post" novalidate="">
+                    <form>
                       <div class="MuiCardHeader-root" style="padding: 17px;">
                         <div class="MuiCardHeader-content"></div>
                         <div class="MuiCardHeader-action"></div>
                       </div>
                       <div class="MuiDialogContent-root">
-                        {{ form.hidden_tag() }}
-                        <p>
-                          {{ form.username.label }}<br>
-                          {{ form.username(size=32) }}
-                          {% for error in form.username.errors %}
-                          <span style="color: red;">[{{ error }}]</span>
-                          {% endfor %}
-                        </p>
-                        <p>
-                            {{ form.password.label }}<br>
-                            {{ form.password(size=32) }}
-                            {% for error in form.password.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                            {% endfor %}
-                        </p>
+                        <form action = "" method = "post" novalidate="">
+                        <div>
+                          <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth">
+                            <label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled" data-shrink="true">Username</label>
+                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl">
 
-                        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-                    
-                         <p>{{ form.submit() }}</p>
+                              <input id = "username" class="MuiInputBase-input MuiOutlinedInput-input" required="" size = "32" name="username" type="text" value="">
+
+                              <fieldset aria-hidden="true" class="jss286 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;">
+                                <legend class="jss287" style="width: 63.5px;"><span>​</span></legend>
+                              </fieldset>
+                            </div>
+                          </div>
+                          <div class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between" style="min-height: 1.35rem;">
+                            <div class="MuiGrid-root MuiGrid-item"><span class="MuiTypography-root MuiTypography-caption MuiTypography-colorError MuiTypography-gutterBottom MuiTypography-alignLeft"></span></div>
+                            <div class="MuiGrid-root MuiGrid-item" style="padding-top: 2px;"></div>
+                          </div>
+                        </div>
+                        <br>
+                        <div>
+                          <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth">
+                            <label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled" data-shrink="true">Password</label>
+                            <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd">
+                              <input aria-invalid="false" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd" id = "password" name="password" size = "32" type="password" value="">
+                              <fieldset aria-hidden="true" class="jss286 MuiOutlinedInput-notchedOutline" style="padding-left: 8px;">
+                                <legend class="jss287" style="width: 62px;"><span>​</span></legend>
+                              </fieldset>
+                            </div>
+                          </div>
+                          <div class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-space-between" style="min-height: 1.35rem;">
+                            <div class="MuiGrid-root MuiGrid-item"><span class="MuiTypography-root MuiTypography-caption MuiTypography-colorError MuiTypography-gutterBottom MuiTypography-alignLeft"></span></div>
+                          </div>
+                        </div>
+
+                        <div style="padding-bottom: 1rem; padding-top: 1rem;">
+                          <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-flex-end">
+                            <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
+                              <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-fullWidth" tabindex="0">
+                                <span class="MuiButton-label">Sign in</span>
+                                <input id="submit" name="submit" type="submit" value="Sign In">
+                                <span class="MuiTouchRipple-root"></span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                       </div>
                     </form>
                   </div>

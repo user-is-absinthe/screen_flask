@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -36,7 +37,9 @@ from pages import login
 from pages import test_page
 from pages import register
 from pages import scriber
+
 from pages import all_pages
+from pages import manager_pages
 
 # название файла импорта, название переменной, к которой присваиваем Blueprint
 app.register_blueprint(test_page.test_blueprint)
@@ -45,12 +48,25 @@ app.register_blueprint(register.register_blueprint)
 app.register_blueprint(scriber.scribe_blueprint)
 
 app.register_blueprint(all_pages.all_pages)
+app.register_blueprint(manager_pages.manager_pages_blueprint)
+
+
+links = {
+    # 'Недостаточно прав': url_for(all_pages.need_role),
+    'Недостаточно прав.': 'all_functions_pages.need_role',
+    'Создание правил': 'manager_page.gen_rules_func'
+
+}
 
 
 @app.route('/')
 @app.route('/index')
 def hello_world():
-    return render_template('index.html', title='Start page')
+    return render_template(
+        'index.html',
+        title='Start page',
+        links=links
+    )
 
 
 if __name__ == '__main__':
