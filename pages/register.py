@@ -20,7 +20,9 @@ register_blueprint = Blueprint(
 
 @register_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
+    # print(123)
+    # print(current_user.is_authenticated)
+    if not current_user.is_authenticated:
         return redirect(url_for('login.login_page'))
     form = RegistrationForm()
     if form.validate_on_submit():

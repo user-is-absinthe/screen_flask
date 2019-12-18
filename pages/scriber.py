@@ -1,6 +1,8 @@
 from flask import Blueprint
 from flask import render_template
-from flask_login import login_required
+# from flask_login import login_required
+from flask_user import login_required
+from flask_user import roles_required
 from flask_login import current_user
 
 from models import Document
@@ -21,6 +23,7 @@ scribe_blueprint = Blueprint(
 
 @scribe_blueprint.route('/scribe', methods=['GET', 'POST'])
 @login_required
+@roles_required('admin')
 def scribe_page():
     username, user_role = current_user.username, current_user.user_role
     user_relations = current_user.user_to_relation
