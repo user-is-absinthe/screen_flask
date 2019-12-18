@@ -1,11 +1,14 @@
 var SelectedTag = -1;
 var ColorTagArray = ["#E52B50", "#9966CC", "#007FFF"];
-var LabelsList = ["Лицо", "Организация", "Местоположение"];
+var LabelsList = ["Р›РёС†Рѕ", "РћСЂРіР°РЅРёР·Р°С†РёСЏ", "РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ"];
 var idChooseDeleteOrChangeTag = "";
 var MapIdSelectAnnotateText = new Map();
-var ListColl = ["Коллекция 1"];
-var ListDoc = ["Документ 1","Документ 2","Документ 3"];
+var ListColl = ["РљРѕР»Р»РµРєС†РёСЏ 1"];
+var ListDoc = ["Р”РѕРєСѓРјРµРЅС‚ 1","Р”РѕРєСѓРјРµРЅС‚ 2","Р”РѕРєСѓРјРµРЅС‚ 3"];
 var UserDocStatus =[true,true,false];
+var ListAnn = ["Р”РѕРєСѓРјРµРЅС‚ 1","Р”РѕРєСѓРјРµРЅС‚ 2","Р”РѕРєСѓРјРµРЅС‚ 3"];
+var ListAnnId = ["4-10","34-43","56-65"];
+var ListAnnLabels = [1,2,3]
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -185,7 +188,7 @@ function Start(a) {
     element.setAttribute('onclick', 'DeleteAnnotation(this)');
     var childelement = document.createElement('span');
     childelement.setAttribute('class', 'text');
-    childelement.insertAdjacentHTML('afterBegin', 'Убрать выделение');
+    childelement.insertAdjacentHTML('afterBegin', 'РЈР±СЂР°С‚СЊ РІС‹РґРµР»РµРЅРёРµ');
     element.appendChild(childelement);
     MenuListbox[0].appendChild(element);
     for (let i = 0; i < LabelsList.length ; i++) {
@@ -202,6 +205,7 @@ function Start(a) {
     }
     var ElemColl = document.getElementById('listcol');
     var ElemDoc = document.getElementById('listdoc');
+    var ElemAnn = document.getElementById('listann');
     for (let i = 0; i < ListColl.length; i++) {
         let newchild = document.createElement('div');
         newchild.setAttribute('role', 'button');
@@ -229,6 +233,17 @@ function Start(a) {
         newchild.appendChild(newchildchild);
         newchild.appendChild(document.createTextNode(ListDoc[i]));
         ElemDoc.appendChild(newchild);
+        newchild.innerText = ListAnn[i];
+    }
+    for (let i = 0; i < ListAnn.length; i++) {
+        let newchild = document.createElement('div');
+        newchild.setAttribute('role', 'button');
+        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('tabindex', '0');
+        newchild.innerText = ListAnn[i] + ' <' + LabelsList[ListAnnId[i]] + '>';
+        newchild.setAttribute('data-id',ListAnnId[i]);
+        newchild.setAttribute('data-label',ListAnnLabels[i]);
+        ElemAnn.appendChild(newchild);
     }
 }
 
