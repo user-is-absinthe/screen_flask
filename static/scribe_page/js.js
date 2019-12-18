@@ -177,7 +177,7 @@ function DeleteAnnotation(a,b) {
 
 function Start(a) {
     console.log("Start");
-    console.log(a);
+    console.log(document.querySelector('.body'));
     // console.log(a.getAttribute('data-meta'));
 
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
@@ -247,7 +247,7 @@ function Start(a) {
         newchild.setAttribute('tabindex', '0');
         newchild.setAttribute('data-id',ListAnnId[i]);
         newchild.setAttribute('data-label',ListAnnLabels[i]);
-        newchild.setAttribute('style','background-color: ' + ColorTagArray[ListAnnLabels[i]]);
+        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
         let newchildspan = document.createElement('span');
         newchildspan.setAttribute('class', 'MuiChip-label');
         newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
