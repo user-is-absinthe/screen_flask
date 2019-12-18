@@ -25,7 +25,10 @@ def login_page():
     if current_user.is_authenticated:
         return redirect(url_for('hello_world'))
     form = LoginForm()
+    print('vot_form=', form.username)
+    print('1',form.username.data, form.password.data)
     if form.validate_on_submit():
+        print('2',form.username.data,form.password.data)
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
