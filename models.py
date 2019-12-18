@@ -11,12 +11,15 @@ class User(UserMixin, database.Model):
     id_user = database.Column(database.Integer, primary_key=True)
     username = database.Column(database.String(64), index=True, unique=True)
     password_hash = database.Column(database.String(128))
-    user_role = database.Column(database.String(64))
+    # user_role = database.Column(database.String(64))
     user_rating = database.Column(database.Integer)
 
     # relation_with_document = database.relationship('Relation', backref='author', lazy='dynamic')
     user_to_relation = database.relationship('Relation', backref='users_to_relations')
     user_to_attribute = database.relationship('Attribute', backref='users_to_attributes')
+
+    # Define the relationship to Role via UserRoles
+    roles = database.relationship('Role', secondary='user_roles')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -35,6 +38,21 @@ class User(UserMixin, database.Model):
 
     def get_username(self):
         return self.username
+
+
+# Define the Role data-model
+class Role(database.Model):
+    __tablename__ = 'roles'
+    id = database.Column(database.Integer(), primary_key=True)
+    name = database.Column(database.String(50), unique=True)
+
+
+# Define the UserRoles association table
+class UserRoles(database.Model):
+    __tablename__ = 'user_roles'
+    id = database.Column(database.Integer(), primary_key=True)
+    user_id = database.Column(database.Integer(), database.ForeignKey('users.id', ondelete='CASCADE'))
+    role_id = database.Column(database.Integer(), database.ForeignKey('roles.id', ondelete='CASCADE'))
 
 
 class Document(database.Model):
