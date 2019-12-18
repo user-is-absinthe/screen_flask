@@ -4,7 +4,7 @@ from flask_login import login_manager
 
 
 all_pages = Blueprint(
-    'permission_denied_page',
+    'all_functions_pages',
     __name__,
     template_folder='templates'
 )

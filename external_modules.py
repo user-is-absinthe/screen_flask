@@ -5,6 +5,15 @@ from nltk.translate.bleu_score import sentence_bleu
 # similarity(attrs_text1,attrs_text2)
 
 
+def check_answered(any_data):
+    if any_data is not None:
+        return True
+    elif any_data == '':
+        return False
+    else:
+        return False
+
+
 def similarity(attrs_text1, attrs_text2):  # подсчет похожести по BLEU
     attrs1 = []
     attrs1.append(attrs_text1.split(' '))
