@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 from app import database
 from app import login_manager
+# from app import UserManager
 
 
 class User(UserMixin, database.Model):
@@ -39,6 +40,9 @@ class User(UserMixin, database.Model):
     def get_username(self):
         return self.username
 
+    def user_role(self):
+        return self.user_roles
+
 
 # Define the Role data-model
 class Role(database.Model):
@@ -51,7 +55,7 @@ class Role(database.Model):
 class UserRoles(database.Model):
     __tablename__ = 'user_roles'
     id = database.Column(database.Integer(), primary_key=True)
-    user_id = database.Column(database.Integer(), database.ForeignKey('users.id', ondelete='CASCADE'))
+    user_id = database.Column(database.Integer(), database.ForeignKey('user.id_user', ondelete='CASCADE'))
     role_id = database.Column(database.Integer(), database.ForeignKey('roles.id', ondelete='CASCADE'))
 
 
