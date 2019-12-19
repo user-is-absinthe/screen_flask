@@ -40,6 +40,7 @@ from pages import scriber
 
 from pages import all_pages
 from pages import manager_pages
+from pages import administrator_pages
 
 # название файла импорта, название переменной, к которой присваиваем Blueprint
 app.register_blueprint(test_page.test_blueprint)
@@ -49,12 +50,15 @@ app.register_blueprint(scriber.scribe_blueprint)
 
 app.register_blueprint(all_pages.all_pages)
 app.register_blueprint(manager_pages.manager_pages_blueprint)
+app.register_blueprint(administrator_pages.admin_pages_blueprint)
 
 
 links = {
     # 'Недостаточно прав': url_for(all_pages.need_role),
-    'Недостаточно прав.': 'all_functions_pages.need_role',
-    'Создание правил': 'manager_page.gen_rules_func'
+    'Недостаточно прав': 'all_functions_pages.need_role',
+    'Создание правил': 'manager_page.gen_rules_page',
+    'Просмотр статистики': 'manager_page.monitor_page',
+    'Отображение пользователей': 'administrator_pages.check_and_dell_users'
 
 }
 
