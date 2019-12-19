@@ -44,8 +44,33 @@
     </script>
     <link href="./Annotators_files/main.f8863a36.chunk.css" rel="stylesheet">
     <style type="text/css">
+
       /* Chart.js */
-      
+    
+
+      a.button25 {
+        position: relative;
+        display: inline-block;
+        width: 10em;
+        height: 2.5em;
+        line-height: 2.5em;
+        vertical-align: middle;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 -1px 1px #777;
+        color: #fff;
+        outline: none;
+        border: 2px solid #F64C2B;
+        border-radius: 5px;
+        box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+        background: linear-gradient(#FB9575, #F45A38 48%, #EA1502 52%, #F02F17);
+      }
+      a.button25:active {
+        top: .1em;
+        left: .1em;
+        box-shadow: 0 0 0 60px rgba(0,0,0,.05) inset;
+      }
+
       @-webkit-keyframes chartjs-render-animation {
         from {
           opacity: 0.99
@@ -7973,7 +7998,7 @@
         <header class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed">
           <div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters">
             <div class="jss97">
-			<a href="../my_editor1.html"><img width="50" alt="logo" src="./Annotators_files/logo2.jpg"></a>
+			<a href="../my_editor1.html"><img width="50" alt="logo" src="static/Annotators_files/logo2.jpg"></a>
             </div>
             <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-haspopup="true">
 				<span class="MuiIconButton-label">
@@ -8156,106 +8181,45 @@
                         </div>
                       </div>
                     </div>
-                    <div style="padding: 0px 10px;"><a class="MuiButtonBase-root MuiFab-root jss1427 MuiFab-extended MuiFab-secondary" tabindex="0" aria-disabled="false" aria-label="Add a new annotator" href="https://qqq.lighttag.io/manager/annotator#/manager/annotator/add" title="Add a new annotator"><span class="MuiFab-label"><svg class="MuiSvgIcon-root jss1428" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>Новый обработчик</span><span class="MuiTouchRipple-root"></span></a></div>
-                  </div>
-                  <div style="overflow-x: auto;">
-                    <div>
-                      <div style="overflow-y: auto;">
-                        <table class="MuiTable-root">
-                          <thead class="MuiTableHead-root">
-                            <tr class="MuiTableRow-root MuiTableRow-head">
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="2" tabindex="0" data-react-beautiful-dnd-drag-handle="2" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Имя пользователя</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="2" tabindex="0" data-react-beautiful-dnd-drag-handle="2" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Email</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                            </tr>
-                          </thead>
-                          <tbody class="MuiTableBody-root">
-                            <tr class="MuiTableRow-root" index="0" level="0" localization="[object Object]" actions="" path="0" style="transition: all 300ms ease 0s; background-color: rgb(238, 238, 238);">
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="Curt" style="border-left: 1px solid rgb(222, 222, 226);"><a href="https://qqq.lighttag.io/manager/annotator/1" style="text-decoration: none;">User</a></td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="ivanignatev97@mail.ru" style="border-left: 1px solid rgb(222, 222, 226);">username@mail.ru</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    <div style="padding: 0px 10px;">
+                      <a class="MuiButtonBase-root MuiFab-root jss1427 MuiFab-extended MuiFab-secondary" tabindex="0" aria-disabled="false" aria-label="Add a new annotator" href="{{ url_for('register.register') }}" title="Add a new annotator">
+                        <span class="MuiFab-label">
+                          <svg class="MuiSvgIcon-root jss1428" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                          </svg>Новый обработчик</span>
+                          <span class="MuiTouchRipple-root"></span>
+                        </a>
                       </div>
-                    </div>
                   </div>
-                  <table class="MuiTable-root">
-                    <tfoot class="MuiTableFooter-root" style="display: grid;">
-                      <tr class="MuiTableRow-root MuiTableRow-footer">
-                        <td class="MuiTableCell-root MuiTablePagination-root jss1375 MuiTableCell-footer" colspan="3" icons="[object Object]" style="float: right; overflow-x: auto;">
-                          <div class="MuiToolbar-root MuiToolbar-regular MuiTablePagination-toolbar jss1376 MuiToolbar-gutters">
-                            <div class="MuiTablePagination-spacer"></div><span class="MuiTypography-root MuiTablePagination-caption jss1377 MuiTypography-caption MuiTypography-colorInherit">Rows per page:</span>
-                            <div class="MuiInputBase-root MuiTablePagination-input MuiTablePagination-selectRoot jss1378">
-                              <div class="MuiSelect-root MuiSelect-select MuiTablePagination-select MuiSelect-selectMenu MuiInputBase-input MuiInputBase-inputSelect" tabindex="0" role="button" aria-haspopup="listbox">
-                                <div style="padding: 0px 5px;">10 </div>
-                              </div>
-                              <input type="hidden" value="10">
-                              <svg class="MuiSvgIcon-root MuiSelect-icon MuiTablePagination-selectIcon" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-                                <path d="M7 10l5 5 5-5z"></path>
-                              </svg>
-                            </div><span class="MuiTypography-root MuiTablePagination-caption jss1377 MuiTypography-caption MuiTypography-colorInherit">1-1 of 1</span>
-                            <div class="jss1486"><span class="" title="First Page"><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"></path><path fill="none" d="M24 24H0V0h24v24z"></path></svg></span></button>
-                              </span><span class="" title="Previous Page"><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></span></button>
-                              </span><span class="MuiTypography-root MuiTypography-caption" style="flex-grow: 1; flex-shrink: 1; flex-basis: inherit; text-align: center; align-self: center;">1-1 из 1</span><span class="" title="Next Page"><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></span></button>
-                              </span><span class="" title="Last Page"><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"></path></svg></span></button>
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
                 </div>
                 <hr class="MuiDivider-root">
                 <div class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded" style="position: relative; background-color: rgb(250, 250, 250); width: 100%;">
-                  <div>
-                    <div class="MuiToolbar-root MuiToolbar-regular jss1379 MuiToolbar-gutters">
-                      <div class="MuiFormControl-root MuiTextField-root jss1384" color="inherit">
-                        <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd">
-                          <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
-                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation" title="Search">
-                              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
-                            </svg>
-                          </div>
-                          <input aria-invalid="false" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd" placeholder="Search" type="text" value="">
-                          <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
-                            <button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span></button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="jss1381"></div>
-                      <div class="jss1382">
-                        <div>
-                          <div><span><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-label="Export" title="Export"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"></path></svg></span><span class="MuiTouchRipple-root"></span></button>
-                            </span><span></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div style="overflow-x: auto;">
                     <div>
                       <div style="overflow-y: auto;">
                         <table class="MuiTable-root">
                           <thead class="MuiTableHead-root">
                             <tr class="MuiTableRow-root MuiTableRow-head">
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Дата</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Оьработчик</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Email</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Кол-во тэгов</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Примеры тэгов</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Классы</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
-                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Связи</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+
+                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Имя пользователя</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+
+                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Рейтинг пользователя</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+
+                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Роль пользователя</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+
+                              <th class="MuiTableCell-root jss1441 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="3" tabindex="0" data-react-beautiful-dnd-drag-handle="3" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Выберите пользователей для удаления</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
                             </tr>
                           </thead>
                           <tbody class="MuiTableBody-root">
-                            <tr class="MuiTableRow-root" index="0" level="0" localization="[object Object]" actions="" path="0" style="transition: all 300ms ease 0s; background-color: rgb(238, 238, 238);">
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="2019-10-10" style="border-left: 1px solid rgb(222, 222, 226);">2019-10-10</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="Curt" style="border-left: 1px solid rgb(222, 222, 226);">User</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="ivanignatev97@mail.ru" style="border-left: 1px solid rgb(222, 222, 226);">username@mail.ru</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="0" style="border-left: 1px solid rgb(222, 222, 226);">0</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="0" style="border-left: 1px solid rgb(222, 222, 226);">0</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="0" style="border-left: 1px solid rgb(222, 222, 226);">0</td>
-                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="0" style="border-left: 1px solid rgb(222, 222, 226);">0</td>
-                            </tr>
+                            {% for row in all_data %}
+                                <tr class="MuiTableRow-root" index="0" level="0" localization="[object Object]" actions="" path="0" style="transition: all 300ms ease 0s; background-color: rgb(238, 238, 238);">
+                                {% for column in row %}
+                                    <td>{{ column }}</td>
+                                {% endfor %}
+                                <form method="post" action="">
+                                    <td><p><input type="checkbox" name="checkme" id="agree"></p></td>
+                                </form>
+                            {% endfor %}
                           </tbody>
                         </table>
                       </div>
@@ -8266,6 +8230,9 @@
                       <tr class="MuiTableRow-root MuiTableRow-footer">
                         <td class="MuiTableCell-root MuiTablePagination-root jss1375 MuiTableCell-footer" colspan="3" icons="[object Object]" style="float: right; overflow-x: auto;">
                           <div class="MuiToolbar-root MuiToolbar-regular MuiTablePagination-toolbar jss1376 MuiToolbar-gutters">
+
+                            <a href="#" class="button25">Удалить</a>
+
                             <div class="MuiTablePagination-spacer"></div><span class="MuiTypography-root MuiTablePagination-caption jss1377 MuiTypography-caption MuiTypography-colorInherit">Rows per page:</span>
                             <div class="MuiInputBase-root MuiTablePagination-input MuiTablePagination-selectRoot jss1378">
                               <div class="MuiSelect-root MuiSelect-select MuiTablePagination-select MuiSelect-selectMenu MuiInputBase-input MuiInputBase-inputSelect" tabindex="0" role="button" aria-haspopup="listbox">

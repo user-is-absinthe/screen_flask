@@ -28,7 +28,8 @@ def check_and_dell_users():
     ]
     all_data = zip(usernames, user_ratings, user_roles)
     return render_template(
-        'admin_pages/all_users.html',
+        # 'admin_pages/all_users.html',
+        'admin_pages/Annotators.html',
         title='Список всех пользователей',
         all_data=all_data
     )
