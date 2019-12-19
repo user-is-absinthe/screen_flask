@@ -177,7 +177,8 @@ function DeleteAnnotation(a,b) {
 
 }
 
-function StartEditor() {
+function StartEditor(a) {
+    console.log(a);
     console.log("Start");
     ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listtag');
     console.log(ListAnnLabels);
@@ -189,10 +190,12 @@ function StartEditor() {
     console.log(ListColl);
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
     Text = '' + Text.slice(2,Text.length-2);
-    console.log(typeof Text);
-    Text.replace('\\n\\n','\n\n')
-    Text = new String(Text)
-    document.getElementsByClassName('document')[0].textContent = Text;
+    listtext = Text.split('\\n');
+    console.log(listtext);
+    for(let i = 0; i < listtext.length; i++){
+        document.getElementsByClassName('document')[0].textContent = document.getElementsByClassName('document')[0].textContent + listtext[i];
+    }
+    // document.getElementsByClassName('document')[0].textContent = Text;
     console.log(document.getElementsByClassName('document')[0]);
     console.log(Text);
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
