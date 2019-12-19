@@ -169,9 +169,10 @@ function DeleteAnnotation(a,b) {
 
 }
 
-function StartEditor(a) {
+function StartEditor() {
     console.log("Start");
-
+    console.log(document.getElementsByTagName('body'));
+    console.log(document.getElementsByTagName('body')[0].getAttributeNS());
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
     element.setAttribute('class', 'item');
