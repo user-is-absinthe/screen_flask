@@ -9,6 +9,7 @@ var UserDocStatus =[true,true,false];
 var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель","Максим"];
 var ListAnnId = ["67-73","34-43","56-65","4-10","76-82","84-90","93-100"];
 var ListAnnLabels = [1,2,0,1,2,1,0];
+var IdCurrentText = 0;
 var Text = "Россия рассчитывает на конструктивное воздействие США на Грузию\n" +
     "\n" +
     "04/08/2008 12:08\n" +
@@ -186,6 +187,14 @@ function DeleteElemLabelsAnn(a,b){
 function StartEditor(a) {
     console.log(a);
     console.log("Start");
+    IdCurrentText = document.getElementsByTagName('body')[0].getAttribute('data-currenttextid');
+    console.log(IdCurrentText);
+    Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
+    console.log(Text);
+    Text = '' + Text.slice(1,Text.length-2);
+    let List = document.getElementsByTagName('body')[0].getAttribute('data-text');
+    console.log(List);
+
     ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listann');
     ListAnnLabels = ListAnnLabels.slice(1,ListAnnLabels.length-2);
     console.log(ListAnnLabels);
@@ -193,7 +202,7 @@ function StartEditor(a) {
     ListAnnId = ListAnnId.slice(1,ListAnnId.length-2);
     console.log(ListAnnId);
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
-    ListDoc = ListDoc.slice(2,ListDoc.length-2);
+    ListDoc = ListDoc.slice(1,ListDoc.length-2);
     if(ListDoc.length != 0){
         ListDoc = ListDoc.split('\', \'');
     }
@@ -204,8 +213,7 @@ function StartEditor(a) {
     ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
     ListColl = ListColl.slice(1,ListColl.length-2);
     console.log(ListColl);
-    Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
-    Text = '' + Text.slice(2,Text.length-2);
+
     // listtext = Text.split('\\n');
     // console.log(listtext);
     // for(let i = 0; i < listtext.length; i++){
