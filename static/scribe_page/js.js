@@ -266,13 +266,17 @@ function StartEditor(a) {
         newcontainer.setAttribute('class', 'MuiCollapse-container jss1423 MuiCollapse-entered');
         newcontainer.setAttribute('style', 'min-height: 0px; height: auto; transition-duration: 232ms;');
         let newcontainerChild = document.createElement('div');
-        newcontainer.setAttribute('class', 'MuiCollapse-wrapperInner');
+        newcontainerChild.setAttribute('class', 'MuiCollapse-wrapperInner');
         let newcontainerChildChild = document.createElement('div');
-        newcontainer.setAttribute('class', 'MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-space-around');
-        newcontainer.setAttribute('id', LabelsList[i]);
+        newcontainerChildChild.setAttribute('class', 'MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-space-around');
+        newcontainerChildChild.setAttribute('id', LabelsList[i]);
+        newcontainerChild.appendChild(newcontainerChildChild);
+        newcontainer.appendChild(newcontainerChild);
+        ElemLabelsAnn.appendChild(newcontainer);
 
         for (let j = 0; j < ListAnnLabels.length; j++) {
             if (i==ListAnnLabels[j]) {
+                let ElemLabels = document.getElementById(LabelsList[j]);
                 let newchild = document.createElement('div');
                 newchild.setAttribute('role', 'button');
                 newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
@@ -284,7 +288,7 @@ function StartEditor(a) {
                 newchildspan.setAttribute('class', 'MuiChip-label');
                 newchildspan.innerText = ListAnn[j];
                 newchild.appendChild(newchildspan);
-                ElemLabelsAnn.appendChild(newchild);
+                ElemLabels.appendChild(newchild);
             }
         }
         // newchild.setAttribute('data-id',ListAnnId[i]);
@@ -410,17 +414,3 @@ function DeleteGenLabel(a){
     a.remove();
 }
 
-// function requestJSONGenRule(a){
-//     let list = {
-//         listdual: []
-//     };
-//     console.log(document.querySelectorAll('input[id="field_name"]'));
-//     let field_nameList = document.querySelectorAll('input[id="field_name"]');
-//     let colorList = document.querySelectorAll('input[type="color"]');
-//     for(let i=0;i<field_nameList.length;i++){
-//         list.listdual.push([field_nameList[i],colorList[i]]);
-//     }
-//     let json = JSON.stringify(list);
-//     console.log(json);
-//     return json;
-// }
