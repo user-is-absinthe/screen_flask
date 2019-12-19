@@ -5,6 +5,7 @@
       {% else %}
       <title>Приветствуем вас в "Решето"</title>
       {% endif %}
+        <script src="{{ url_for('static', filename='scribe_page/js.js') }}" charset=windows-1251></script>
     </head>
     <body>
         {% with messages = get_flashed_messages() %}
