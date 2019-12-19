@@ -20,6 +20,19 @@ migrate = Migrate(app, database)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login.login_page'
 
+app.config['UPLOAD_FOLDER'] = 'data/load_files/'
+app.config['ALLOWED_EXTENSIONS'] = {
+    'txt', 'doc', 'docx'
+}
+app.config['USER_ROLES'] = {
+    'admin': 'Администратор',
+    'manager': 'Менеджер',
+    'executor': 'Исполнитель',
+    'multi': 'ФС-режим',
+    'debug': 'Отладчик',
+}
+app.config['PATH_TO_CHEMA'] = 'data/chemas/'
+
 # для создания миграции в базе не забудь импортировать здесь модель
 # или, возможно, не здесь, а где-то еще
 # (но импортировать надо после задания переменной database, такая штука
@@ -62,7 +75,8 @@ all_links = {
     'Недостаточно прав': 'all_functions_pages.need_role',
     'Создание правил': 'manager_page.gen_rules_page',
     'Просмотр статистики': 'manager_page.monitor_page',
-    'Отображение пользователей': 'administrator_pages.check_and_dell_users'
+    'Отображение пользователей': 'administrator_pages.check_and_dell_users',
+    'Загрузка файлов': 'administrator_pages.upload_file'
 
 }
 
@@ -71,7 +85,8 @@ all_links = {
 @app.route('/index')
 @login_required
 def hello_world():
-    print(get_user_info(current_user))
+    # print(get_user_info(current_user))
+    # print()
     # if current_user.is_authenticated:
     #     print(current_user.username, current_user.user_role)
     # if not check_user_access(current_user, 'admin'):
