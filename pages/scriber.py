@@ -63,7 +63,7 @@ def scribe_page():
 0-723-730
 0-815-825
 1-838-841
-0-842-848'''
+0-842-848'''.replace('\n', '')
         user_xml.append(a)
     # user_collections = list(set(user_collections))
 
