@@ -104,33 +104,24 @@ def scribe_page():
     #     otladka=0
     # )
 
-    # print(
-    #     'docs\n',
-    #     user_docs_ids,
-    #     '\nnames\n',
-    #     user_docs_name,
-    #     '\ndocs_status\n',
-    #     user_docs_status,
-    #     '\ncollections\n',
-    #     user_collections,
-    #     '\ninstructions\n',
-    #     user_instructions,
-    #     '\ntexts\n',
-    #     user_texts,
-    #     '\nxml\n',
-    #     user_xml,
-    # )
-    print(user_docs_name)
     return render_template(
         'editor.html',
+        # открытые тексты
         list_doc_text=user_texts,
+        # координаты выделенных сущностей (если есть) (0-50-53) - (сущность - начало - конец)
         list_ann=user_xml,
+        # правила для выделения сущностей (лицо - красный)
         list_collection=user_collections,
+        # названия документов
         list_doc_name=user_docs_name,
+        # имя пользователя и роль
         user_role=(username, user_role),
+        # уже, видимо, ненужный пункт / ничего не передаю и не буду
         list_tags=user_instructions,
+        # id-текстов
         list_id=user_docs_ids,
         # collections=user_collections,
         form_html=form,
+        # сслыка для загрузки большой инструкции от Н (нужна ли?)
         link_to_doc=path_to_instruction,
     )
