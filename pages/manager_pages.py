@@ -76,8 +76,8 @@ def monitor_page():
     #  Выполненно с большими различиями - rgb(255, 0, 0) - color:#ffffff
     #  Не выполенно - rgb(190, 190, 190) - color:#ffffff
 
-    for o in zip(documents_names, collections, usernames, status):
-        print(o)
+    # for o in zip(documents_names, collections, usernames, status):
+    #     print(o)
     all_data_rows = zip(documents_names, collections, usernames, status)
 
     return render_template(
@@ -109,8 +109,17 @@ def check_status(status):
     pass
 
 
-@manager_pages_blueprint.route('/statistic')
+@manager_pages_blueprint.route('/view_doc')
 @login_required
 def view_doc():
+    docs = Document.query.all()
+    docs_name = [d.get_name() for d in docs]
+    docs_rubric = [d.get_rubric() for d in docs]
+    docs_desc = [d.get_description() for d in docs]
+    docs_status = [d.get_status() for d in docs]
 
-    pass
+    return render_template(
+        'manager_pages/check_load_docs.html',
+        title='Уточнения по документам',
+        rows=zip(docs_name, docs_rubric, docs_desc, docs_status)
+    )

@@ -76,7 +76,8 @@ all_links = {
     'Создание правил': 'manager_page.gen_rules_page',
     'Просмотр статистики': 'manager_page.monitor_page',
     'Отображение пользователей': 'administrator_pages.check_and_dell_users',
-    'Загрузка файлов': 'administrator_pages.upload_file'
+    'Загрузка файлов': 'administrator_pages.upload_file',
+    'Просмотреть все документы': 'manager_page.view_doc'
 
 }
 
