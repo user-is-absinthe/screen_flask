@@ -120,7 +120,7 @@ def scribe_page():
     #     '\nxml\n',
     #     user_xml,
     # )
-
+    print(user_docs_name)
     return render_template(
         'editor.html',
         list_doc_text=user_texts,
