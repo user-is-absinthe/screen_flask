@@ -9,7 +9,7 @@ from models import Document
 
 from forms import ScribeForm
 
-import external_modules
+from external_modules import opener
 
 scribe_blueprint = Blueprint(
     'scribe_bp',
@@ -40,10 +40,10 @@ def scribe_page():
         user_docs_name.append(Document.query.get(r.document_id).get_name())
         user_docs_status.append(Document.query.get(r.document_id).get_status())
         user_collections.append(Document.query.get(r.document_id).get_rubric())
-        user_instructions.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
+        user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
         # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
-        user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_text()))
-        user_xml.append(external_modules.opener(Document.query.get(r.document_id).get_xml()))
+        user_texts.append(opener(Document.query.get(r.document_id).get_text()))
+        user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
     user_collections = list(set(user_collections))
 
     form = ScribeForm()
@@ -52,7 +52,9 @@ def scribe_page():
     # print(path_to_docs)
     for d in docs:
         user_docs_name.append(d.get_name())
-        user_texts.append(external_modules.opener(d.get_text()))
+        user_texts.append(opener(d.get_text()))
+
+    print(user_texts)
 
     if form.validate_on_submit():
         print(form.texts.data)

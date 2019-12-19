@@ -66,7 +66,7 @@ def opener(path):
             lines = file.readlines()
             for l in lines:
                 all_text += l
-            return all_text
+            return all_text.replace('\n', ' ')
     except FileNotFoundError:
         return None
     except TypeError:
