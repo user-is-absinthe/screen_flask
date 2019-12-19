@@ -393,6 +393,7 @@ function UnHiddeGenerelMenu(a) {
     document.getElementsByClassName('MuiButtonBase-root MuiIconButton-root jss107 MuiIconButton-colorInherit MuiIconButton-edgeStart')[0].setAttribute('class', 'MuiButtonBase-root MuiIconButton-root jss107 jss108 MuiIconButton-colorInherit MuiIconButton-edgeStart');
     document.getElementsByClassName('MuiDrawer-root MuiDrawer-docked jss98 jss110')[0].setAttribute('class', 'MuiDrawer-root MuiDrawer-docked jss98 jss109');
     document.getElementsByClassName('MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss110 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft')[0].setAttribute('class', 'MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss109 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft');
+    document.getElementsByClassName('MuiButtonBase-root MuiIconButton-root')[0].setAttribute('oncick','HiddeGenerelMenu(this)');
 }
 function HiddeGenerelMenu(a) {
     document.getElementsByClassName('MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 jss106 MuiAppBar-colorPrimary mui-fixed')[0].setAttribute('class', 'MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed');
