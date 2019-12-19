@@ -65,7 +65,7 @@ class Document(database.Model):
     document_name = database.Column(database.String(40))
     rubric = database.Column(database.String(140))
     description = database.Column(database.String(1000))
-    status = database.Column(database.String(64))
+    status = database.Column(database.Float())
     path_to_file = database.Column(database.String(256))
     path_to_xml_file = database.Column(database.String(256))
     path_to_instruction = database.Column(database.String(256))

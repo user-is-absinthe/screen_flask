@@ -6,9 +6,9 @@ from nltk.translate.bleu_score import sentence_bleu
 
 
 def check_answered(any_data):
-    if any_data is not None:
+    if any_data != '':
         return True
-    elif any_data == '':
+    elif any_data is not None:
         return False
     else:
         return False

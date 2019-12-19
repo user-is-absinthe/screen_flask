@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <a href="{{ url_for('register.register') }}">Добавить пользователя</a>
+    <br>
+    <table>
+    <tr>
+        <th>Имя пользователя</th>
+        <th>Рейтинг пользователя</th>
+        <th>Роль пользователя</th>
+        <th>Место под кнопку</th>
+    </tr>
+    <tr>
+
+    </tr>
+    {% for row in all_data %}
+        <tr>
+        {% for column in row %}
+            <td>{{ column }}</td>
+        {% endfor %}
+            <td>Кнопка удаления пользователя</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
