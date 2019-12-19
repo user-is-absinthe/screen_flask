@@ -18,6 +18,7 @@ var Text = "Россия рассчитывает на конструктивн�
     "\"С российской стороны выражена глубокая озабоченность в связи с новым витком напряженности вокруг Южной Осетии, противозаконными действиями грузинской стороны по наращиванию своих вооруженных сил в регионе, бесконтрольным строительством фортификационных сооружений\", - говорится в сообщении.\n" +
     "\n" +
     "\"Россия уже призвала Тбилиси к ответственной линии и рассчитывает также на конструктивное воздействие со стороны Вашингтона\", - сообщил МИД России.";
+
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
     var elements = document.getElementsByClassName('ui mini label choose-label');
@@ -166,6 +167,7 @@ function DeleteAnnotation(a,b) {
         }
         HiddeAnnotationModal(a);
         MapIdSelectAnnotateText.delete(idChooseDeleteOrChangeTag);
+        DeleteElemLabelsAnn(a,idChooseDeleteOrChangeTag);
         return annotated_span_parentElement.innerHTML = annotated_span_parentElement.innerHTML.substring(0, previousTextLength) + annotated_span_text + annotated_span_parentElement.innerHTML.substring(previousTextLength, annotated_span_parentElement.innerHTML.lenght);
     }
     else {
@@ -175,6 +177,10 @@ function DeleteAnnotation(a,b) {
 
     HiddeAnnotationModal(a);
 
+}
+
+function DeleteElemLabelsAnn(a,b){
+    document.querySelector('MuiDrawer-root MuiDrawer-docked jss6').querySelector('MuiDrawer-root MuiDrawer-docked jss6[data-id="' + b + '"]').remove();
 }
 
 function StartEditor(a) {
