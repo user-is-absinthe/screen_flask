@@ -1,5 +1,6 @@
 from flask import Blueprint
 from flask import render_template
+from flask import request
 from flask_login import login_required
 # from flask_user import login_required
 # from flask_user import roles_required
@@ -31,97 +32,65 @@ def scribe_page():
     user_docs_ids = list()
     user_docs_name = list()
     user_docs_status = list()
-    user_collections = list()
-    user_instructions = list()
-    user_texts = list()
-    user_xml = list()
+    # user_collections = list()
+    # user_instructions = list()
+    # user_texts = list()
+    # user_xml = list()
 
     for r in user_relations:
         user_docs_ids.append(r.document_id)
         user_docs_name.append(Document.query.get(r.document_id).get_name())
         user_docs_status.append(Document.query.get(r.document_id).get_status())
-        user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
-        user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
-        # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
-        user_texts.append(opener(Document.query.get(r.document_id).get_text()))
-        # user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
-        # TODO: удалить после тестов
-        a = '''0-0-6
+
+    if request.method == 'POST':
+        print(request.get_json())
+
+    # user_docs_status.append(Document.query.get(r.document_id).get_status())
+    # user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
+    # user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
+    # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
+    # user_texts.append(opener(Document.query.get(r.document_id).get_text()))
+    # user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
+    # TODO: удалить после тестов
+
+    current_text, user_xml, user_collections = get_data_by_text_id(text_id=user_docs_ids[0])
+    user_xml = '''0-0-6
 0-50-53
 0-57-63
 0-87-93
 1-103-114
-0-116-122
-0-141-144
-0-161-168
-0-301-307
-2-308-324
-0-383-386
-2-387-402
-0-505-517
-0-703-709
-0-723-730
-0-815-825
-1-838-841
-0-842-848'''.replace('\n', ' ')
-        user_xml.append(a)
+'''.replace('\n', ' ')
+    # user_xml.append(a)
     # user_collections = list(set(user_collections))
 
     form = ScribeForm()
 
-    # docs = Document.query.all()
-    # # print(path_to_docs)
-    # for d in docs:
-    #     user_docs_name.append(d.get_name())
-    #     user_texts.append(opener(d.get_text()))
-
-    # print(user_texts)
-
-    if form.validate_on_submit():
-        print(form.texts.data)
-        # list_ids, list_xmls = form.texts.data
-        # for index, id_doc in enumerate(list_ids):
-        #     # session
-        #     Document.query.get(int(id_doc))
-        # pass
-
-    # return render_template(
-    #     'scriber.html',
-    #     title='страница редакции',
-    #
-    #     collections=user_collections,
-    #     len_docs_name=len(user_docs_name),
-    #     docs_name=user_docs_name,
-    #     docs_status=user_docs_status,
-    #     instrictions=user_instructions,
-    #     texts=user_texts,
-    #     xml=user_xml,
-    #
-    #     form_html=form,
-    #
-    #     # otladka=Document.query.get(r.document_id)
-    #     # otladka=User.query.get(1).get_username()
-    #     otladka=0
-    # )
-
     return render_template(
         'editor.html',
-        # открытые тексты
-        list_doc_text=user_texts,
+        # id текущего текста
+        current_text_id=user_docs_ids[0],
+        # открытый текст
+        list_doc_text=current_text,
         # координаты выделенных сущностей (если есть) (0-50-53) - (сущность - начало - конец)
         list_ann=user_xml,
         # правила для выделения сущностей (лицо - красный)
         list_collection=user_collections,
+
         # названия документов
         list_doc_name=user_docs_name,
-        # имя пользователя и роль
-        user_role=(username, user_role),
-        # уже, видимо, ненужный пункт / ничего не передаю и не буду
-        list_tags=user_instructions,
         # id-текстов
         list_id=user_docs_ids,
-        # collections=user_collections,
+
         form_html=form,
         # сслыка для загрузки большой инструкции от Н (нужна ли?)
         link_to_doc=path_to_instruction,
+        # имя пользователя и роль
+        user_role=(username, user_role),
     )
+
+
+def get_data_by_text_id(text_id):
+    text = opener(Document.query.get(text_id).get_status())
+    annotation = opener(Document.query.get(text_id).get_xml())
+    rules = opener(Document.query.get(text_id).get_rubric(), encoding='UTF-16')
+    return text, annotation, rules
