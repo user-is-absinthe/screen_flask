@@ -181,21 +181,26 @@ function StartEditor(a) {
     console.log(a);
     console.log("Start");
     ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listtag');
+    ListAnnLabels = ListAnnLabels.slice(1,ListDoc.length-2);
     console.log(ListAnnLabels);
     ListAnnId = document.getElementsByTagName('body')[0].getAttribute('data-listid');
+    ListAnnId = ListAnnId.slice(1,ListDoc.length-2);
     console.log(ListAnnId);
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
+    ListDoc = ListDoc.slice(2,ListDoc.length-2);
+    ListDoc = ListDoc.split('\', \'');
     console.log(ListDoc);
     ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
+    ListColl = ListColl.slice(1,ListDoc.length-2);
     console.log(ListColl);
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
     Text = '' + Text.slice(2,Text.length-2);
-    listtext = Text.split('\\n');
-    console.log(listtext);
-    for(let i = 0; i < listtext.length; i++){
-        document.getElementsByClassName('document')[0].textContent = document.getElementsByClassName('document')[0].textContent + listtext[i];
-    }
-    // document.getElementsByClassName('document')[0].textContent = Text;
+    // listtext = Text.split('\\n');
+    // console.log(listtext);
+    // for(let i = 0; i < listtext.length; i++){
+    //     document.getElementsByClassName('document')[0].textContent = document.getElementsByClassName('document')[0].textContent + listtext[i];
+    // }
+    document.getElementsByClassName('document')[0].textContent = Text;
     console.log(document.getElementsByClassName('document')[0]);
     console.log(Text);
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
