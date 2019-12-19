@@ -7998,19 +7998,27 @@
         <header class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed">
           <div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters">
             <div class="jss97">
-			<a href="../my_editor1.html"><img width="50" alt="logo" src="static/Annotators_files/logo2.jpg"></a>
+			        <a href="../editor.html"><img width="50" alt="logo" src="static/Annotators_files/logo2.jpg"></a>
             </div>
+
             <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-haspopup="true">
-				<span class="MuiIconButton-label">
-					<a href = "./logout.html" style = "color:rgb(255,255,255)">
-					<svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
-					</svg>
-					</a>
-				</span>
-				<span class="MuiTouchRipple-root"></span>
-			</button>
-          </div>
+      				<span class="MuiIconButton-label">
+      					<a href = "{{ url_for('login.logout_page') }}" style = "color:rgb(255,255,255)">
+      					<svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+      						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path>
+      					</svg>
+      					</a>
+      				</span>
+				      <span class="MuiTouchRipple-root"></span>
+			       </button>
+          <div align="middle" style="align=:center;">Пользователь:{{ current_user.username }} &nbsp;</div> 
+          &nbsp;
+          <!-- </div> -->
+          <div style="color:#ffffff "><a href="{{ url_for('login.logout_page') }} " style="color:#ffffff ">Выйти</a></div>
+<!--           <div align="middle" style="align=:center;">
+            <a href=" " style = "color:#ffffff">Выйти</a>
+          </div> -->
+        </div>
         </header>
         <div class="MuiDrawer-root MuiDrawer-docked jss98 jss109">
           <div class="MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss109 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft">
@@ -8108,8 +8116,8 @@
                       <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчик</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
 					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
-                      <a href="./monitor.html">                       
-						<img width="50" alt="eye" src="./eye1.png">
+                      <a href="{{ url_for('manager_page.monitor_page') }}">                       
+						<img width="50" alt="eye" src="static/eye1.png">
 					  </a>
                       <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Мониторинг</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
@@ -8176,7 +8184,16 @@
                       <div class="jss1381"></div>
                       <div class="jss1382">
                         <div>
-                          <div><span><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-label="Export" title="Export"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"></path></svg></span><span class="MuiTouchRipple-root"></span></button>
+                          <div>
+                            <span>
+                              <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-label="Export" title="Export">
+                                <span class="MuiIconButton-label">
+                                  <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                    <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"></path>
+                                  </svg>
+                                </span>
+                                <span class="MuiTouchRipple-root"></span>
+                              </button>
                             </span><span></span></div>
                         </div>
                       </div>

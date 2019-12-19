@@ -6,9 +6,9 @@ var MapIdSelectAnnotateText = new Map();
 var ListColl = ["Коллекция 1"];
 var ListDoc = ["Документ 1","Документ 2","Документ 3"];
 var UserDocStatus =[true,true,false];
-var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель"];
-var ListAnnId = ["4-10","34-43","56-65","67-74","76-82","84-90"];
-var ListAnnLabels = [1,2,0,1,2,1]
+var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель","Максим"];
+var ListAnnId = ["67-73","34-43","56-65","4-10","76-82","84-90","93-100"];
+var ListAnnLabels = [1,2,0,1,2,1,0]
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -63,6 +63,11 @@ function SelectAnnotateText(a) {
                     console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
                     console.log(MapIdSelectAnnotateText);
+                    ListAnn.push(SelectedString);
+                    ListAnnLabels.push(SelectedTag);
+                    ListAnnId.push('' + DataId1 + '-' + DataId2);
+                    AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
                 else {
@@ -126,6 +131,11 @@ function SelectAnnotateText(a) {
                     console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
                     console.log(MapIdSelectAnnotateText);
+                    ListAnn.push(SelectedString);
+                    ListAnnLabels.push(SelectedTag);
+                    ListAnnId.push('' + DataId1 + '-' + DataId2);
+                    AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
             }
@@ -276,7 +286,8 @@ function StartEditor(a) {
 
         for (let j = 0; j < ListAnnLabels.length; j++) {
             if (i==ListAnnLabels[j]) {
-                let ElemLabels = document.getElementById(LabelsList[j]);
+                let ElemLabels = document.getElementById('' + LabelsList[i]);
+                console.log(ElemLabels);
                 let newchild = document.createElement('div');
                 newchild.setAttribute('role', 'button');
                 newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
@@ -300,20 +311,38 @@ function StartEditor(a) {
         // newchild.appendChild(newchildspan);
         // ElemLabelsAnn.appendChild(newchild);
     }
-    for (let i = 0; i < ListAnn.length; i++) {
-        let newchild = document.createElement('div');
-        newchild.setAttribute('role', 'button');
-        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
-        newchild.setAttribute('tabindex', '0');
-        newchild.setAttribute('data-id',ListAnnId[i]);
-        newchild.setAttribute('data-label',ListAnnLabels[i]);
-        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
-        let newchildspan = document.createElement('span');
-        newchildspan.setAttribute('class', 'MuiChip-label');
-        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
-        newchild.appendChild(newchildspan);
-        ElemAnn.appendChild(newchild);
-    }
+    // for (let i = 0; i < ListAnn.length; i++) {
+    //     let newchild = document.createElement('div');
+    //     newchild.setAttribute('role', 'button');
+    //     newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    //     newchild.setAttribute('tabindex', '0');
+    //     newchild.setAttribute('data-id',ListAnnId[i]);
+    //     newchild.setAttribute('data-label',ListAnnLabels[i]);
+    //     newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
+    //     let newchildspan = document.createElement('span');
+    //     newchildspan.setAttribute('class', 'MuiChip-label');
+    //     newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+    //     newchild.appendChild(newchildspan);
+    //     ElemAnn.appendChild(newchild);
+    // }
+    SortListLabelsAnn(a);
+}
+
+function AddElemLabelsAnn(a,b,c){
+    let ElemLabels = document.getElementById('listlabelsann').childNodes[b*2+2].childNodes[0].childNodes[0];
+    let newchild = document.createElement('div');
+    newchild.setAttribute('role', 'button');
+    newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    newchild.setAttribute('tabindex', '0');
+    newchild.setAttribute('data-id', '' + c);
+    newchild.setAttribute('data-label', b);
+    newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[b]);
+    let newchildspan = document.createElement('span');
+    newchildspan.setAttribute('class', 'MuiChip-label');
+    newchildspan.innerText = a;
+    newchild.appendChild(newchildspan);
+    ElemLabels.appendChild(newchild);
+    console.log(ListAnnId)
 }
 
 function ChangeLabel(a,IndexChangeLabel) {
@@ -414,3 +443,30 @@ function DeleteGenLabel(a){
     a.remove();
 }
 
+function SortListLabelsAnn(a) {
+    for(let i=0;i<LabelsList.length;i++){
+        let ListLabelsAnn = document.getElementById('' + LabelsList[i]);
+        let list = [];
+        for (let j=0;j<ListAnnLabels.length;j++){
+            if (i == ListAnnLabels[j]){
+                list.push(Number.parseInt(ListAnnId[j].split('-')[0]));
+            }
+        }
+        list.sort()
+        for(let k = 0; k<list.length;k++){
+            for(let m = 0; m<ListAnnId.length;m++){
+                if(list[k]==Number.parseInt(ListAnnId[m].split('-')[0])){
+                    let tem = document.getElementById('' + LabelsList[i]).childNodes[k];
+                    console.log(document.getElementById('' + LabelsList[i]));
+                    console.log(document.getElementById('' + LabelsList[i]).childNodes[k]);
+                    console.log(ListAnnId[m]);
+                    tem.setAttribute('data-id',ListAnnId[m]);
+                    tem.childNodes[0].innerText = ListAnn[m];
+                    break;
+                }
+            }
+
+        }
+    }
+    console.log(ListAnnId)
+}
