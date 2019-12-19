@@ -24,6 +24,7 @@ scribe_blueprint = Blueprint(
 def scribe_page():
     username, user_role = current_user.username, current_user.user_role
     user_relations = current_user.user_to_relation
+    # print(user_relations)
 
     path_to_instruction = r'static/instruction_mini.txt'
 
@@ -39,22 +40,22 @@ def scribe_page():
         user_docs_ids.append(r.document_id)
         user_docs_name.append(Document.query.get(r.document_id).get_name())
         user_docs_status.append(Document.query.get(r.document_id).get_status())
-        user_collections.append(Document.query.get(r.document_id).get_rubric())
+        user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
         user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
         # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
         user_texts.append(opener(Document.query.get(r.document_id).get_text()))
         user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
-    user_collections = list(set(user_collections))
+    # user_collections = list(set(user_collections))
 
     form = ScribeForm()
 
-    docs = Document.query.all()
-    # print(path_to_docs)
-    for d in docs:
-        user_docs_name.append(d.get_name())
-        user_texts.append(opener(d.get_text()))
+    # docs = Document.query.all()
+    # # print(path_to_docs)
+    # for d in docs:
+    #     user_docs_name.append(d.get_name())
+    #     user_texts.append(opener(d.get_text()))
 
-    print(user_texts)
+    # print(user_texts)
 
     if form.validate_on_submit():
         print(form.texts.data)
