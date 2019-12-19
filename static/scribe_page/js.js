@@ -53,16 +53,13 @@ function SelectAnnotateText(a) {
                             DataId2 -= 1;
                             SelectedString = SelectedString.substring(0, SelectedString.length - 1);
                         }
-                    }                    
-                    console.log(selection.anchorNode.parentElement.innerText.substring(0, DataId1).length);
+                    }
                     text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
                     FullText = selection.anchorNode.parentElement.innerHTML.substring(0, DataId1) + text + selection.anchorNode.parentElement.innerHTML.substring(DataId2, selection.anchorNode.parentElement.innerHTML.length);
                     var LineBreakCharacter = (selection.anchorNode.parentElement.innerHTML.substring(0, DataId1).split(/\r\n|\r|\n/g).length - 1);
                     DataId1 += LineBreakCharacter;
                     DataId2 += LineBreakCharacter;
-                    console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
-                    console.log(MapIdSelectAnnotateText);
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
@@ -80,7 +77,6 @@ function SelectAnnotateText(a) {
                         var selectionanchorOffset = selection.anchorOffset;
                         var DataId1 = selection.anchorOffset + previousSiblingDataId;
                         var DataId2 = selection.focusOffset + previousSiblingDataId;
-                        console.log(selection.toString());
                         if (selection.toString()[0] == " ") {
                             selectionanchorOffset = selectionanchorOffset + 1;
                             DataId1 += 1;
@@ -97,15 +93,12 @@ function SelectAnnotateText(a) {
                         var selectionanchorOffset = selection.anchorOffset;
                         var DataId2 = selection.anchorOffset + previousSiblingDataId;
                         var DataId1 = selection.focusOffset + previousSiblingDataId;
-                        console.log(selection.toString());
                         if (selection.toString()[0] == " ") {
-                            console.log(1);
                             selectionfocusOffset = selectionfocusOffset + 1;
                             DataId1 += 1;
                             SelectedString = SelectedString.substring(1, SelectedString.length);
                         }
                         if (selection.toString()[selection.toString().length - 1] == " ") {
-                            console.log(2);
                             
                             selectionanchorOffset = selectionanchorOffset - 1;
                             DataId2 -= 1;
@@ -122,15 +115,10 @@ function SelectAnnotateText(a) {
                     else {
                         FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionfocusOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionanchorOffset, selection.anchorNode.parentElement.innerHTML.length);
                     }
-                    console.log(selection.anchorNode.parentElement);
-                    console.log(selection.anchorNode.parentElement.textContent);
-                    console.log(selection.anchorNode.parentElement.textContent.substring(0, DataId1));
                     var LineBreakCharacter = (selection.anchorNode.parentElement.textContent.substring(0, DataId1).split(/\r\n|\r|\n|\n\n/g).length - 1);
                     DataId1 += LineBreakCharacter;
                     DataId2 += LineBreakCharacter;
-                    console.log(LineBreakCharacter);
                     MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
-                    console.log(MapIdSelectAnnotateText);
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
@@ -144,8 +132,6 @@ function SelectAnnotateText(a) {
 }
 
 function DeleteAnnotation(a,b) {
-    console.log("DeleteAnnotation");
-    console.log(b);
     if (b != undefined) {
         idChooseDeleteOrChangeTag = b;
     }
@@ -157,7 +143,6 @@ function DeleteAnnotation(a,b) {
     var previousTextLength = Number.parseInt(idChooseDeleteOrChangeTag.split('-')[0]);
     if (annotated_span_parentElement.getAttribute('id') == "annotationDoc")
     {
-        console.log("annotationDoc");
         var bool_test = true;
         var i = 0;
         
@@ -173,7 +158,6 @@ function DeleteAnnotation(a,b) {
         }
         HiddeAnnotationModal(a);
         MapIdSelectAnnotateText.delete(idChooseDeleteOrChangeTag);
-        console.log(MapIdSelectAnnotateText);
         return annotated_span_parentElement.innerHTML = annotated_span_parentElement.innerHTML.substring(0, previousTextLength) + annotated_span_text + annotated_span_parentElement.innerHTML.substring(previousTextLength, annotated_span_parentElement.innerHTML.lenght);
     }
     else {
@@ -187,8 +171,6 @@ function DeleteAnnotation(a,b) {
 
 function StartEditor(a) {
     console.log("Start");
-    console.log(document.querySelector('.body'));
-    // console.log(a.getAttribute('data-meta'));
 
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
@@ -242,7 +224,6 @@ function StartEditor(a) {
             newchildchild.setAttribute('src', './rk.png');
         }
         newchildchild.setAttribute('style', 'width: 25px;height: 25px;');
-        console.log(newchildchild);
         newchild.appendChild(newchildchild);
         let newchildspan = document.createElement('span');
         newchildspan.setAttribute('class', 'MuiChip-label');
@@ -258,7 +239,6 @@ function StartEditor(a) {
         newchild.setAttribute('tabindex', '0');
         newchild.setAttribute('aria-disabled', 'false');
         newchild.setAttribute('onclick', 'funCollectOuter(this)');
-        console.log()
         let newchildchild = document.createElement('div');
         newchildchild.setAttribute('class', 'MuiListItemText-root jss1424 MuiListItemText-multiline');
 
@@ -270,7 +250,6 @@ function StartEditor(a) {
         newchildchild.appendChild(newspan);
         newchild.appendChild(newchildchild);
         ElemLabelsAnn.appendChild(newchild);
-        console.log(newchild);
 
         let newcontainer = document.createElement('div');
         newcontainer.setAttribute('class', 'MuiCollapse-container jss1423 MuiCollapse-entered');
@@ -287,7 +266,6 @@ function StartEditor(a) {
         for (let j = 0; j < ListAnnLabels.length; j++) {
             if (i==ListAnnLabels[j]) {
                 let ElemLabels = document.getElementById('' + LabelsList[i]);
-                console.log(ElemLabels);
                 let newchild = document.createElement('div');
                 newchild.setAttribute('role', 'button');
                 newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
@@ -342,20 +320,16 @@ function AddElemLabelsAnn(a,b,c){
     newchildspan.innerText = a;
     newchild.appendChild(newchildspan);
     ElemLabels.appendChild(newchild);
-    console.log(ListAnnId)
 }
 
 function ChangeLabel(a,IndexChangeLabel) {
-    console.log("ChangeLabel");
     HiddeAnnotationModal(a);
     MapIdSelectAnnotateText.set(idChooseDeleteOrChangeTag, IndexChangeLabel);
-    console.log(MapIdSelectAnnotateText);
     return document.querySelector('.annotated-span[data-id="' + idChooseDeleteOrChangeTag + '"]').style.backgroundColor = ColorTagArray[IndexChangeLabel];
 
 }
 
 function HiddeAnnotationModal(a){
-    console.log("HiddeAnnotationModal");
     return document.getElementsByClassName('annotation-modal')[0].setAttribute('style', 'top: 131.85px; display:none');
 }
 
@@ -364,10 +338,7 @@ function UnHiddeAnnotationModal(a) {
         DeleteAnnotation(a, a.getAttribute('data-id'));
     }
     else {
-        console.log("UnHiddeAnnotationModal");
-        console.log(a);
         idChooseDeleteOrChangeTag = a.getAttribute('data-id');
-        console.log(idChooseDeleteOrChangeTag);
         var element = document.getElementsByClassName('annotation-text')[0];
         element.innerHTML = a.innerHTML;
         return document.getElementsByClassName('annotation-modal')[0].setAttribute('style', 'top: 131.85px; display:inline');
@@ -426,14 +397,12 @@ function AddGenLabel(a){
     let list = {
         listdual: []
     };
-    console.log(document.querySelectorAll('input[id="field_name"]'));
     let field_nameList = document.querySelectorAll('input[id="field_name"]');
     let colorList = document.querySelectorAll('input[type="color"]');
     for(let i=0;i<field_nameList.length;i++){
         list.listdual.push([field_nameList[i].nodeValue,colorList[i].nodeValue]);
     }
     let json = JSON.stringify(list);
-    console.log(json);
 }
 
 function DeleteGenLabel(a){
@@ -452,14 +421,11 @@ function SortListLabelsAnn(a) {
                 list.push(Number.parseInt(ListAnnId[j].split('-')[0]));
             }
         }
-        list.sort()
+        list.sort(function(a, b){return a-b});
         for(let k = 0; k<list.length;k++){
             for(let m = 0; m<ListAnnId.length;m++){
                 if(list[k]==Number.parseInt(ListAnnId[m].split('-')[0])){
                     let tem = document.getElementById('' + LabelsList[i]).childNodes[k];
-                    console.log(document.getElementById('' + LabelsList[i]));
-                    console.log(document.getElementById('' + LabelsList[i]).childNodes[k]);
-                    console.log(ListAnnId[m]);
                     tem.setAttribute('data-id',ListAnnId[m]);
                     tem.childNodes[0].innerText = ListAnn[m];
                     break;
@@ -468,5 +434,4 @@ function SortListLabelsAnn(a) {
 
         }
     }
-    console.log(ListAnnId)
 }
