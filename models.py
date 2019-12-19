@@ -95,6 +95,9 @@ class Document(database.Model):
     def get_xml(self):
         return self.path_to_xml_file
 
+    def get_description(self):
+        return self.description
+
 
 class Relation(database.Model):
     __tablename__ = 'relation'
