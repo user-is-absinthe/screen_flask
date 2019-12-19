@@ -54,12 +54,19 @@ def monitor_page():
         0, 0.3, 0.7, 1
     ]
 
+    #  статус м- фон - текст
+    #  Выполенно - rgb(0,170,0) - color:#ffffff
+    #  Выполненно с небльшими различиями - rgb(250, 230, 0)
+    #  Выполненно с большими различиями - rgb(255, 0, 0) - color:#ffffff
+    #  Не выполенно - rgb(190, 190, 190) - color:#ffffff
+
     for o in zip(documents_names, collections, usernames, status):
         print(o)
     all_data_rows = zip(documents_names, collections, usernames, status)
 
     return render_template(
-        'manager_pages/statistic.html',
+        # 'manager_pages/statistic.html',
+        'manager_pages/monitor.html',
         title='Статистика',
         # doc_names=documents_names,
         # coll_names=collections,
