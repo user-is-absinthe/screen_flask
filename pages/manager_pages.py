@@ -1,5 +1,6 @@
 from flask import Blueprint
 from flask import render_template
+from flask import request
 from flask_login import login_required
 
 from forms import GenRules
@@ -19,13 +20,14 @@ def gen_rules_page():
     form = GenRules()
     # TODO: обработка данных после js
     # TODO: сохранение данных
-    print(check_answered(form.field_name.data))
-    print(form.field_name)
+    # print(check_answered(form.field_name.data))
+    # print(form.field_name)
+    print(request.form['color'])
     if check_answered(form.field_name.data) and check_answered(form.color_to_name.data):
         objects = form.field_name.data
         colors = form.color_to_name.data
-        print(objects)
-        print(colors)
+        # print(objects)
+        # print(colors)
         pass
 
     return render_template(
@@ -54,6 +56,7 @@ def monitor_page():
         0, 0.3, 0.7, 1
     ]
 
+    # TODO: сделать цвет текста, цвет фона и слово в зависимости от статуса документа
     #  статус м- фон - текст
     #  Выполенно - rgb(0,170,0) - color:#ffffff
     #  Выполненно с небльшими различиями - rgb(250, 230, 0)
