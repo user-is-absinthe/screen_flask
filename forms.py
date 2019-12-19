@@ -34,5 +34,6 @@ class ScribeForm(FlaskForm):
 class GenRules(FlaskForm):
     field_name = StringField('FieldName', validators=[DataRequired()])
     color_to_name = StringField('Color', validators=[DataRequired()])
+    name_chema = StringField('name_chema', validators=[DataRequired()])
     submit = SubmitField('Готово')
     pass
