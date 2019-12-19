@@ -90,7 +90,7 @@ def scribe_page():
 
 
 def get_data_by_text_id(text_id):
-    text = opener(Document.query.get(text_id).get_status())
+    text = opener(Document.query.get(text_id).get_text())
     annotation = opener(Document.query.get(text_id).get_xml())
     rules = opener(Document.query.get(text_id).get_rubric(), encoding='UTF-16')
     return text, annotation, rules
