@@ -175,7 +175,7 @@ function DeleteAnnotation(a,b) {
 
 }
 
-function Start(a) {
+function StartEditor(a) {
     console.log("Start");
     console.log(document.querySelector('.body'));
     // console.log(a.getAttribute('data-meta'));
@@ -239,6 +239,20 @@ function Start(a) {
         newchildspan.innerText = ListDoc[i];
         newchild.appendChild(newchildspan);
         ElemDoc.appendChild(newchild);
+    }
+    for (let i = 0; i < LabelsList.length; i++) {
+        let newchild = document.createElement('div');
+        newchild.setAttribute('role', 'button');
+        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('tabindex', '0');
+        newchild.setAttribute('data-id',ListAnnId[i]);
+        newchild.setAttribute('data-label',ListAnnLabels[i]);
+        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
+        let newchildspan = document.createElement('span');
+        newchildspan.setAttribute('class', 'MuiChip-label');
+        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+        newchild.appendChild(newchildspan);
+        ElemAnn.appendChild(newchild);
     }
     for (let i = 0; i < ListAnn.length; i++) {
         let newchild = document.createElement('div');
