@@ -1,15 +1,17 @@
 var SelectedTag = -1;
-var ColorTagArray = ["#E52B50", "#9966CC", "#007FFF"];
-var LabelsList = ["Лицо", "Организация", "Местоположение"];
+var ColorTagArray = [];
+var LabelsList = [];
 var idChooseDeleteOrChangeTag = "";
 var MapIdSelectAnnotateText = new Map();
-var ListColl = ["Коллекция 1"];
-var ListDoc = ["Документ 1","Документ 2","Документ 3"];
+var ListColl = [];
+var ListDoc = [];
 var UserDocStatus =[true,true,false];
-var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель","Максим"];
-var ListAnnId = ["67-73","34-43","56-65","4-10","76-82","84-90","93-100"];
-var ListAnnLabels = [1,2,0,1,2,1,0];
+var ListAnn = [];
+var ListAnnId = [];
+var ListAnnLabels = [];
 var IdCurrentText = 0;
+var ListIdText = [];
+var LinkToDocs = "";
 var Text = "Россия рассчитывает на конструктивное воздействие США на Грузию\n" +
     "\n" +
     "04/08/2008 12:08\n" +
@@ -30,6 +32,7 @@ function ChooseTag(a) {
 
 function SelectAnnotateText(a) {
     var selection = window.getSelection();
+    console.log(selection);
     var text = "";
     var FullText = "";    
     if (SelectedTag > -1 && SelectedTag < ColorTagArray.length) {
@@ -184,47 +187,43 @@ function DeleteElemLabelsAnn(a,b){
     document.querySelector('MuiDrawer-root MuiDrawer-docked jss6').querySelector('MuiDrawer-root MuiDrawer-docked jss6[data-id="' + b + '"]').remove();
 }
 
-function StartEditor(a) {
-    console.log(a);
+function StartEditor() {
     console.log("Start");
     IdCurrentText = document.getElementsByTagName('body')[0].getAttribute('data-currenttextid');
-    console.log(IdCurrentText);
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
-    console.log(Text);
+    document.getElementsByClassName('document')[0].textContent = Text;
     Text = '' + Text.slice(1,Text.length-2);
     let List = document.getElementsByTagName('body')[0].getAttribute('data-listann');
     List = List.split(' ');
-    delete List[List.length];
-    console.log(List);
+    List.splice(List.length-1,1);
+    for(elem in List){
+        ListAnnLabels.push(List[elem].split('-')[0]);
+        ListAnnId.push(List[elem].split('-')[1] + '-' + List[elem].split('-')[2])
+    }
 
-    ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listann');
-    ListAnnLabels = ListAnnLabels.slice(1,ListAnnLabels.length-2);
-    console.log(ListAnnLabels);
-    ListAnnId = document.getElementsByTagName('body')[0].getAttribute('data-listid');
-    ListAnnId = ListAnnId.slice(1,ListAnnId.length-2);
-    console.log(ListAnnId);
+    List = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
+    List = List.split(' ');
+    List.splice(List.length-1,1);
+    for(elem in List){
+        LabelsList.push(List[elem].split('\t')[0]);
+        ColorTagArray.push(List[elem].split('\t')[1]);
+    }
+
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
-    ListDoc = ListDoc.slice(1,ListDoc.length-2);
+    ListDoc = ListDoc.slice(2,ListDoc.length-2);
     if(ListDoc.length != 0){
         ListDoc = ListDoc.split('\', \'');
     }
     else {
         ListDoc = [];
     }
-    console.log(ListDoc);
-    ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
-    ListColl = ListColl.slice(1,ListColl.length-2);
-    console.log(ListColl);
 
-    // listtext = Text.split('\\n');
-    // console.log(listtext);
-    // for(let i = 0; i < listtext.length; i++){
-    //     document.getElementsByClassName('document')[0].textContent = document.getElementsByClassName('document')[0].textContent + listtext[i];
-    // }
-    // Text = Text
-    document.getElementsByClassName('document')[0].textContent = Text;
-    console.log(document.getElementsByClassName('document')[0]);
-    console.log(Text);
+    ListIdText = document.getElementsByTagName('body')[0].getAttribute('data-listid');
+    ListIdText = ListIdText.slice(1,ListIdText.length-1);
+    ListIdText = ListIdText.split(', ');
+
+    LinkToDocs = document.getElementsByTagName('body')[0].getAttribute('data-linktodoc');
+
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
     element.setAttribute('class', 'item');

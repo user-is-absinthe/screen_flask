@@ -67,22 +67,22 @@ def scribe_page():
 
     return render_template(
         'editor.html',
-        # id текущего текста
+        # id текущего текста (yes)
         current_text_id=user_docs_ids[0],
-        # открытый текст
+        # открытый текст (yes)
         list_doc_text=current_text,
-        # координаты выделенных сущностей (если есть) (0-50-53) - (сущность - начало - конец)
+        # координаты выделенных сущностей (если есть) (0-50-53) - (сущность - начало - конец) (yes)
         list_ann=user_xml,
-        # правила для выделения сущностей (лицо - красный)
+        # правила для выделения сущностей (лицо - красный) (yes)
         list_collection=user_collections,
 
-        # названия документов
+        # названия документов (yes)
         list_doc_name=user_docs_name,
-        # id-текстов
+        # id-текстов (yes)
         list_id=user_docs_ids,
 
         form_html=form,
-        # сслыка для загрузки большой инструкции от Н (нужна ли?)
+        # сслыка для загрузки большой инструкции от Н (нужна ли?) (yes)
         link_to_doc=path_to_instruction,
         # имя пользователя и роль
         user_role=(username, user_role),
