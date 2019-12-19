@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Правила генерировать сюда</h1>
-    <form action="handler.php" method="post" novalidate>
+    <form method="post" novalidate onsubmit="requestJSONGenRule(this)">
     <p>
     </p>
     <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">

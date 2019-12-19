@@ -6,9 +6,9 @@ var MapIdSelectAnnotateText = new Map();
 var ListColl = ["Коллекция 1"];
 var ListDoc = ["Документ 1","Документ 2","Документ 3"];
 var UserDocStatus =[true,true,false];
-var ListAnn = ["Документ 1","Документ 2","Документ 3"];
-var ListAnnId = ["4-10","34-43","56-65"];
-var ListAnnLabels = [1,2,0]
+var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель"];
+var ListAnnId = ["4-10","34-43","56-65","67-74","76-82","84-90"];
+var ListAnnLabels = [1,2,0,1,2,1]
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -248,7 +248,7 @@ function StartEditor(a) {
         newchild.setAttribute('tabindex', '0');
         newchild.setAttribute('aria-disabled', 'false');
         newchild.setAttribute('onclick', 'funCollectOuter(this)');
-
+        console.log()
         let newchildchild = document.createElement('div');
         newchildchild.setAttribute('class', 'MuiListItemText-root jss1424 MuiListItemText-multiline');
 
@@ -259,7 +259,34 @@ function StartEditor(a) {
 
         newchildchild.appendChild(newspan);
         newchild.appendChild(newchildchild);
+        ElemLabelsAnn.appendChild(newchild);
+        console.log(newchild);
 
+        let newcontainer = document.createElement('div');
+        newcontainer.setAttribute('class', 'MuiCollapse-container jss1423 MuiCollapse-entered');
+        newcontainer.setAttribute('style', 'min-height: 0px; height: auto; transition-duration: 232ms;');
+        let newcontainerChild = document.createElement('div');
+        newcontainer.setAttribute('class', 'MuiCollapse-wrapperInner');
+        let newcontainerChildChild = document.createElement('div');
+        newcontainer.setAttribute('class', 'MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-space-around');
+        newcontainer.setAttribute('id', LabelsList[i]);
+
+        for (let j = 0; j < ListAnnLabels.length; j++) {
+            if (i==ListAnnLabels[j]) {
+                let newchild = document.createElement('div');
+                newchild.setAttribute('role', 'button');
+                newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+                newchild.setAttribute('tabindex', '0');
+                newchild.setAttribute('data-id', ListAnnId[j]);
+                newchild.setAttribute('data-label', ListAnnLabels[j]);
+                newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[ListAnnLabels[j]]);
+                let newchildspan = document.createElement('span');
+                newchildspan.setAttribute('class', 'MuiChip-label');
+                newchildspan.innerText = ListAnn[j];
+                newchild.appendChild(newchildspan);
+                ElemLabelsAnn.appendChild(newchild);
+            }
+        }
         // newchild.setAttribute('data-id',ListAnnId[i]);
         // newchild.setAttribute('data-label',ListAnnLabels[i]);
         // newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
@@ -269,20 +296,20 @@ function StartEditor(a) {
         // newchild.appendChild(newchildspan);
         // ElemLabelsAnn.appendChild(newchild);
     }
-    // for (let i = 0; i < ListAnn.length; i++) {
-    //     let newchild = document.createElement('div');
-    //     newchild.setAttribute('role', 'button');
-    //     newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
-    //     newchild.setAttribute('tabindex', '0');
-    //     newchild.setAttribute('data-id',ListAnnId[i]);
-    //     newchild.setAttribute('data-label',ListAnnLabels[i]);
-    //     newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
-    //     let newchildspan = document.createElement('span');
-    //     newchildspan.setAttribute('class', 'MuiChip-label');
-    //     newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
-    //     newchild.appendChild(newchildspan);
-    //     ElemAnn.appendChild(newchild);
-    // }
+    for (let i = 0; i < ListAnn.length; i++) {
+        let newchild = document.createElement('div');
+        newchild.setAttribute('role', 'button');
+        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('tabindex', '0');
+        newchild.setAttribute('data-id',ListAnnId[i]);
+        newchild.setAttribute('data-label',ListAnnLabels[i]);
+        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
+        let newchildspan = document.createElement('span');
+        newchildspan.setAttribute('class', 'MuiChip-label');
+        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+        newchild.appendChild(newchildspan);
+        ElemAnn.appendChild(newchild);
+    }
 }
 
 function ChangeLabel(a,IndexChangeLabel) {
@@ -370,4 +397,11 @@ function DeleteGenLabel(a){
     a.previousElementSibling.remove();
     a.nextElementSibling.remove();
     a.remove();
+}
+
+function requestJSONGenRule(a){
+    let list = {
+        listdual: []
+    }
+    document.querySelectorAll('.index')
 }
