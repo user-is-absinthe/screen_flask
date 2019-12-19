@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+{#    <script src="{{ url_for('static', filename='scribe_page/js.js') }}" charset=windows-1251></script>#}
     <h1>Правила генерировать сюда</h1>
-    <form action="handler.php" method="post" novalidate>
+    <form method="post" novalidate>
     <p>
     </p>
     <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">
     <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
+
+

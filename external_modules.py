@@ -1,5 +1,7 @@
 from nltk.translate.bleu_score import sentence_bleu
 
+# from models import
+
 # attrs_text1 = 'имя = Иванов место = Москва организация = КПСС'
 # attrs_text2 = 'имя = Иванов место = Москва организация = КПРФ'
 # similarity(attrs_text1,attrs_text2)
@@ -10,6 +12,25 @@ def check_answered(any_data):
         return True
     elif any_data is not None:
         return False
+    else:
+        return False
+
+
+def get_user_info(current_user_object):
+    if not current_user_object.is_authenticated:
+        return False, False, False
+    else:
+        user_id = current_user_object.id_user
+        user_name = current_user_object.username
+        # user_role = current_user_object.user_role
+        user_role = current_user_object.roles[0].name
+        return user_id, user_name, user_role
+    pass
+
+
+def check_user_access(current_user, good_roles):
+    if get_user_info(current_user_object=current_user)[2] in list(good_roles):
+        return True
     else:
         return False
 
