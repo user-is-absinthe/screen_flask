@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <table>
+    <thead>
+        <th>Название документа</th>
+        <th>Схема аннотации документа</th>
+        <th>Описание документа</th>
+        <th>Статус документа</th>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            {% for r in row %}
+                <td>{{ r }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock %}
