@@ -7998,7 +7998,7 @@
         <header class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed">
           <div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters">
             <div class="jss97">
-			        <a href="../editor.html"><img width="50" alt="logo" src="static/Annotators_files/logo2.jpg"></a>
+			        <a href="{{ url_for('scribe_bp.scribe_page')}}"><img width="50" alt="logo" src="static/Annotators_files/logo2.jpg"></a>
             </div>
 
             <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-haspopup="true">
@@ -8028,17 +8028,24 @@
               <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-around" style="height: 100%;">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                   <ul class="MuiList-root jss1363 MuiList-padding">
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Start Labeling">
-                      <div class="jss1362">
-						<a href="../my_editor1.html"> 
-                        <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation" style="margin-right: 10px; margin-left: 2px; fill: rgb(48, 78, 243); font-size: 1.7rem;">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
-                        </svg>
-						</a>
+
+                    <a href="{{ url_for('scribe_bp.scribe_page')}}">   
+                      <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Start Labeling">
+                        <div class="jss1362">
+
+                          <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation" style="margin-right: 10px; margin-left: 2px; fill: rgb(48, 78, 243); font-size: 1.7rem;">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
+                          </svg>
+
+                        </div>
+                        <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff">
+                          <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Рабочий стол</span>
+                        </div>
+                        <span class="MuiTouchRipple-root"></span>
                       </div>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Рабочий стол</span></div><span class="MuiTouchRipple-root"></span></div>
+                    </a>
                     <hr class="MuiDivider-root">
-					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"  tabindex="0" role="button" aria-disabled="false" title="Task - A Task tells LightTag you want to annotate a particular Dataset with a particular Schema and specifies how many annotators should annotate each example. For example, you might define two tasks, both of them will use the same Schema, the first will have one annotator annotate each example in the Training Dataset and the second task will have three annotators annotate each Example in the Test Dataset. You can define which Teams work on a particular task as well.">
+<!-- 					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"  tabindex="0" role="button" aria-disabled="false" title="Task - A Task tells LightTag you want to annotate a particular Dataset with a particular Schema and specifies how many annotators should annotate each example. For example, you might define two tasks, both of them will use the same Schema, the first will have one annotator annotate each example in the Training Dataset and the second task will have three annotators annotate each Example in the Test Dataset. You can define which Teams work on a particular task as well.">
 						<a href = "./Task2.html" >
 							<svg class="MuiSvgIcon-root jss1372 jss1373" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
 								<path d="M4 10h12v2H4zm0-4h12v2H4zm0 8h8v2H4zm10 0v6l5-3z"></path>
@@ -8106,45 +8113,35 @@
                         <path d="M256 21.17c-2.8 0-5.6 1.38-8.1 4.71-2.6 3.32-4.5 8.47-4.5 14.34 0 5.87 1.9 11.02 4.5 14.34 2.5 3.33 5.3 4.71 8.1 4.71s5.6-1.38 8.1-4.71c2.6-3.32 4.5-8.47 4.5-14.34 0-5.87-1.9-11.02-4.5-14.34-2.5-3.33-5.3-4.71-8.1-4.71zm-80 23.25v16.1l58 28v45.98l-9.4 75.6h-23c-4.8 4.1-10.9 6.7-17.6 6.7-7 0-13.4-2.9-18.4-7.3L104 194.1v16.1l58 18v46l-9.1 72.4h-23c-4.9 4.3-11.1 7-17.9 7-7 0-13.3-2.9-18.2-7.3L32 338.6v16.2l58 10v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l50-1.7 50 1.7v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l50-1.7 50 1.7v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l58-10v-16.2l-61.8 7.8c-5 4.4-11.3 7.2-18.2 7.2-6.8 0-13-2.7-17.9-7h-23l-9.1-72.5v-46l58-18V194l-61.5 15.4c-5 4.6-11.4 7.5-18.5 7.5-6.8 0-13-2.7-17.9-6.9h-22.7l-9.4-75.5V88.52l58-28v-16.1l-61 24.85c-5 4.81-11.7 8-19 8-7.5 0-14.2-3.31-19.3-8.27zm76 100.08h8l11.2 65.5H248v.1h-7.2zm-68 16.2c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.7 8.1 4.7s5.6-1.3 8.1-4.7c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm144 .1c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.7 8.1 4.7s5.6-1.3 8.1-4.7c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm-70.6 65.6l48.6 1.7v46l-9.1 72.6h-23.1c-4.9 4.2-11 6.9-17.8 6.9-6.8 0-12.9-2.7-17.8-6.9h-23.1l-9.1-72.5v-46zm66.6 57.7h8l10.7 62.5H320v.1h-6.7zm-144 .1h8l10.7 62.5H192v-.1h-22.7zm-68 13.2c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.8 8.1 4.8s5.6-1.4 8.1-4.8c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm288 0c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.8 8.1 4.8s5.6-1.4 8.1-4.8c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm-144 .1c-2.8 0-5.6 1.4-8.1 4.7-2.6 3.3-4.5 8.5-4.5 14.4 0 5.8 1.9 11 4.5 14.3 2.5 3.3 5.3 4.7 8.1 4.7s5.6-1.4 8.1-4.7c2.6-3.3 4.5-8.5 4.5-14.3 0-5.9-1.9-11.1-4.5-14.4-2.5-3.3-5.3-4.7-8.1-4.7z"></path>
                       </svg>
 					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Команды</span></div><span class="MuiTouchRipple-root"></span></div>
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button Mui-selected" tabindex="0" role="button" aria-disabled="false" title="Annotator">
-                      <a href="./Annotators.html">
-					  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="jss1372 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path>
-                      </svg>
-					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчик</span></div><span class="MuiTouchRipple-root"></span></div>
-                    <hr class="MuiDivider-root">
-					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
-                      <a href="{{ url_for('manager_page.monitor_page') }}">                       
-						<img width="50" alt="eye" src="static/eye1.png">
-					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Мониторинг</span></div><span class="MuiTouchRipple-root"></span></div>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Команды</span></div><span class="MuiTouchRipple-root"></span></div> -->
+
+
+                      <a href="">
+                        <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button Mui-selected" tabindex="0" role="button" aria-disabled="false" title="Annotator">
+
+      					            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="jss1372 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path>
+                            </svg>
+
+                          <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff "><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчики</span></div><span class="MuiTouchRipple-root"></span>
+                        </div>
+                      </a>
+                      <hr class="MuiDivider-root">
+                      <a href="{{ url_for('manager_page.monitor_page') }}">  
+  					            <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                       
+  						            <img width="50" alt="eye" src="static/eye1.png">
+                          <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff">
+                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Мониторинг</span>
+                          </div>
+
+                        <span class="MuiTouchRipple-root"></span>
+                      </div>
+                    </a>
                     <hr class="MuiDivider-root">
                   </ul>
                 </div>
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                  <ul class="MuiList-root jss1363 MuiList-padding">
-                    <hr class="MuiDivider-root">
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Review">
-                      <svg class="MuiSvgIcon-root jss1372 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-                        <path fill="none" d="M0 0h24v24H0zm15.35 6.41l-1.77-1.77c-.2-.2-.51-.2-.71 0L6 11.53V14h2.47l6.88-6.88c.2-.19.2-.51 0-.71z"></path>
-                        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 14v-2.47l6.88-6.88c.2-.2.51-.2.71 0l1.77 1.77c.2.2.2.51 0 .71L8.47 14H6zm12 0h-7.5l2-2H18v2z"></path>
-                      </svg>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Review</span></div><span class="MuiTouchRipple-root"></span></div>
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
-                      <svg class="MuiSvgIcon-root jss1372 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"></path>
-                      </svg>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Analytics</span></div><span class="MuiTouchRipple-root"></span></div>
-                    <hr class="MuiDivider-root">
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
-                      <svg class="MuiSvgIcon-root jss1372 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-                        <path transform="scale(1.2, 1.2)" fill="none" d="M0 0h20v20H0V0z"></path>
-                        <path transform="scale(1.2, 1.2)" d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"></path>
-                      </svg>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Account Settings</span></div><span class="MuiTouchRipple-root"></span></div>
-                  </ul>
                 </div>
               </div>
             </div>
