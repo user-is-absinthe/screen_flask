@@ -1,4 +1,5 @@
 from app import database
+from app import app
 from forms import RegistrationForm
 
 from flask import Blueprint
@@ -17,15 +18,6 @@ register_blueprint = Blueprint(
     __name__,
     template_folder='templates'
 )
-
-
-user_roles = {
-    'admin': 'Администратор',
-    'manager': 'Менеджер',
-    'executor': 'Исполнитель',
-    'multi': 'ФС-режим',
-    'debug': 'Отладчик',
-}
 
 
 @register_blueprint.route('/register', methods=['GET', 'POST'])
@@ -56,5 +48,6 @@ def register():
         'register.html',
         title='Register',
         form=form,
-        roles_dict=user_roles
+        # roles_dict=user_roles
+        roles_dict=app.config['USER_ROLES']
     )

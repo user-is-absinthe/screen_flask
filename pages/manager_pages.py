@@ -1,9 +1,18 @@
 from flask import Blueprint
 from flask import render_template
 from flask import request
+from flask import redirect
+from flask import url_for
 from flask_login import login_required
 
+from app import app
+
 from forms import GenRules
+
+from external_modules import csv_line_writer
+from external_modules import del_file
+
+from models import Document
 
 
 manager_pages_blueprint = Blueprint(
@@ -13,39 +22,33 @@ manager_pages_blueprint = Blueprint(
 )
 
 
-
 @manager_pages_blueprint.route('/gen_rules', methods=['GET', 'POST'])
 @login_required
 def gen_rules_page():
     form = GenRules()
-    list = request.form.getlist('field_name')
-    print(list)
     # TODO: обработка данных после js
     # TODO: сохранение данных
-    # print(check_answered(form.field_name.data))
-    # print(form.field_name)
     if request.method == 'POST':
-        # print(len(request.form))
-        # print(request.form)
-        # print(request.get_json())
-        # print(request.form.items())
-        print(request.form)
-        for cort in request.form.items():
-            print(cort)
-            # print(cort)
-            # print(cort['bg'])
-    # if check_answered(form.field_name.data) and check_answered(form.color_to_name.data):
-    #     objects = form.field_name.data
-    #     colors = form.color_to_name.data
-    #     print(objects)
-    #     print(colors)
-    #     pass
+        chema_name = request.form.get('name_chema')
+        fields_names = request.form.getlist('field_name')
+        colors = request.form.getlist('bg')
+        # print(chema_name, fields_names, colors, sep='\n')
+
+        path_to_file = app.config['PATH_TO_SHEMA'] + chema_name + '.tsv'
+        del_file(path=path_to_file)
+        for index in range(len(fields_names)):
+            csv_line_writer(
+                path=path_to_file,
+                data=(fields_names[index], colors[index])
+            )
+        return redirect(url_for('hello_world'))
 
     return render_template(
         'manager_pages/gen_rules.html',
         title='Test page',
         form=form
     )
+
 
 @manager_pages_blueprint.route('/statistic')
 def monitor_page():
@@ -67,7 +70,7 @@ def monitor_page():
     ]
 
     # TODO: сделать цвет текста, цвет фона и слово в зависимости от статуса документа
-    #  статус м- фон - текст
+    #  статус - фон - текст
     #  Выполенно - rgb(0,170,0) - color:#ffffff
     #  Выполненно с небльшими различиями - rgb(250, 230, 0)
     #  Выполненно с большими различиями - rgb(255, 0, 0) - color:#ffffff
@@ -91,5 +94,23 @@ def monitor_page():
 
 
 def check_status(status):
+    if status > 0.2:
+        # doc.status = 'yellow'
+        pass
+    elif status <= 0.2:
+        # doc.status = 'red'
+        pass
+    elif status > 0.8:
+        # doc.status = 'green'
+        pass
+    else:
+        # не готово
+        pass
+    pass
+
+
+@manager_pages_blueprint.route('/statistic')
+@login_required
+def view_doc():
 
     pass
