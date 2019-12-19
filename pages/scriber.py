@@ -44,7 +44,27 @@ def scribe_page():
         user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
         # user_texts.append(external_modules.opener(Document.query.get(r.document_id).get_instruction()))
         user_texts.append(opener(Document.query.get(r.document_id).get_text()))
-        user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
+        # user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
+        # TODO: удалить после тестов
+        a = '''0-0-6
+0-50-53
+0-57-63
+0-87-93
+1-103-114
+0-116-122
+0-141-144
+0-161-168
+0-301-307
+2-308-324
+0-383-386
+2-387-402
+0-505-517
+0-703-709
+0-723-730
+0-815-825
+1-838-841
+0-842-848'''
+        user_xml.append(a)
     # user_collections = list(set(user_collections))
 
     form = ScribeForm()
