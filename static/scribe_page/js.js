@@ -188,7 +188,12 @@ function StartEditor(a) {
     console.log(ListAnnId);
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
     ListDoc = ListDoc.slice(2,ListDoc.length-2);
-    ListDoc = ListDoc.split('\', \'');
+    if(ListDoc.length != 0){
+        ListDoc = ListDoc.split('\', \'');
+    }
+    else {
+        ListDoc = [];
+    }
     console.log(ListDoc);
     ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
     ListColl = ListColl.slice(1,ListDoc.length-2);
@@ -395,6 +400,7 @@ function UnHiddeGenerelMenu(a) {
     document.getElementsByClassName('MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss110 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft')[0].setAttribute('class', 'MuiPaper-root MuiPaper-elevation0 MuiDrawer-paper jss109 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft');
     document.getElementsByClassName('MuiButtonBase-root MuiIconButton-root')[0].setAttribute('oncick','HiddeGenerelMenu(this)');
 }
+
 function HiddeGenerelMenu(a) {
     document.getElementsByClassName('MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 jss106 MuiAppBar-colorPrimary mui-fixed')[0].setAttribute('class', 'MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed');
     document.getElementsByClassName('MuiButtonBase-root MuiIconButton-root jss107 jss108 MuiIconButton-colorInherit MuiIconButton-edgeStart')[0].setAttribute('class', 'MuiButtonBase-root MuiIconButton-root jss107 MuiIconButton-colorInherit MuiIconButton-edgeStart');
@@ -404,6 +410,7 @@ function HiddeGenerelMenu(a) {
 
 function Submit(a){
     console.log('Submit');
+    var xhr = new XMLHttpRequest();
 }
 
 function AddGenLabel(a){
