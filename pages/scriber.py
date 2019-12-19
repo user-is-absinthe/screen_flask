@@ -48,6 +48,12 @@ def scribe_page():
 
     form = ScribeForm()
 
+    docs = Document.query.all()
+    # print(path_to_docs)
+    for d in docs:
+        user_docs_name.append(d.get_name())
+        user_texts.append(external_modules.opener(d.get_text()))
+
     if form.validate_on_submit():
         print(form.texts.data)
         # list_ids, list_xmls = form.texts.data
@@ -75,22 +81,22 @@ def scribe_page():
     #     otladka=0
     # )
 
-    print(
-        'docs\n',
-        user_docs_ids,
-        '\nnames\n',
-        user_docs_name,
-        '\ndocs_status\n',
-        user_docs_status,
-        '\ncollections\n',
-        user_collections,
-        '\ninstructions\n',
-        user_instructions,
-        '\ntexts\n',
-        user_texts,
-        '\nxml\n',
-        user_xml,
-    )
+    # print(
+    #     'docs\n',
+    #     user_docs_ids,
+    #     '\nnames\n',
+    #     user_docs_name,
+    #     '\ndocs_status\n',
+    #     user_docs_status,
+    #     '\ncollections\n',
+    #     user_collections,
+    #     '\ninstructions\n',
+    #     user_instructions,
+    #     '\ntexts\n',
+    #     user_texts,
+    #     '\nxml\n',
+    #     user_xml,
+    # )
 
     return render_template(
         'editor.html',
