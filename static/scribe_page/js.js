@@ -6,9 +6,9 @@ var MapIdSelectAnnotateText = new Map();
 var ListColl = ["Коллекция 1"];
 var ListDoc = ["Документ 1","Документ 2","Документ 3"];
 var UserDocStatus =[true,true,false];
-var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель"];
-var ListAnnId = ["4-10","34-43","56-65","67-74","76-82","84-90"];
-var ListAnnLabels = [1,2,0,1,2,1]
+var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель","Максим"];
+var ListAnnId = ["4-10","34-43","56-65","67-74","76-82","84-90","93-100"];
+var ListAnnLabels = [1,2,0,1,2,1,0]
 
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
@@ -276,7 +276,8 @@ function StartEditor(a) {
 
         for (let j = 0; j < ListAnnLabels.length; j++) {
             if (i==ListAnnLabels[j]) {
-                let ElemLabels = document.getElementById(LabelsList[j]);
+                let ElemLabels = document.getElementById('' + LabelsList[i]);
+                console.log(ElemLabels)
                 let newchild = document.createElement('div');
                 newchild.setAttribute('role', 'button');
                 newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
