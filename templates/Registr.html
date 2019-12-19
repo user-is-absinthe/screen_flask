@@ -4998,17 +4998,52 @@
           <div class="MuiContainer-root MuiContainer-maxWidthLg">
             <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around">
               <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12" style="text-align: center;">
-                <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="file:///C:/Users/User/Desktop/site/my_editor1.html" style="cursor: pointer;"><img class="jss47" src="./Registr_files/logo2.jpg"></a>
+                <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="file:///C:/Users/User/Desktop/site/my_editor1.html" style="cursor: pointer;">
+                  <img class="jss47" src="static/Registr_files/logo2.jpg"></a>
               </div>
               <div class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-center">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-justify-xs-center">
                   <div class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded" style="min-width: 390px;">
-                    <form>
+                    <form action="" method="post">
                       <div class="MuiCardHeader-root" style="padding: 17px;">
                         <div class="MuiCardHeader-content" ALIGN="CENTER" ><h2>Регистрация</h2></div>
                         <div class="MuiCardHeader-action"></div>
                       </div>
+
                       <div class="MuiDialogContent-root">
+                        {{ form.hidden_tag() }}
+                        <p>
+                            {{ form.username.label }}<br>
+                            {{ form.username(size=32) }}<br>
+                            {% for error in form.username.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.password.label }}<br>
+                            {{ form.password(size=32) }}<br>
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.password2.label }}<br>
+                            {{ form.password2(size=32) }}<br>
+                            {% for error in form.password2.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.user_role.label }}<br>
+                            {{ form.user_role(size=32) }}<br>
+                            {% for error in form.user_role.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>{{ form.submit() }}</p>
+
+
+
                         <div>
                           <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth">
                             <label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled" data-shrink="true">Username</label>
@@ -5062,12 +5097,12 @@
 
                               
 
-								<select name="town" id="s1">
-								  <option value="admin" >Администратор</option>
-								  <option value="ispolnitel">Исполнитель</option>
-								  <option value="manager">Менджер</option>
-								</select>
-								<input onclick="f()" aria-invalid="false" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd" name="password" type="password" value="">
+              								<select name="town" id="s1">
+              								  <option value="admin" >Администратор</option>
+              								  <option value="ispolnitel">Исполнитель</option>
+              								  <option value="manager">Менджер</option>
+              								</select>
+              								<input onclick="f()" aria-invalid="false" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd" name="password" type="password" value="">
 
 							  
 							  
@@ -5077,6 +5112,8 @@
                             </div>
                           </div>
                         </div>
+
+
                         <div style="padding-bottom: 1rem; padding-top: 1rem;">
                           <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-flex-end">
                             <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
@@ -5084,7 +5121,12 @@
                             </div>
                           </div>
                         </div>
+                        
                       </div>
+
+
+
+
                     </form>
                   </div>
                 </div>
