@@ -8,8 +8,16 @@ var ListDoc = ["Документ 1","Документ 2","Документ 3"];
 var UserDocStatus =[true,true,false];
 var ListAnn = ["Шаага-тим","Москва","Муик","ООО Манатель","Питеигого","3АО Неманатель","Максим"];
 var ListAnnId = ["67-73","34-43","56-65","4-10","76-82","84-90","93-100"];
-var ListAnnLabels = [1,2,0,1,2,1,0]
-
+var ListAnnLabels = [1,2,0,1,2,1,0];
+var Text = "Россия рассчитывает на конструктивное воздействие США на Грузию\n" +
+    "\n" +
+    "04/08/2008 12:08\n" +
+    "\n" +
+    "МОСКВА, 4 авг - РИА Новости. Россия рассчитывает, что США воздействуют на Тбилиси в связи с обострением ситуации в зоне грузино-осетинского конфликта. Об этом статс-секретарь - заместитель министра иностранных дел России Григорий Карасин заявил в телефонном разговоре с заместителем госсекретаря США Дэниэлом Фридом.\n" +
+    "\n" +
+    "\"С российской стороны выражена глубокая озабоченность в связи с новым витком напряженности вокруг Южной Осетии, противозаконными действиями грузинской стороны по наращиванию своих вооруженных сил в регионе, бесконтрольным строительством фортификационных сооружений\", - говорится в сообщении.\n" +
+    "\n" +
+    "\"Россия уже призвала Тбилиси к ответственной линии и рассчитывает также на конструктивное воздействие со стороны Вашингтона\", - сообщил МИД России.";
 function ChooseTag(a) {
     SelectedTag = a.getAttribute("data-idlabel");
     var elements = document.getElementsByClassName('ui mini label choose-label');
@@ -171,8 +179,22 @@ function DeleteAnnotation(a,b) {
 
 function StartEditor() {
     console.log("Start");
-    console.log(document.getElementsByTagName('body'));
-    console.log(document.getElementsByTagName('body')[0].getAttributeNS());
+    ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listtag');
+    console.log(ListAnnLabels);
+    ListAnnId = document.getElementsByTagName('body')[0].getAttribute('data-listid');
+    console.log(ListAnnId);
+    ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
+    console.log(ListDoc);
+    ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
+    console.log(ListColl);
+    Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
+    Text = '' + Text.slice(2,Text.length-2);
+    console.log(typeof Text);
+    Text.replace('\\n\\n','\n\n')
+
+    document.getElementsByClassName('document')[0].innerHTML = Text;
+    console.log(document.getElementsByClassName('document')[0]);
+    console.log(Text);
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
     element.setAttribute('class', 'item');
