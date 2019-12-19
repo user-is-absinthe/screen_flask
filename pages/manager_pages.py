@@ -4,7 +4,6 @@ from flask import request
 from flask_login import login_required
 
 from forms import GenRules
-from external_modules import check_answered
 
 
 manager_pages_blueprint = Blueprint(
@@ -22,13 +21,23 @@ def gen_rules_page():
     # TODO: сохранение данных
     # print(check_answered(form.field_name.data))
     # print(form.field_name)
-    print(request.form['color_to_name'])
-    if check_answered(form.field_name.data) and check_answered(form.color_to_name.data):
-        objects = form.field_name.data
-        colors = form.color_to_name.data
-        # print(objects)
-        # print(colors)
-        pass
+    if request.method == 'POST':
+        # print(len(request.form))
+        # print(request.form)
+        # print(request.get_json())
+        # print(request.form.items())
+        print(request.form)
+        print(request.form.get('field_name'))
+        for cort in request.form.items():
+            print(cort)
+            # print(cort)
+            # print(cort['bg'])
+    # if check_answered(form.field_name.data) and check_answered(form.color_to_name.data):
+    #     objects = form.field_name.data
+    #     colors = form.color_to_name.data
+    #     print(objects)
+    #     print(colors)
+    #     pass
 
     return render_template(
         'manager_pages/gen_rules.html',
@@ -77,4 +86,9 @@ def monitor_page():
         # status=status,
         all_data=all_data_rows
     )
+    pass
+
+
+def check_status(status):
+
     pass

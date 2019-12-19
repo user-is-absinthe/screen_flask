@@ -1,13 +1,17 @@
 from flask import Flask
 from flask import render_template
+from flask import redirect
 from flask import url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_login import current_user
 # from flask_user import LoginManager
+from flask_login import login_required
 
 from config import Config
 
+from external_modules import check_user_access
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -53,7 +57,7 @@ app.register_blueprint(manager_pages.manager_pages_blueprint)
 app.register_blueprint(administrator_pages.admin_pages_blueprint)
 
 
-links = {
+all_links = {
     # 'Недостаточно прав': url_for(all_pages.need_role),
     'Недостаточно прав': 'all_functions_pages.need_role',
     'Создание правил': 'manager_page.gen_rules_page',
@@ -65,11 +69,16 @@ links = {
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def hello_world():
+    # if current_user.is_authenticated:
+    #     print(current_user.username, current_user.user_role)
+    # if not check_user_access(current_user, 'admin'):
+    #     return redirect(url_for('all_functions_pages.need_role'))
     return render_template(
         'index.html',
         title='Start page',
-        links=links
+        links=all_links
     )
 
 

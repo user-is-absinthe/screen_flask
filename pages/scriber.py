@@ -75,22 +75,22 @@ def scribe_page():
     #     otladka=0
     # )
 
-    # print(
-    #     'docs\n',
-    #     user_docs_ids,
-    #     '\nnames\n',
-    #     user_docs_name,
-    #     '\ndocs_status\n',
-    #     user_docs_status,
-    #     '\ncollections\n',
-    #     user_collections,
-    #     '\ninstructions\n',
-    #     user_instructions,
-    #     '\ntexts\n',
-    #     user_texts,
-    #     '\nxml\n',
-    #     user_xml,
-    # )
+    print(
+        'docs\n',
+        user_docs_ids,
+        '\nnames\n',
+        user_docs_name,
+        '\ndocs_status\n',
+        user_docs_status,
+        '\ncollections\n',
+        user_collections,
+        '\ninstructions\n',
+        user_instructions,
+        '\ntexts\n',
+        user_texts,
+        '\nxml\n',
+        user_xml,
+    )
 
     return render_template(
         'editor.html',
