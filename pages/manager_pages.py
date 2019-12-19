@@ -13,10 +13,13 @@ manager_pages_blueprint = Blueprint(
 )
 
 
+
 @manager_pages_blueprint.route('/gen_rules', methods=['GET', 'POST'])
 @login_required
 def gen_rules_page():
     form = GenRules()
+    list = request.form.getlist('field_name')
+    print(list)
     # TODO: обработка данных после js
     # TODO: сохранение данных
     # print(check_answered(form.field_name.data))
@@ -27,7 +30,6 @@ def gen_rules_page():
         # print(request.get_json())
         # print(request.form.items())
         print(request.form)
-        print(request.form.get('field_name'))
         for cort in request.form.items():
             print(cort)
             # print(cort)
@@ -44,7 +46,6 @@ def gen_rules_page():
         title='Test page',
         form=form
     )
-
 
 @manager_pages_blueprint.route('/statistic')
 def monitor_page():

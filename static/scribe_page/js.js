@@ -376,20 +376,31 @@ function AddGenLabel(a){
     newchild.setAttribute('name', 'field_name');
     newchild.setAttribute('type', 'text');
     newchild.setAttribute('style', 'margin:5px');
-    a.previousElementSibling.appendChild(newchild)
+    a.previousElementSibling.appendChild(newchild);
     var newchild = document.createElement('input');
     newchild.setAttribute('type', 'color');
     newchild.setAttribute('name', 'bg');
     newchild.setAttribute('style', 'margin:5px');
-    a.previousElementSibling.appendChild(newchild)
+    a.previousElementSibling.appendChild(newchild);
     var newchild = document.createElement('input');
     newchild.setAttribute('type', 'button');
     newchild.setAttribute('value', 'Удалить');
     newchild.setAttribute('id', 'removeButton');
     newchild.setAttribute('style', 'margin:5px');
     newchild.setAttribute('onclick', 'DeleteGenLabel(this)');
-    a.previousElementSibling.appendChild(newchild)
+    a.previousElementSibling.appendChild(newchild);
     a.previousElementSibling.appendChild(document.createElement('br'));
+    let list = {
+        listdual: []
+    };
+    console.log(document.querySelectorAll('input[id="field_name"]'));
+    let field_nameList = document.querySelectorAll('input[id="field_name"]');
+    let colorList = document.querySelectorAll('input[type="color"]');
+    for(let i=0;i<field_nameList.length;i++){
+        list.listdual.push([field_nameList[i].nodeValue,colorList[i].nodeValue]);
+    }
+    let json = JSON.stringify(list);
+    console.log(json);
 }
 
 function DeleteGenLabel(a){
@@ -399,9 +410,17 @@ function DeleteGenLabel(a){
     a.remove();
 }
 
-function requestJSONGenRule(a){
-    let list = {
-        listdual: []
-    }
-    document.querySelectorAll('.index')
-}
+// function requestJSONGenRule(a){
+//     let list = {
+//         listdual: []
+//     };
+//     console.log(document.querySelectorAll('input[id="field_name"]'));
+//     let field_nameList = document.querySelectorAll('input[id="field_name"]');
+//     let colorList = document.querySelectorAll('input[type="color"]');
+//     for(let i=0;i<field_nameList.length;i++){
+//         list.listdual.push([field_nameList[i],colorList[i]]);
+//     }
+//     let json = JSON.stringify(list);
+//     console.log(json);
+//     return json;
+// }
