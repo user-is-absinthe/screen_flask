@@ -240,34 +240,49 @@ function StartEditor(a) {
         newchild.appendChild(newchildspan);
         ElemDoc.appendChild(newchild);
     }
+    var ElemLabelsAnn = document.getElementById('listlabelsann');
     for (let i = 0; i < LabelsList.length; i++) {
         let newchild = document.createElement('div');
         newchild.setAttribute('role', 'button');
-        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+        newchild.setAttribute('class', 'MuiButtonBase-root MuiListItem-root jss1422 MuiListItem-gutters MuiListItem-button');
         newchild.setAttribute('tabindex', '0');
-        newchild.setAttribute('data-id',ListAnnId[i]);
-        newchild.setAttribute('data-label',ListAnnLabels[i]);
-        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
-        let newchildspan = document.createElement('span');
-        newchildspan.setAttribute('class', 'MuiChip-label');
-        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
-        newchild.appendChild(newchildspan);
-        ElemAnn.appendChild(newchild);
+        newchild.setAttribute('aria-disabled', 'false');
+        newchild.setAttribute('onclick', 'funCollectOuter(this)');
+
+        let newchildchild = document.createElement('div');
+        newchildchild.setAttribute('class', 'MuiListItemText-root jss1424 MuiListItemText-multiline');
+
+        let newspan = document.createElement('span');
+        newspan.setAttribute('class', 'MuiTypography-root MuiListItemText-primary MuiTypography-body1');
+        newspan.setAttribute('style', 'color:rgb(0,0,0)');
+        newspan.innerText = LabelsList[i];
+
+        newchildchild.appendChild(newspan);
+        newchild.appendChild(newchildchild);
+
+        // newchild.setAttribute('data-id',ListAnnId[i]);
+        // newchild.setAttribute('data-label',ListAnnLabels[i]);
+        // newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
+        // let newchildspan = document.createElement('span');
+        // newchildspan.setAttribute('class', 'MuiChip-label');
+        // newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+        // newchild.appendChild(newchildspan);
+        // ElemLabelsAnn.appendChild(newchild);
     }
-    for (let i = 0; i < ListAnn.length; i++) {
-        let newchild = document.createElement('div');
-        newchild.setAttribute('role', 'button');
-        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
-        newchild.setAttribute('tabindex', '0');
-        newchild.setAttribute('data-id',ListAnnId[i]);
-        newchild.setAttribute('data-label',ListAnnLabels[i]);
-        newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
-        let newchildspan = document.createElement('span');
-        newchildspan.setAttribute('class', 'MuiChip-label');
-        newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
-        newchild.appendChild(newchildspan);
-        ElemAnn.appendChild(newchild);
-    }
+    // for (let i = 0; i < ListAnn.length; i++) {
+    //     let newchild = document.createElement('div');
+    //     newchild.setAttribute('role', 'button');
+    //     newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    //     newchild.setAttribute('tabindex', '0');
+    //     newchild.setAttribute('data-id',ListAnnId[i]);
+    //     newchild.setAttribute('data-label',ListAnnLabels[i]);
+    //     newchild.setAttribute('style','border: 2px solid ' + ColorTagArray[ListAnnLabels[i]]);
+    //     let newchildspan = document.createElement('span');
+    //     newchildspan.setAttribute('class', 'MuiChip-label');
+    //     newchildspan.innerText = ListAnn[i] + ' \'' + LabelsList[ListAnnLabels[i]] + '\'';
+    //     newchild.appendChild(newchildspan);
+    //     ElemAnn.appendChild(newchild);
+    // }
 }
 
 function ChangeLabel(a,IndexChangeLabel) {

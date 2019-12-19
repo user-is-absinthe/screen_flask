@@ -22,7 +22,7 @@ def gen_rules_page():
     # TODO: сохранение данных
     # print(check_answered(form.field_name.data))
     # print(form.field_name)
-    print(request.form['color'])
+    print(request.form['color_to_name'])
     if check_answered(form.field_name.data) and check_answered(form.color_to_name.data):
         objects = form.field_name.data
         colors = form.color_to_name.data
