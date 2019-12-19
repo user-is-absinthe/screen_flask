@@ -180,11 +180,11 @@ function DeleteAnnotation(a,b) {
 function StartEditor(a) {
     console.log(a);
     console.log("Start");
-    ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listtag');
-    ListAnnLabels = ListAnnLabels.slice(1,ListDoc.length-2);
+    ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listann');
+    ListAnnLabels = ListAnnLabels.slice(1,ListAnnLabels.length-2);
     console.log(ListAnnLabels);
     ListAnnId = document.getElementsByTagName('body')[0].getAttribute('data-listid');
-    ListAnnId = ListAnnId.slice(1,ListDoc.length-2);
+    ListAnnId = ListAnnId.slice(1,ListAnnId.length-2);
     console.log(ListAnnId);
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
     ListDoc = ListDoc.slice(2,ListDoc.length-2);
@@ -196,7 +196,7 @@ function StartEditor(a) {
     }
     console.log(ListDoc);
     ListColl = document.getElementsByTagName('body')[0].getAttribute('data-listcoll');
-    ListColl = ListColl.slice(1,ListDoc.length-2);
+    ListColl = ListColl.slice(1,ListColl.length-2);
     console.log(ListColl);
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
     Text = '' + Text.slice(2,Text.length-2);
@@ -205,6 +205,7 @@ function StartEditor(a) {
     // for(let i = 0; i < listtext.length; i++){
     //     document.getElementsByClassName('document')[0].textContent = document.getElementsByClassName('document')[0].textContent + listtext[i];
     // }
+    // Text = Text
     document.getElementsByClassName('document')[0].textContent = Text;
     console.log(document.getElementsByClassName('document')[0]);
     console.log(Text);
