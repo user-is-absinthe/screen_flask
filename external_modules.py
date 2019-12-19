@@ -59,9 +59,9 @@ def similarity(attrs_text1, attrs_text2):  # подсчет похожести �
     return score
 
 
-def opener(path):
+def opener(path, encoding='UTF-8'):
     try:
-        with open(path, 'r', encoding='UTF-8') as file:
+        with open(path, 'r', encoding=encoding) as file:
             all_text = str()
             lines = file.readlines()
             for l in lines:
