@@ -191,8 +191,8 @@ function StartEditor() {
     Text = '' + Text.slice(2,Text.length-2);
     console.log(typeof Text);
     Text.replace('\\n\\n','\n\n')
-
-    document.getElementsByClassName('document')[0].innerHTML = Text;
+    Text = new String(Text)
+    document.getElementsByClassName('document')[0].textContent = Text;
     console.log(document.getElementsByClassName('document')[0]);
     console.log(Text);
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
