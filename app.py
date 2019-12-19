@@ -11,7 +11,7 @@ from flask_login import login_required
 
 from config import Config
 
-from external_modules import check_user_access
+from external_modules import get_user_info
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -29,8 +29,8 @@ from models import User
 from models import Document
 from models import Relation
 from models import Attribute
-from models import Role
-from models import UserRoles
+# from models import Role
+# from models import UserRoles
 
 
 # user_manager = UserManager(app, database, User)
@@ -71,6 +71,7 @@ all_links = {
 @app.route('/index')
 @login_required
 def hello_world():
+    print(get_user_info(current_user))
     # if current_user.is_authenticated:
     #     print(current_user.username, current_user.user_role)
     # if not check_user_access(current_user, 'admin'):
