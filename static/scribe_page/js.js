@@ -192,7 +192,9 @@ function StartEditor(a) {
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
     console.log(Text);
     Text = '' + Text.slice(1,Text.length-2);
-    let List = document.getElementsByTagName('body')[0].getAttribute('data-text');
+    let List = document.getElementsByTagName('body')[0].getAttribute('data-listann');
+    List = List.split(' ');
+    delete List[List.length];
     console.log(List);
 
     ListAnnLabels = document.getElementsByTagName('body')[0].getAttribute('data-listann');
