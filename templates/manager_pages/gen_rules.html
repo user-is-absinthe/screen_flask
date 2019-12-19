@@ -2,12 +2,11 @@
 
 {% block content %}
     <h1>Правила генерировать сюда</h1>
-    <form action="" method="post" novalidate>
+    <form action="handler.php" method="post" novalidate>
     <p>
-        {{ form.field_name }} - {{ form.color_to_name }}
-        <br>
-        Добавить штуку с дополнением полей.
+        {{ form.color_to_name }}
     </p>
-        <p>{{ form.submit() }}</p>
+    <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">
+    <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}

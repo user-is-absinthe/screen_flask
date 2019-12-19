@@ -313,3 +313,32 @@ function HiddeGenerelMenu(a) {
 function Submit(a){
     console.log('Submit');
 }
+
+function AddGenLabel(a){
+    var newchild = document.createElement('input');
+    newchild.setAttribute('id', 'field_name');
+    newchild.setAttribute('name', 'field_name');
+    newchild.setAttribute('type', 'text');
+    newchild.setAttribute('style', 'margin:5px');
+    a.previousElementSibling.appendChild(newchild)
+    var newchild = document.createElement('input');
+    newchild.setAttribute('type', 'color');
+    newchild.setAttribute('name', 'bg');
+    newchild.setAttribute('style', 'margin:5px');
+    a.previousElementSibling.appendChild(newchild)
+    var newchild = document.createElement('input');
+    newchild.setAttribute('type', 'button');
+    newchild.setAttribute('value', 'Удалить');
+    newchild.setAttribute('id', 'removeButton');
+    newchild.setAttribute('style', 'margin:5px');
+    newchild.setAttribute('onclick', 'DeleteGenLabel(this)');
+    a.previousElementSibling.appendChild(newchild)
+    a.previousElementSibling.appendChild(document.createElement('br'));
+}
+
+function DeleteGenLabel(a){
+    a.previousElementSibling.remove();
+    a.previousElementSibling.remove();
+    a.nextElementSibling.remove();
+    a.remove();
+}
