@@ -5040,10 +5040,10 @@
 
                             <!-- {{ form.user_role.label }}<br> -->
                             Выбирите роль<br>
-                            <select name="town" id="s1">
-                              <option value="admin" >Администратор</option>
-                              <option value="ispolnitel">Исполнитель</option>
-                              <option value="manager">Менджер</option>
+                            <select name="user_role" id="s1">
+                                {% for k in roles_dict.keys() %}
+                                    <option value="{{ k }}" >{{ roles_dict[k] }}</option>
+                                {% endfor %}
                             </select>
                             {% for error in form.user_role.errors %}
                             <span style="color: red;">[{{ error }}]</span>

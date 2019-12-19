@@ -22,8 +22,8 @@ def get_user_info(current_user_object):
     else:
         user_id = current_user_object.id_user
         user_name = current_user_object.username
-        # user_role = current_user_object.user_role
-        user_role = current_user_object.roles[0].name
+        user_role = current_user_object.user_role
+        # user_role = current_user_object.roles[0].name
         return user_id, user_name, user_role
     pass
 
