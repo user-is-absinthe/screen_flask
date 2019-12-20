@@ -28,6 +28,7 @@ scribe_blueprint = Blueprint(
 @scribe_blueprint.route('/scribe/<next_text_id>', methods=['POST'])
 # @roles_required('admin')
 def scribe_page(next_text_id=None):
+    # TODO: проверяй передачу!!!
     print(next_text_id)
     form = ScribeForm()
 
