@@ -585,7 +585,7 @@ function Submit(a){
     console.log(NextIdCurrentText);
     let List = [];
     for(let [key,value] of MapIdSelectAnnotateText){
-        List.push([key,value[0]]);
+        List.push([key,value[0],value[1]]);
         console.log(List);
     }
 
