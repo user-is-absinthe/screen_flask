@@ -32,18 +32,6 @@ def check_and_dell_users():
     all_data = [
         (u.get_username(), u.get_rating(), u.get_role()) for u in users
     ]
-    # usernames = [
-    #     'a1', 'a2', 'a3',
-    # ]
-    # user_ratings = [
-    #     0.3, 0.5, 0.8
-    # ]
-    # user_roles = [
-    #     'manager',
-    #     'executor',
-    #     'multi',
-    # ]
-    # all_data = zip(usernames, user_ratings, user_roles)
     return render_template(
         # 'admin_pages/all_users.html',
         'admin_pages/Annotators.html',

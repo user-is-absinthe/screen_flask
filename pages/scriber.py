@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask import render_template
 from flask import request
+from flask import redirect
+from flask import url_for
 from flask_login import login_required
 from flask_login import current_user
-from uuid import uuid4
 
 from models import Document
 
@@ -13,6 +14,7 @@ from external_modules import opener
 from external_modules import save_annotation
 
 from app import app
+from app import database
 
 scribe_blueprint = Blueprint(
     'scribe_bp',
@@ -22,9 +24,12 @@ scribe_blueprint = Blueprint(
 
 
 @scribe_blueprint.route('/scribe', methods=['GET', 'POST'])
-@login_required
+# @login_required
+@scribe_blueprint.route('/scribe/<next_text_id>', methods=['POST'])
 # @roles_required('admin')
-def scribe_page():
+def scribe_page(next_text_id=None):
+    # TODO: проверяй передачу!!!
+    print(next_text_id)
     form = ScribeForm()
 
     username, user_role = current_user.username, current_user.user_role
@@ -47,24 +52,26 @@ def scribe_page():
         user_docs_status.append(Document.query.get(r.document_id).get_status())
 
     if request.method == 'POST':
+        # print(123)
         # print(request.get_json(force=True))
         data_json = request.get_json(force=True)
         current_text_id = data_json['NextIdCurrentText']
         to_base = data_json['MapIdSelectAnnotateText']
-        print(data_json['IdCurrentText'], current_text_id, type(to_base), to_base)
-        path_to_file = app.config['PATH_TO_ANN'] + uuid4().hex + '.ann'
-        temp_doc = Document(
-            id_document=data_json['IdCurrentText'],
-            status=1,
-            path_to_xml_file=path_to_file
-        )
-
+        # print(data_json['IdCurrentText'], current_text_id, type(to_base), to_base)
+        path_to_file =\
+            app.config['PATH_TO_ANN'] + str(current_user.id_user) + '_' + str(data_json['IdCurrentText']) + '.ann'
+        temp_doc = Document.query.get(data_json['IdCurrentText'])
+        temp_doc.id_document = data_json['IdCurrentText']
+        temp_doc.status = 1
+        temp_doc.path_to_xml_file = path_to_file
+        # database.session.add(temp_doc)
+        database.session.commit()
         save_annotation(
             path=path_to_file, data=to_base
         )
         # current_text, user_xml, user_collections = get_data_by_text_id(text_id=next_text_id)
         # current_text_id = next_text_id
-
+        return redirect(url_for('scribe_bp.scribe_page', next_text_id=current_text_id, _method='POST'))
     # user_docs_status.append(Document.query.get(r.document_id).get_status())
     # user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
     # user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
@@ -72,6 +79,8 @@ def scribe_page():
     # user_texts.append(opener(Document.query.get(r.document_id).get_text()))
     # user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
     # TODO: удалить после тестов
+    if next_text_id:
+        current_text_id = next_text_id
     else:
         current_text_id = user_docs_ids[0]
 
