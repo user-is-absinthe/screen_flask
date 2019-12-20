@@ -517,7 +517,7 @@ function FocusElem(a) {
         }
     }
     a.setAttribute('onclick','UnFocusElem(this)')
-    a.style.backgroundColor = #FF0000;
+    a.style.backgroundColor = '#FF0000';
 }
 function UnFocusElem(a) {
     console.log('FocusElem');
@@ -529,7 +529,7 @@ function UnFocusElem(a) {
         }
     }
     a.setAttribute('onclick','FocusElem(this)')
-    a.style.backgroundColor = #FFFFFF;
+    a.style.backgroundColor = '#FFFFFF';
 }
 
 function AddElemLabelsAnn(a,b,c){
@@ -635,6 +635,7 @@ function Submit(a){
     // var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
     console.log(data);
     xhr.send(data);
+    document.location.reload(True);
 }
 
 function AddGenLabel(a){
@@ -762,4 +763,5 @@ function gotofile(a) {
     var data = JSON.stringify({"NextIdCurrentText": a.getAttribute('data-indextext')});
     console.log(data);
     xhr.send(data);
+    document.location.reload(true);
 }
