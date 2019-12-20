@@ -457,8 +457,23 @@ function Submit(a){
     //         console.log(json.email + ", " + json.password);
     //     }
     // };
-    let NextIdCurrentText = ListIdText.findIndex(IdCurrentText);
-    var data = JSON.stringify({"IdCurrentText": IdCurrentText, "NextIdCurrentText": NextIdCurrentText});
+    let NextIdCurrentText = ListIdText.indexOf(IdCurrentText);
+    if(NextIdCurrentText+1 == ListIdText.length){
+        NextIdCurrentText = ListIdText[0];
+    }
+    else {
+        NextIdCurrentText = ListIdText[NextIdCurrentText+1];
+    }
+    console.log(NextIdCurrentText);
+    let List = [];
+    for(let [key,value] of MapIdSelectAnnotateText){
+        List.push([key,value[0]]);
+        console.log(List);
+    }
+
+    var data = JSON.stringify({"IdCurrentText": IdCurrentText, "NextIdCurrentText": NextIdCurrentText, "MapIdSelectAnnotateText": List});
+    // var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+    console.log(data);
     xhr.send(data);
 }
 

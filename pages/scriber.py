@@ -43,7 +43,7 @@ def scribe_page():
         user_docs_status.append(Document.query.get(r.document_id).get_status())
 
     if request.method == 'POST':
-        print(request.get_json())
+        print(request.get_json(force=True))
 
     # user_docs_status.append(Document.query.get(r.document_id).get_status())
     # user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
