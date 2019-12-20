@@ -32,6 +32,7 @@ app.config['USER_ROLES'] = {
     'debug': 'Отладчик',
 }
 app.config['PATH_TO_CHEMA'] = 'data/chemas/'
+app.config['PATH_TO_ANN'] = 'data/annotation/'
 
 # для создания миграции в базе не забудь импортировать здесь модель
 # или, возможно, не здесь, а где-то еще

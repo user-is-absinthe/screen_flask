@@ -2,15 +2,17 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 from flask_login import login_required
-# from flask_user import login_required
-# from flask_user import roles_required
 from flask_login import current_user
+from uuid import uuid4
 
 from models import Document
 
 from forms import ScribeForm
 
 from external_modules import opener
+from external_modules import save_annotation
+
+from app import app
 
 scribe_blueprint = Blueprint(
     'scribe_bp',
@@ -23,6 +25,8 @@ scribe_blueprint = Blueprint(
 @login_required
 # @roles_required('admin')
 def scribe_page():
+    form = ScribeForm()
+
     username, user_role = current_user.username, current_user.user_role
     user_relations = current_user.user_to_relation
     # print(user_relations)
@@ -43,7 +47,23 @@ def scribe_page():
         user_docs_status.append(Document.query.get(r.document_id).get_status())
 
     if request.method == 'POST':
-        print(request.get_json(force=True))
+        # print(request.get_json(force=True))
+        data_json = request.get_json(force=True)
+        current_text_id = data_json['NextIdCurrentText']
+        to_base = data_json['MapIdSelectAnnotateText']
+        print(data_json['IdCurrentText'], current_text_id, type(to_base), to_base)
+        path_to_file = app.config['PATH_TO_ANN'] + uuid4().hex + '.ann'
+        temp_doc = Document(
+            id_document=data_json['IdCurrentText'],
+            status=1,
+            path_to_xml_file=path_to_file
+        )
+
+        save_annotation(
+            path=path_to_file, data=to_base
+        )
+        # current_text, user_xml, user_collections = get_data_by_text_id(text_id=next_text_id)
+        # current_text_id = next_text_id
 
     # user_docs_status.append(Document.query.get(r.document_id).get_status())
     # user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
@@ -52,23 +72,24 @@ def scribe_page():
     # user_texts.append(opener(Document.query.get(r.document_id).get_text()))
     # user_xml.append(opener(Document.query.get(r.document_id).get_xml()))
     # TODO: удалить после тестов
+    else:
+        current_text_id = user_docs_ids[0]
 
-    current_text, user_xml, user_collections = get_data_by_text_id(text_id=user_docs_ids[0])
-    user_xml = '''0-0-6
-0-50-53
-0-57-63
-0-87-93
-1-103-114
-'''.replace('\n', ' ')
+    current_text, user_xml, user_collections = get_data_by_text_id(text_id=current_text_id)
+    # print(user_collections)
+    # user_xml = '''0-0-6
+    # 0-50-53
+    # 0-57-63
+    # 0-87-93
+    # 1-103-114
+    # '''.replace('\n', ' ')
     # user_xml.append(a)
     # user_collections = list(set(user_collections))
-
-    form = ScribeForm()
 
     return render_template(
         'editor.html',
         # id текущего текста (yes)
-        current_text_id=user_docs_ids[0],
+        current_text_id=current_text_id,
         # открытый текст (yes)
         list_doc_text=current_text,
         # координаты выделенных сущностей (если есть) (0-50-53) - (сущность - начало - конец) (yes)
