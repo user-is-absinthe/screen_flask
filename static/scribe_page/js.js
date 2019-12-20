@@ -82,6 +82,7 @@ function SelectAnnotateText(a) {
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
                     console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    a.innerHTML = FullText;
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
@@ -143,6 +144,7 @@ function SelectAnnotateText(a) {
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
                     console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     AddElemLabelsAnn(SelectedString, SelectedTag,'' + DataId1 + '-' + DataId2);
+                    a.innerHTML = FullText;
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
@@ -467,7 +469,7 @@ function StartEditor(a) {
                 newchild.setAttribute('data-id', ListAnnId[j]);
                 newchild.setAttribute('data-label', ListAnnLabels[j]);
                 newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[ListAnnLabels[j]]);
-                newchild.setAttribute('onclick', 'DelFromSelect(this)');
+                newchild.setAttribute('onclick', 'FocusElem(this)');
                 let newchildspan = document.createElement('span');
                 newchildspan.setAttribute('class', 'MuiChip-label');
                 newchildspan.innerText = ListAnn[j];
@@ -505,6 +507,10 @@ function DelFromSelect(a) {
     DeleteAnnotation(a,a.getAttribute('data-id'));
 }
 
+function FocusElem(a) {
+    console.log('FocusElem');
+}
+
 function AddElemLabelsAnn(a,b,c){
     let ElemLabels = document.getElementById('listlabelsann').childNodes[b*2+2].childNodes[0].childNodes[0];
     let newchild = document.createElement('div');
@@ -514,12 +520,16 @@ function AddElemLabelsAnn(a,b,c){
     newchild.setAttribute('data-id', '' + c);
     newchild.setAttribute('data-label', b);
     newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[b]);
-    newchild.setAttribute('onclick', 'DelFromSelect(this)');
+    newchild.setAttribute('onclick', 'FocusElem(this)');
     let newchildspan = document.createElement('span');
     newchildspan.setAttribute('class', 'MuiChip-label');
     newchildspan.innerText = a;
     newchild.appendChild(newchildspan);
     ElemLabels.appendChild(newchild);
+}
+
+function elendoc(a){
+    window.open("/static/Инструкция_проект.pdf");
 }
 
 function ChangeLabel(a,IndexChangeLabel) {

@@ -4853,21 +4853,22 @@
 		 border-top-left-radius:4px
 		}
 		.label {
+            vertical-align: bottom;
 		 display:inline;
-		 padding:.2em .6em .3em;
-		 font-size:75%;
+		 padding:5px 10px 5px 10px;
+		 font-size:100%;
 		 font-weight:700;
 		 line-height:1;
 		 color:#fff;
 		 text-align:center;
 		 white-space:nowrap;
-		 vertical-align:baseline;
 		 border-radius:.25em;
 		 color: white; 
-		 margin: 0.2%; 
+		 margin: 0.2%;
+
 		}
 		.choose-label{
-		border: 1.5px solid rgb(255, 165, 0);
+		border: 3px solid rgb(255, 165, 0);
 		}
 		.ui.button {
 		cursor: pointer;
@@ -4880,7 +4881,7 @@
 		color: rgba(0,0,0,.6);
 		font-family: Lato,Helvetica Neue,Arial,Helvetica,sans-serif;
 		margin: 0 .25em 0 0;
-		padding: .78571429em 1.5em;
+		padding: 0px 10px 5px 10px;
 		text-transform: none;
 		text-shadow: none;
 		font-weight: 700;
@@ -5300,8 +5301,8 @@
                         <div>
                           <div class="MuiPaper-root MuiPaper-elevation1 jss3141 MuiPaper-rounded">
                             <div class="MuiCardHeader-root">
-                              <div class="MuiCardHeader-content"><span class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"><span class="MuiTypography-root MuiTypography-caption MuiTypography-alignLeft" style="width: 100%;"></span>
-                                <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall" tabindex="0" type="button" title="Справка по разметке коллекции" >
+                              <div class="MuiCardHeader-content"><span class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock">
+                                <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall" tabindex="0" type="button" title="Справка по разметке коллекции" onclick="elendoc(this)">
 									<span class="MuiIconButton-label">
 										<svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
 											<path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
@@ -5311,6 +5312,7 @@
 									<span class="MuiTouchRipple-root">
 									</span>
 								</button>
+<span class="MuiTypography-root MuiTypography-caption MuiTypography-alignLeft" style="width: 100%;vertical-align: middle;">Спpавка</span>
                                 </span>
                   </div>
                   <div class="MuiCardHeader-action">
