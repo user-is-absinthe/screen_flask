@@ -3,9 +3,8 @@ var ColorTagArray = [];
 var LabelsList = [];
 var idChooseDeleteOrChangeTag = "";
 var MapIdSelectAnnotateText = new Map();
-var ListColl = [];
+// var ListColl = [];
 var ListDoc = [];
-var UserDocStatus =[true,true,false];
 var ListAnn = [];
 var ListAnnId = [];
 var ListAnnLabels = [];
@@ -13,6 +12,9 @@ var IdCurrentText = 0;
 var ListIdText = [];
 var LinkToDocs = "";
 var ListDocStatus = [];
+var eviosannotatedspan = 0;
+var truestatus = 0;
+var falsestatus = 0;
 var Text = "Россия рассчитывает на конструктивное воздействие США на Грузию\n" +
     "\n" +
     "04/08/2008 12:08\n" +
@@ -68,7 +70,7 @@ function SelectAnnotateText(a) {
                             SelectedString = SelectedString.substring(0, SelectedString.length - 1);
                         }
                     }
-                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
+                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: " + ColorInveror(ColorTagArray[SelectedTag]) + "; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
                     FullText = selection.anchorNode.parentElement.innerHTML.substring(0, DataId1) + text + selection.anchorNode.parentElement.innerHTML.substring(DataId2, selection.anchorNode.parentElement.innerHTML.length);
                     var LineBreakCharacter = (selection.anchorNode.parentElement.innerHTML.substring(0, DataId1).split(/\r\n|\r|\n/g).length - 1);
                     DataId1 += LineBreakCharacter;
@@ -78,6 +80,7 @@ function SelectAnnotateText(a) {
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
+                    console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
@@ -123,7 +126,7 @@ function SelectAnnotateText(a) {
                     if (selection.anchorNode != selection.focusNode) {
                         return;
                     }
-                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: white; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
+                    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: " + ColorInveror(ColorTagArray[SelectedTag]) + "; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
                     if (selection.anchorOffset + previousSiblingDataId < selection.focusOffset + previousSiblingDataId) {
                         FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionanchorOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionfocusOffset, selection.anchorNode.parentElement.innerHTML.length);
                     }
@@ -138,13 +141,103 @@ function SelectAnnotateText(a) {
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
-                    AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    AddElemLabelsAnn(SelectedString, SelectedTag,'' + DataId1 + '-' + DataId2);
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
             }
         }
     }
+}
+
+function SelectOldAnnoyateText(sellab,id) {
+    // var selection = window.getSelection();
+    // console.log(selection);
+    console.log(sellab);
+    console.log(id);
+    var text = "";
+    var FullText = "";
+    DataId1 = Number.parseInt(id.split('-')[0]);
+    console.log(DataId1);
+    DataId2 = Number.parseInt(id.split('-')[1]);
+    console.log(DataId2);
+    console.log(ColorTagArray[sellab]);
+    console.log(eviosannotatedspan);
+    console.log(document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan));
+    text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[sellab] + "; color: " + ColorInveror(ColorTagArray[sellab]) + "; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan) + "</span>";
+    console.log(text);
+    FullText = document.getElementById('annotationDoc').innerHTML.substring(0, DataId1+eviosannotatedspan) + text + document.getElementById('annotationDoc').innerHTML.substring(DataId2+eviosannotatedspan, document.getElementById('annotationDoc').innerHTML.length);
+    console.log(FullText);
+    MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, [sellab, document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan)]);
+    console.log(MapIdSelectAnnotateText);
+    ListAnn.push(document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan));
+    // ListAnnLabels.push(SelectedTag);
+    // ListAnnId.push('' + DataId1 + '-' + DataId2);
+    console.log(document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan),sellab,'' + DataId1 + '-' + DataId2);
+    eviosannotatedspan = eviosannotatedspan + text.length - document.getElementById('annotationDoc').innerHTML.substring(DataId1+eviosannotatedspan, DataId2+eviosannotatedspan).length;
+    // SortListLabelsAnn(a);
+    return document.getElementById('annotationDoc').innerHTML = FullText;
+    //
+    // var SelectedString = selection.toString();
+    // var previousSiblingDataId = Number.parseInt(selection.anchorNode.previousSibling.getAttribute("data-id").split('-')[1]);
+    // var IndexpreviousSibling = selection.anchorNode.parentElement.innerHTML.indexOf(selection.anchorNode.previousSibling.outerHTML);
+    //
+    // if (selection.anchorOffset + previousSiblingDataId < selection.focusOffset + previousSiblingDataId) {
+    //     var selectionfocusOffset = selection.focusOffset;
+    //     var selectionanchorOffset = selection.anchorOffset;
+    //     var DataId1 = selection.anchorOffset + previousSiblingDataId;
+    //     var DataId2 = selection.focusOffset + previousSiblingDataId;
+    //     if (selection.toString()[0] == " ") {
+    //         selectionanchorOffset = selectionanchorOffset + 1;
+    //         DataId1 += 1;
+    //         SelectedString = SelectedString.substring(1, SelectedString.length);
+    //     }
+    //     if (selection.toString()[selection.toString().length - 1] == " ") {
+    //         selectionfocusOffset = selectionfocusOffset - 1;
+    //         DataId2 -= 1;
+    //         SelectedString = SelectedString.substring(0, SelectedString.length - 1);
+    //     }
+    // }
+    // else {
+    //     var selectionfocusOffset = selection.focusOffset;
+    //     var selectionanchorOffset = selection.anchorOffset;
+    //     var DataId2 = selection.anchorOffset + previousSiblingDataId;
+    //     var DataId1 = selection.focusOffset + previousSiblingDataId;
+    //     if (selection.toString()[0] == " ") {
+    //         selectionfocusOffset = selectionfocusOffset + 1;
+    //         DataId1 += 1;
+    //         SelectedString = SelectedString.substring(1, SelectedString.length);
+    //     }
+    //     if (selection.toString()[selection.toString().length - 1] == " ") {
+    //
+    //         selectionanchorOffset = selectionanchorOffset - 1;
+    //         DataId2 -= 1;
+    //         SelectedString = SelectedString.substring(0, SelectedString.length - 1);
+    //     }
+    // }
+    // if (selection.anchorNode != selection.focusNode) {
+    //     return;
+    // }
+    // text = "<span id='annotatedspan' data-id='" + DataId1 + "-" + DataId2 + "' class='annotated-span' style='display:inline; background-color:" + ColorTagArray[SelectedTag] + "; color: " + ColorInveror(ColorTagArray[SelectedTag]) + "; font-size:1.4rem' onclick='UnHiddeAnnotationModal(this)'>" + SelectedString + "</span>";
+    // if (selection.anchorOffset + previousSiblingDataId < selection.focusOffset + previousSiblingDataId) {
+    //     FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionanchorOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionfocusOffset, selection.anchorNode.parentElement.innerHTML.length);
+    // }
+    // else {
+    //     FullText = selection.anchorNode.parentElement.innerHTML.substring(0, IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length) + selection.anchorNode.nodeValue.toString().substring(0, selectionfocusOffset) + text + selection.anchorNode.parentElement.innerHTML.substring(IndexpreviousSibling + selection.anchorNode.previousElementSibling.outerHTML.length + selectionanchorOffset, selection.anchorNode.parentElement.innerHTML.length);
+    // }
+    // var LineBreakCharacter = (selection.anchorNode.parentElement.textContent.substring(0, DataId1).split(/\r\n|\r|\n|\n\n/g).length - 1);
+    // DataId1 += LineBreakCharacter;
+    // DataId2 += LineBreakCharacter;
+    // MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, [SelectedTag, SelectedString]);
+    // console.log(MapIdSelectAnnotateText);
+    // ListAnn.push(SelectedString);
+    // ListAnnLabels.push(SelectedTag);
+    // ListAnnId.push('' + DataId1 + '-' + DataId2);
+    // console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+    // AddElemLabelsAnn(SelectedString, SelectedTag,'' + DataId1 + '-' + DataId2);
+    // // SortListLabelsAnn(a);
+    // return a.innerHTML = FullText;
 }
 
 function DeleteAnnotation(a,b) {
@@ -189,10 +282,11 @@ function DeleteAnnotation(a,b) {
 }
 
 function DeleteElemLabelsAnn(a,b){
-    document.querySelector('MuiDrawer-root MuiDrawer-docked jss6').querySelector('MuiDrawer-root MuiDrawer-docked jss6[data-id="' + b + '"]').remove();
+    document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]');
+    console.log(document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]'));
 }
 
-function StartEditor() {
+function StartEditor(a) {
     console.log("Start");
     IdCurrentText = document.getElementsByTagName('body')[0].getAttribute('data-currenttextid');
     Text = document.getElementsByTagName('body')[0].getAttribute('data-text');
@@ -217,7 +311,7 @@ function StartEditor() {
         let newelem = document.createElement('div');
         newelem.setAttribute('name','' + LabelsList[i]);
         newelem.setAttribute('class','ui mini label');
-        newelem.setAttribute('style','margin: 0.2%; background-color:' + ColorTagArray[i] + ';mix-blend-mode:difference;color:' + ColorTagArray[i] + ';');
+        newelem.setAttribute('style','margin: 0.2%; background-color:' + ColorTagArray[i] + ';color:' + ColorInveror(ColorTagArray[i]) + ';');
         newelem.setAttribute('data-idlabel','' + i);
         newelem.setAttribute('onclick','ChooseTag(this);');
         newelem.innerText = LabelsList[i];
@@ -243,6 +337,23 @@ function StartEditor() {
     ListDocStatus = ListDocStatus.slice(1,ListDocStatus.length-1);
     ListDocStatus = ListDocStatus.split(', ');
 
+    List = [];
+    console.log(ListAnnId);
+    for(let i=0;i<ListAnnId.length;i++){
+        List.push(Number.parseInt(ListAnnId[i].split('-')[0]));
+    }
+    List.sort(function(a, b){return a-b});
+    console.log(List);
+    for(let i=0;i<List.length;i++){
+        for(let j=0;j<ListAnnId.length;j++) {
+            if(List[i] == Number.parseInt(ListAnnId[j].split('-')[0])){
+                console.log(List[i]);
+                console.log(Number.parseInt(ListAnnId[j].split('-')[0]));
+                SelectOldAnnoyateText(ListAnnLabels[j],ListAnnId[j]);
+            }
+        }
+    }
+
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
     element.setAttribute('class', 'item');
@@ -266,20 +377,20 @@ function StartEditor() {
         element.appendChild(childelement);
         MenuListbox[0].appendChild(element);        
     }
-    var ElemColl = document.getElementById('listcol');
+    // var ElemColl = document.getElementById('listcol');
     var ElemDoc = document.getElementById('listdoc');
     var ElemAnn = document.getElementById('listann');
-    for (let i = 0; i < ListColl.length; i++) {
-        let newchild = document.createElement('div');
-        newchild.setAttribute('role', 'button');
-        newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
-        newchild.setAttribute('tabindex', '0');
-        let newchildspan = document.createElement('span');
-        newchildspan.setAttribute('class', 'MuiChip-label');
-        newchildspan.innerText = ListColl[i];
-        newchild.appendChild(newchildspan);
-        ElemColl.appendChild(newchild)
-    }
+    // for (let i = 0; i < ListColl.length; i++) {
+    //     let newchild = document.createElement('div');
+    //     newchild.setAttribute('role', 'button');
+    //     newchild.setAttribute('class', 'MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    //     newchild.setAttribute('tabindex', '0');
+    //     let newchildspan = document.createElement('span');
+    //     newchildspan.setAttribute('class', 'MuiChip-label');
+    //     newchildspan.innerText = ListColl[i];
+    //     newchild.appendChild(newchildspan);
+    //     ElemColl.appendChild(newchild)
+    // }
     for (let i = 0; i < ListDoc.length; i++) {
         let newchild = document.createElement('div');
         newchild.setAttribute('role', 'button');
@@ -290,9 +401,11 @@ function StartEditor() {
         newchildchild.setAttribute('alt', 'logo');
         if (ListDocStatus[i] != 'None'){
             newchildchild.setAttribute('src', 'static/gg.png');
+            truestatus = truestatus + 1;
         }
         else {
             newchildchild.setAttribute('src', 'static/rk.png');
+            falsestatus = falsestatus + 1;
         }
         newchildchild.setAttribute('style', 'width: 25px;height: 25px;');
         newchild.appendChild(newchildchild);
@@ -302,6 +415,9 @@ function StartEditor() {
         newchild.appendChild(newchildspan);
         ElemDoc.appendChild(newchild);
     }
+    document.getElementsByClassName('MuiTypography-root MuiTypography-caption MuiTypography-alignCenter')[0].innerHTML = 'Всего документов: ' + ListDocStatus.length;
+    document.getElementsByClassName('MuiTypography-root MuiTypography-caption MuiTypography-alignCenter')[1].innerHTML = 'Всего выполнено: ' + truestatus;
+    document.getElementsByClassName('MuiTypography-root MuiTypography-caption MuiTypography-alignCenter')[2].innerHTML = 'Всего в очереди: ' + falsestatus;
     var ElemLabelsAnn = document.getElementById('listlabelsann');
     for (let i = 0; i < LabelsList.length; i++) {
         let newchild = document.createElement('div');
@@ -537,4 +653,59 @@ function SortListLabelsAnn(a) {
 
         }
     }
+}
+
+function ColorInveror(a) {
+    let str = '#';
+    for(let i = 1; i < a.length; i++){
+        if(a[i] == 'f'){
+            str += '0';
+        }
+        if(a[i] == 'e'){
+            str += '1';
+        }
+        if(a[i] == 'd'){
+            str += '2';
+        }
+        if(a[i] == 'c'){
+            str += '3';
+        }
+        if(a[i] == 'b'){
+            str += '4';
+        }
+        if(a[i] == 'a'){
+            str += '5';
+        }
+        if(a[i] == '9'){
+            str += '6';
+        }
+        if(a[i] == '8'){
+            str += '7';
+        }
+        if(a[i] == '7'){
+            str += '8';
+        }
+        if(a[i] == '6'){
+            str += '9';
+        }
+        if(a[i] == '5'){
+            str += 'a';
+        }
+        if(a[i] == '4'){
+            str += 'b';
+        }
+        if(a[i] == '3'){
+            str += 'c';
+        }
+        if(a[i] == '2'){
+            str += 'd';
+        }
+        if(a[i] == '1'){
+            str += 'e';
+        }
+        if(a[i] == '0'){
+            str += 'f';
+        }
+    }
+    return str;
 }
