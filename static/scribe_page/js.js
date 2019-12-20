@@ -282,9 +282,13 @@ function DeleteAnnotation(a,b) {
 }
 
 function DeleteElemLabelsAnn(a,b){
-    console.log(a,b);
     let tem = document.getElementsByClassName('MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
-    console.log(tem);
+    for(let i = 0; i < tem.length;i++){
+        if(tem[i].getAttribute('data-id') == b){
+            tem[i].remove();
+            break;
+        }
+    }
 }
 
 function StartEditor(a) {
@@ -463,6 +467,7 @@ function StartEditor(a) {
                 newchild.setAttribute('data-id', ListAnnId[j]);
                 newchild.setAttribute('data-label', ListAnnLabels[j]);
                 newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[ListAnnLabels[j]]);
+                newchild.setAttribute('onclick', 'DelFromSelect(this)');
                 let newchildspan = document.createElement('span');
                 newchildspan.setAttribute('class', 'MuiChip-label');
                 newchildspan.innerText = ListAnn[j];
@@ -496,6 +501,10 @@ function StartEditor(a) {
     SortListLabelsAnn(a);
 }
 
+function DelFromSelect(a) {
+    DeleteAnnotation(a,a.getAttribute('data-id'));
+}
+
 function AddElemLabelsAnn(a,b,c){
     let ElemLabels = document.getElementById('listlabelsann').childNodes[b*2+2].childNodes[0].childNodes[0];
     let newchild = document.createElement('div');
@@ -505,6 +514,7 @@ function AddElemLabelsAnn(a,b,c){
     newchild.setAttribute('data-id', '' + c);
     newchild.setAttribute('data-label', b);
     newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[b]);
+    newchild.setAttribute('onclick', 'DelFromSelect(this)');
     let newchildspan = document.createElement('span');
     newchildspan.setAttribute('class', 'MuiChip-label');
     newchildspan.innerText = a;
