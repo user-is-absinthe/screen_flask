@@ -80,6 +80,8 @@ def scribe_page():
         list_doc_name=user_docs_name,
         # id-текстов
         list_id=user_docs_ids,
+        # статусы докумеентов
+        doc_status=user_docs_status,
 
         form_html=form,
         # сслыка для загрузки большой инструкции от Н (нужна ли?)
