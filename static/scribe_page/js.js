@@ -517,6 +517,7 @@ function FocusElem(a) {
         }
     }
     a.setAttribute('onclick','UnFocusElem(this)')
+    a.style.backgroundColor = #FF0000;
 }
 function UnFocusElem(a) {
     console.log('FocusElem');
@@ -528,6 +529,7 @@ function UnFocusElem(a) {
         }
     }
     a.setAttribute('onclick','FocusElem(this)')
+    a.style.backgroundColor = #FFFFFF;
 }
 
 function AddElemLabelsAnn(a,b,c){
