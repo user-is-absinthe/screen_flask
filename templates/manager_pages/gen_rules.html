@@ -12,6 +12,7 @@
     <link rel="stylesheet" crossorigin="anonymous" href="./shems_files/main.css">
     <script type="text/javascript" async="" src="./shems_files/analytics.js.Без названия"></script><script type="text/javascript" async="" src="./shems_files/analytics.js(1).Без названия"></script><script type="text/javascript" async="" src="./shems_files/analytics.js(2).Без названия"></script>
     <script async="" src="./shems_files/js"></script>
+    <script src="{{ url_for('static', filename='scribe_page/js.js') }}" charset=windows-1251></script>
     <script>
       function gtag() {
         dataLayer.push(arguments)
@@ -8511,14 +8512,17 @@
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                   <h2 class="MuiTypography-root MuiTypography-h3">Генерация правил</h2>
                 </div>
-              </div>
-              <form method="post" action="{{url_for('manager_page.gen_rules_page')}}" novalidate >
-            {#    <form method="post" action="{{url_for('hello_world')}}" novalidate >#}
-                <p><input id="name_chema" name="name_chema" type='text' value='Навание схемы' style="margin: 5px"><br>
-                </p>
-                <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">
-                <p>{{ form.submit() }}</p>
-              </form>
+                {% block content %}
+                    <!-- <h1>Правила генерировать сюда</h1> -->
+                    <form method="post" action="{{url_for('manager_page.gen_rules_page')}}" novalidate >
+                {#    <form method="post" action="{{url_for('hello_world')}}" novalidate >#}
+                    <p><input id="name_chema" name="name_chema" type='text' value='Навание схемы' style="margin: 5px"><br>
+                    </p>
+                    <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">
+                    <p>{{ form.submit() }}</p>
+                    </form>
+                {% endblock %}
+
 
 
             </div>
