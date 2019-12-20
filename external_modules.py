@@ -150,5 +150,20 @@ def del_file(path):
     pass
 
 
+def one_uiml_gen(collect_name, doc_text, doc_title, attributes, path):
+    filename = path + doc_title + '_annotation_' + collect_name + '.uiml'
+    uiml_txt = '<?xml version="1.0" encoding="utf-16"?>\n<?uimlDocument version="1.0"?>\n'
+    uiml_txt = uiml_txt + '<Document>\n <Title Value=\"' + doc_title + '\" />\n'
+    uiml_txt = uiml_txt + ' <Text Value=\"' + doc_text + '\" />\n'
+    uiml_txt = uiml_txt + ' <DocumentRubrics>\n <Rubric Name=\"' + collect_name + '\">\n'
+    for a_name, a_value in attributes.items():
+        uiml_txt = uiml_txt + '   <EtalonAttribute Code=\"'+ str(a_name)+ '\" StringValue=\"' + str(a_value) + '\" />\n'
+    uiml_txt = uiml_txt + '  </Rubric>\n </DocumentRubrics>\n</Document>'
+
+    with open(filename, mode="w", encoding="utf8") as f:
+        f.write(uiml_txt)
+    return True
+
+
 if __name__ == '__main__':
     pass

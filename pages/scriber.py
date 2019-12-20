@@ -12,6 +12,7 @@ from forms import ScribeForm
 
 from external_modules import opener
 from external_modules import save_annotation
+from external_modules import one_uiml_gen
 
 from app import app
 from app import database
@@ -80,6 +81,9 @@ def scribe_page(next_text_id=None):
             save_annotation(
                 path=path_to_file, data=to_base
             )
+
+
+
         except KeyError:
             pass
         # current_text, user_xml, user_collections = get_data_by_text_id(text_id=next_text_id)
