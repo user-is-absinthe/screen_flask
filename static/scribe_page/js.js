@@ -82,6 +82,7 @@ function SelectAnnotateText(a) {
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
                     console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     AddElemLabelsAnn(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
+                    a.innerHTML = FullText;
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
@@ -143,6 +144,7 @@ function SelectAnnotateText(a) {
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
                     console.log(SelectedString,SelectedTag,'' + DataId1 + '-' + DataId2);
                     AddElemLabelsAnn(SelectedString, SelectedTag,'' + DataId1 + '-' + DataId2);
+                    a.innerHTML = FullText;
                     SortListLabelsAnn(a);
                     return a.innerHTML = FullText;
                 }
@@ -282,8 +284,13 @@ function DeleteAnnotation(a,b) {
 }
 
 function DeleteElemLabelsAnn(a,b){
-    document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]');
-    console.log(document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]'));
+    let tem = document.getElementsByClassName('MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    for(let i = 0; i < tem.length;i++){
+        if(tem[i].getAttribute('data-id') == b){
+            tem[i].remove();
+            break;
+        }
+    }
 }
 
 function StartEditor(a) {
@@ -462,6 +469,7 @@ function StartEditor(a) {
                 newchild.setAttribute('data-id', ListAnnId[j]);
                 newchild.setAttribute('data-label', ListAnnLabels[j]);
                 newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[ListAnnLabels[j]]);
+                newchild.setAttribute('onclick', 'FocusElem(this)');
                 let newchildspan = document.createElement('span');
                 newchildspan.setAttribute('class', 'MuiChip-label');
                 newchildspan.innerText = ListAnn[j];
@@ -495,6 +503,35 @@ function StartEditor(a) {
     SortListLabelsAnn(a);
 }
 
+function DelFromSelect(a) {
+    DeleteAnnotation(a,a.getAttribute('data-id'));
+}
+
+function FocusElem(a) {
+    console.log('FocusElem');
+    // document.getElementsByClassName('annotated-span choose-annotated-span')[0].setAttribute('class','annotated-span')
+    tem = document.getElementsByClassName('annotated-span');
+    for(let i = 0; i < tem.length; i++){
+        if(tem[i].getAttribute('data-id') == a.getAttribute('data-id')){
+            tem[i].setAttribute('class','choose-annotated-span')
+        }
+    }
+    a.setAttribute('onclick','UnFocusElem(this)')
+    a.style.backgroundColor = #FF0000;
+}
+function UnFocusElem(a) {
+    console.log('FocusElem');
+    // document.getElementsByClassName('annotated-span choose-annotated-span')[0].setAttribute('class','annotated-span')
+    tem = document.getElementsByClassName('choose-annotated-span');
+    for(let i = 0; i < tem.length; i++){
+        if(tem[i].getAttribute('data-id') == a.getAttribute('data-id')){
+            tem[i].setAttribute('class','annotated-span')
+        }
+    }
+    a.setAttribute('onclick','FocusElem(this)')
+    a.style.backgroundColor = #FFFFFF;
+}
+
 function AddElemLabelsAnn(a,b,c){
     let ElemLabels = document.getElementById('listlabelsann').childNodes[b*2+2].childNodes[0].childNodes[0];
     let newchild = document.createElement('div');
@@ -504,11 +541,16 @@ function AddElemLabelsAnn(a,b,c){
     newchild.setAttribute('data-id', '' + c);
     newchild.setAttribute('data-label', b);
     newchild.setAttribute('style', 'border: 2px solid ' + ColorTagArray[b]);
+    newchild.setAttribute('onclick', 'FocusElem(this)');
     let newchildspan = document.createElement('span');
     newchildspan.setAttribute('class', 'MuiChip-label');
     newchildspan.innerText = a;
     newchild.appendChild(newchildspan);
     ElemLabels.appendChild(newchild);
+}
+
+function elendoc(a){
+    window.open("/static/Инструкция_проект.pdf");
 }
 
 function ChangeLabel(a,IndexChangeLabel) {
@@ -585,7 +627,7 @@ function Submit(a){
     console.log(NextIdCurrentText);
     let List = [];
     for(let [key,value] of MapIdSelectAnnotateText){
-        List.push([key,value[0]]);
+        List.push([key,value[0],value[1]]);
         console.log(List);
     }
 
