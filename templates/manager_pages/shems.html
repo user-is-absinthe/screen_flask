@@ -8351,23 +8351,20 @@
         <header class="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionFixed jss105 MuiAppBar-colorPrimary mui-fixed">
           <div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters">
 				<div class="jss97">
-					<a href=""><img width="50" alt="logo" src="static/Datasets_files/logo2.jpg">
+					<a href="../my_editor1.html"><img width="50" alt="logo" src="./shems_files/logo2.jpg">
 					</a>
 				</div>
             <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-haspopup="true">
-      				<span class="MuiIconButton-label">
-      					<a href = "{{ url_for('scribe_bp.scribe_page')}}" style = "color:rgb(255,255,255)">
-      					<svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
-      						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z">
-      						</path>
-      					</svg>
-      					</a>
-      				</span>
-      				<span class="MuiTouchRipple-root"></span>
-      			</button>
-            <div align="middle" style="align=:center;">Пользователь:{{ current_user.username }} &nbsp;</div> 
-            &nbsp;
-            <div style="color:#ffffff "><a href="{{ url_for('login.logout_page') }} " style="color:#ffffff ">Выйти</a></div>
+				<span class="MuiIconButton-label">
+					<a href = "./logout.html" style = "color:rgb(255,255,255)">
+					<svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z">
+						</path>
+					</svg>
+					</a>
+				</span>
+				<span class="MuiTouchRipple-root"></span>
+			</button>
           </div>
         </header>
         <div class="MuiDrawer-root MuiDrawer-docked jss98 jss109">
@@ -8378,33 +8375,25 @@
               <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-around" style="height: 100%;">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
                   <ul class="MuiList-root jss704 MuiList-padding">
-
-
-                  <a href="{{ url_for('scribe_bp.scribe_page')}}">                      
                     <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
                       <div class="jss703">
-
+						<a href="../my_editor1.html">  
                         <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation" style="margin-right: 10px; margin-left: 2px; fill: rgb(48, 78, 243); font-size: 1.7rem;">
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"></path>
                         </svg>
-
+						</a>
                       </div>
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Рабочий стол</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Рабочий стол</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
-
-                  <a href="{{ url_for('manager_page.view_doc')}}">   
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">                    
-					          <svg class="MuiSvgIcon-root jss713 jss714" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <a href="./Task2.html">                       
+					  <svg class="MuiSvgIcon-root jss713 jss714" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                         <path d="M4 10h12v2H4zm0-4h12v2H4zm0 8h8v2H4zm10 0v6l5-3z"></path>
                       </svg>
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Все документы</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                  </a>
-
-                    <a href="{{ url_for('administrator_pages.upload_file')}}"> 
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">                
+					  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Задачи</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                     <a href="./Datasets.html">                       
 					 <svg x="0px" y="0px" viewBox="0 0 70 70" xml:space="preserve" class="jss713 undefined">
                         <title></title>
                         <g>
@@ -8420,22 +8409,16 @@
                           <path d="M20.1755219,12.1721582c-10.4029427,0-18.1752625,3.0381336-18.1752625,5.7550402   c0,2.7163887,7.7723193,5.7545204,18.1752625,5.7545204c10.4019032,0,18.1747398-3.0381317,18.1747398-5.7545204   C38.3502617,15.2102919,30.577425,12.1721582,20.1755219,12.1721582z"></path>
                         </g>
                       </svg>
-
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Загрузка файлов</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                    </a>
-
-                  <a href=""> 
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button Mui-selected" tabindex="0" role="button" aria-disabled="false" title="">                        
-					           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="jss713 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+					  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Коллекции</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button Mui-selected" tabindex="0" role="button" aria-disabled="false" title="">
+                      <a href="./shems.html">                        
+					  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="jss713 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M14.38 14.59L11 7V3h1V2H3v1h1v4L.63 14.59A1 1 0 0 0 1.54 16h11.94c.72 0 1.2-.75.91-1.41h-.01zM3.75 10L5 7V3h5v4l1.25 3h-7.5zM8 8h1v1H8V8zM7 7H6V6h1v1zm0-3h1v1H7V4zm0-3H6V0h1v1z"></path>
                       </svg>
-
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Создание правил</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                  </a>
-
-  <!--                   <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+					  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Схемы</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
                       <a href="./relation.html">                      
 					  <svg id="Capa_1" x="0px" y="0px" viewBox="0 0 24.92 24.92" xml:space="preserve" class="jss713 undefined">
                         <title></title>
@@ -8464,40 +8447,50 @@
 					  </a>
                       <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Связи</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
-
-
-
-
                     <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
                       <a href="./Teams.html">                       
 					  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="jss713 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M256 21.17c-2.8 0-5.6 1.38-8.1 4.71-2.6 3.32-4.5 8.47-4.5 14.34 0 5.87 1.9 11.02 4.5 14.34 2.5 3.33 5.3 4.71 8.1 4.71s5.6-1.38 8.1-4.71c2.6-3.32 4.5-8.47 4.5-14.34 0-5.87-1.9-11.02-4.5-14.34-2.5-3.33-5.3-4.71-8.1-4.71zm-80 23.25v16.1l58 28v45.98l-9.4 75.6h-23c-4.8 4.1-10.9 6.7-17.6 6.7-7 0-13.4-2.9-18.4-7.3L104 194.1v16.1l58 18v46l-9.1 72.4h-23c-4.9 4.3-11.1 7-17.9 7-7 0-13.3-2.9-18.2-7.3L32 338.6v16.2l58 10v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l50-1.7 50 1.7v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l50-1.7 50 1.7v46l-10 80h16l12-70h8l12 70h16l-10-80v-46l58-10v-16.2l-61.8 7.8c-5 4.4-11.3 7.2-18.2 7.2-6.8 0-13-2.7-17.9-7h-23l-9.1-72.5v-46l58-18V194l-61.5 15.4c-5 4.6-11.4 7.5-18.5 7.5-6.8 0-13-2.7-17.9-6.9h-22.7l-9.4-75.5V88.52l58-28v-16.1l-61 24.85c-5 4.81-11.7 8-19 8-7.5 0-14.2-3.31-19.3-8.27zm76 100.08h8l11.2 65.5H248v.1h-7.2zm-68 16.2c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.7 8.1 4.7s5.6-1.3 8.1-4.7c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm144 .1c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.7 8.1 4.7s5.6-1.3 8.1-4.7c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm-70.6 65.6l48.6 1.7v46l-9.1 72.6h-23.1c-4.9 4.2-11 6.9-17.8 6.9-6.8 0-12.9-2.7-17.8-6.9h-23.1l-9.1-72.5v-46zm66.6 57.7h8l10.7 62.5H320v.1h-6.7zm-144 .1h8l10.7 62.5H192v-.1h-22.7zm-68 13.2c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.8 8.1 4.8s5.6-1.4 8.1-4.8c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm288 0c-2.8 0-5.6 1.4-8.1 4.8-2.6 3.3-4.5 8.4-4.5 14.3s1.9 11 4.5 14.3c2.5 3.4 5.3 4.8 8.1 4.8s5.6-1.4 8.1-4.8c2.6-3.3 4.5-8.4 4.5-14.3s-1.9-11-4.5-14.3c-2.5-3.4-5.3-4.8-8.1-4.8zm-144 .1c-2.8 0-5.6 1.4-8.1 4.7-2.6 3.3-4.5 8.5-4.5 14.4 0 5.8 1.9 11 4.5 14.3 2.5 3.3 5.3 4.7 8.1 4.7s5.6-1.4 8.1-4.7c2.6-3.3 4.5-8.5 4.5-14.3 0-5.9-1.9-11.1-4.5-14.4-2.5-3.3-5.3-4.7-8.1-4.7z"></path>
                       </svg>
 					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Команды</span></div><span class="MuiTouchRipple-root"></span></div> -->
-
-                  <a href="{{url_for('administrator_pages.check_and_dell_users')}}">  
-                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">                       
-					           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="jss713 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Команды</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <a href="./Annotators.html">                         
+					  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="jss713 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path>
                       </svg>
-
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчик</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                  </a>
-
+					  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчик</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
-
-                  <a href="{{ url_for('manager_page.monitor_page') }}"> 
-          					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
-                                <a href="./monitor.html">                       
-          						<img width="50" alt="eye" src="static/eye1.png">
-          					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff "><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Мониторинг</span></div><span class="MuiTouchRipple-root"></span>
-                    </div>
-                  </a>
-
+					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <a href="./monitor.html">                       
+						<img width="50" alt="eye" src="./eye1.png">
+					  </a>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Мониторинг</span></div><span class="MuiTouchRipple-root"></span></div>
                     <hr class="MuiDivider-root">
+                  </ul>
+                </div>
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
+                  <ul class="MuiList-root jss704 MuiList-padding">
+                    <hr class="MuiDivider-root">
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <svg class="MuiSvgIcon-root jss713 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path fill="none" d="M0 0h24v24H0zm15.35 6.41l-1.77-1.77c-.2-.2-.51-.2-.71 0L6 11.53V14h2.47l6.88-6.88c.2-.19.2-.51 0-.71z"></path>
+                        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 14v-2.47l6.88-6.88c.2-.2.51-.2.71 0l1.77 1.77c.2.2.2.51 0 .71L8.47 14H6zm12 0h-7.5l2-2H18v2z"></path>
+                      </svg>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Review</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <svg class="MuiSvgIcon-root jss713 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"></path>
+                      </svg>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Analytics</span></div><span class="MuiTouchRipple-root"></span></div>
+                    <hr class="MuiDivider-root">
+                    <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
+                      <svg class="MuiSvgIcon-root jss713 undefined" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                        <path transform="scale(1.2, 1.2)" fill="none" d="M0 0h20v20H0V0z"></path>
+                        <path transform="scale(1.2, 1.2)" d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"></path>
+                      </svg>
+                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Account Settings</span></div><span class="MuiTouchRipple-root"></span></div>
                   </ul>
                 </div>
               </div>
@@ -8509,18 +8502,114 @@
             <div class="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-center" style="flex-grow: 1; padding: 31px 0px;">
               <div class="MuiGrid-root jss715 MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-item MuiGrid-grid-xs-12" style="padding-bottom: 20px;">
                 <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
-                  <h2 class="MuiTypography-root MuiTypography-h3">Генерация правил</h2>
+                  <h2 class="MuiTypography-root MuiTypography-h3">Схемы</h2></div>
+              </div>
+              <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12">
+                <div class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded" style="position: relative; background-color: rgb(250, 250, 250); width: 100%;">
+                  <div>
+                    <div class="MuiToolbar-root MuiToolbar-regular jss720 MuiToolbar-gutters">
+                      <div class="MuiFormControl-root MuiTextField-root jss725" color="inherit">
+                        <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart MuiInputBase-adornedEnd">
+                          <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation" title="Search">
+                              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                            </svg>
+                          </div>
+                          <input aria-invalid="false" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd" placeholder="Search" type="text" value="">
+                          <div class="MuiInputAdornment-root MuiInputAdornment-positionEnd">
+                            <button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></span></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="jss722"></div>
+                      <div class="jss723">
+                        <div>
+                          <div><span><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" aria-label="Export" title="Export"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"></path></svg></span><span class="MuiTouchRipple-root"></span></button>
+                            </span><span></span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="padding: 0px 10px;"><a class="MuiButtonBase-root MuiFab-root jss768 MuiFab-extended MuiFab-secondary" tabindex="0" aria-disabled="false" aria-label="Add a new schema" href="https://qqq.lighttag.io/manager/schema#/manager/schema/add" title="Add a new schema"><span class="MuiFab-label"><svg class="MuiSvgIcon-root jss769" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg>Новая схема</span><span class="MuiTouchRipple-root"></span></a></div>
+                  </div>
+                  <div style="overflow-x: auto;">
+                    <div>
+                      <div style="overflow-y: auto;">
+                        <table class="MuiTable-root">
+                          <thead class="MuiTableHead-root">
+                            <tr class="MuiTableRow-root MuiTableRow-head">
+                              <th class="MuiTableCell-root jss782 MuiTableCell-paddingCheckbox MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226); text-align: center;"><span class="MuiButtonBase-root MuiTableSortLabel-root Mui-disabled" tabindex="-1" role="button" aria-disabled="true">Удаление<svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionDesc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"></path></svg></span></th>
+                              <th class="MuiTableCell-root jss782 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="0" tabindex="0" data-react-beautiful-dnd-drag-handle="0" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Название</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+                              <th class="MuiTableCell-root jss782 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="0" tabindex="0" data-react-beautiful-dnd-drag-handle="0" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Тэги</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+                              <th class="MuiTableCell-root jss782 MuiTableCell-alignLeft MuiTableCell-head" scope="col" style="background-color: rgb(250, 250, 250); border-top: 1px solid rgb(236, 236, 236); border-bottom: 2px solid rgb(156, 155, 155); border-left: 1px solid rgb(222, 222, 226);"><span class="MuiButtonBase-root MuiTableSortLabel-root" tabindex="0" role="button"><div data-react-beautiful-dnd-draggable="0" tabindex="0" data-react-beautiful-dnd-drag-handle="0" aria-roledescription="Draggable item. Press space bar to lift" draggable="false">Классы текста</div><svg class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path></svg></span></th>
+                              
+                            </tr>
+                          </thead>
+                          <tbody class="MuiTableBody-root">
+                            <tr class="MuiTableRow-root MuiTableRow-hover" index="0" level="0" localization="[object Object]" actions="[object Object]" path="0" style="transition: all 300ms ease 0s; background-color: rgb(238, 238, 238); cursor: pointer;">
+                              <td class="MuiTableCell-root MuiTableCell-paddingNone MuiTableCell-body" style="width: 42px; padding: 0px 5px;">
+                                <div style="display: flex;">
+                                  <button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit" tabindex="0" type="button" title="Archive"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg></span><span class="MuiTouchRipple-root"></span></button>
+                                </div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="LightTag&#39;s Example Schema" style="border-left: 1px solid rgb(222, 222, 226);">
+                                <div class="jss807">
+                                  <div role="button" class="MuiChip-root jss811 jss815  undefined MuiChip-clickable" tabindex="0">
+                                    <div class="MuiAvatar-root MuiChip-avatar jss812 MuiAvatar-colorDefault">
+                                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="item_icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M14.38 14.59L11 7V3h1V2H3v1h1v4L.63 14.59A1 1 0 0 0 1.54 16h11.94c.72 0 1.2-.75.91-1.41h-.01zM3.75 10L5 7V3h5v4l1.25 3h-7.5zM8 8h1v1H8V8zM7 7H6V6h1v1zm0-3h1v1H7V4zm0-3H6V0h1v1z"></path>
+                                      </svg>
+                                    </div><span class="MuiChip-label">Example Schema</span></div>
+                                </div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" style="border-left: 1px solid rgb(222, 222, 226);">
+                                <div class="jss807">
+                                  <div><span><span class="MuiButtonBase-root MuiIconButton-root jss857 MuiCheckbox-root MuiCheckbox-colorSecondary jss858 Mui-checked jss859 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled" tabindex="-1" aria-disabled="true"><span class="MuiIconButton-label"><input class="jss860" disabled="" type="checkbox" data-indeterminate="false" aria-label="[object Object]" value="true" checked=""><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-body" value="[object Object],[object Object]" style="border-left: 1px solid rgb(222, 222, 226);">
+                                <div class="jss807">
+                                  <div><span><span class="MuiButtonBase-root MuiIconButton-root jss857 MuiCheckbox-root MuiCheckbox-colorSecondary jss858 Mui-checked jss859 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled" tabindex="-1" aria-disabled="true"><span class="MuiIconButton-label"><input class="jss860" disabled="" type="checkbox" data-indeterminate="false" aria-label="[object Object]" value="true" checked=""><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg></span></span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </td>
+                              
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <table class="MuiTable-root">
+                    <tfoot class="MuiTableFooter-root" style="display: grid;">
+                      <tr class="MuiTableRow-root MuiTableRow-footer">
+                        <td class="MuiTableCell-root MuiTablePagination-root jss716 MuiTableCell-footer" colspan="3" icons="[object Object]" style="float: right; overflow-x: auto;">
+                          <div class="MuiToolbar-root MuiToolbar-regular MuiTablePagination-toolbar jss717 MuiToolbar-gutters">
+                            <div class="MuiTablePagination-spacer"></div><span class="MuiTypography-root MuiTablePagination-caption jss718 MuiTypography-caption MuiTypography-colorInherit">Rows per page:</span>
+                            <div class="MuiInputBase-root MuiTablePagination-input MuiTablePagination-selectRoot jss719">
+                              <div class="MuiSelect-root MuiSelect-select MuiTablePagination-select MuiSelect-selectMenu MuiInputBase-input MuiInputBase-inputSelect" tabindex="0" role="button" aria-haspopup="listbox">
+                                <div style="padding: 0px 5px;">10 </div>
+                              </div>
+                              <input type="hidden" value="10">
+                              <svg class="MuiSvgIcon-root MuiSelect-icon MuiTablePagination-selectIcon" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                                <path d="M7 10l5 5 5-5z"></path>
+                              </svg>
+                            </div><span class="MuiTypography-root MuiTablePagination-caption jss718 MuiTypography-caption MuiTypography-colorInherit">1-1 of 1</span>
+                            <div class="jss887"><span title="First Page" class=""><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"></path><path fill="none" d="M24 24H0V0h24v24z"></path></svg></span></button>
+                              </span><span title="Previous Page" class=""><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></span></button>
+                              </span><span class="MuiTypography-root MuiTypography-caption" style="flex-grow: 1; flex-shrink: 1; flex-basis: inherit; text-align: center; align-self: center;">1-1 из 1</span><span title="Next Page" class=""><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></span></button>
+                              </span><span title="Last Page" class=""><button class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled" tabindex="-1" type="button" disabled=""><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"></path></svg></span></button>
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
               </div>
-              <form method="post" action="{{url_for('manager_page.gen_rules_page')}}" novalidate >
-            {#    <form method="post" action="{{url_for('hello_world')}}" novalidate >#}
-                <p><input id="name_chema" name="name_chema" type='text' value='Навание схемы' style="margin: 5px"><br>
-                </p>
-                <input type='button' value='Добавить label' id='addButton' onclick="AddGenLabel(this)">
-                <p>{{ form.submit() }}</p>
-              </form>
-
-
             </div>
           </div>
         </main>

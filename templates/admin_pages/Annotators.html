@@ -8045,15 +8045,19 @@
                       </div>
                     </a>
                     <hr class="MuiDivider-root">
-<!-- 					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"  tabindex="0" role="button" aria-disabled="false" title="Task - A Task tells LightTag you want to annotate a particular Dataset with a particular Schema and specifies how many annotators should annotate each example. For example, you might define two tasks, both of them will use the same Schema, the first will have one annotator annotate each example in the Training Dataset and the second task will have three annotators annotate each Example in the Test Dataset. You can define which Teams work on a particular task as well.">
-						<a href = "./Task2.html" >
+
+                  <a href="{{ url_for('manager_page.view_doc')}}">   
+					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button"  tabindex="0" role="button" aria-disabled="false" title="Task - A Task tells LightTag you want to annotate a particular Dataset with a particular Schema and specifies how many annotators should annotate each example. For example, you might define two tasks, both of them will use the same Schema, the first will have one annotator annotate each example in the Training Dataset and the second task will have three annotators annotate each Example in the Test Dataset. You can define which Teams work on a particular task as well.">
 							<svg class="MuiSvgIcon-root jss1372 jss1373" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
 								<path d="M4 10h12v2H4zm0-4h12v2H4zm0 8h8v2H4zm10 0v6l5-3z"></path>
 							</svg>
-							</a>
-							<div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Задачи</span></div><span class="MuiTouchRipple-root"></span></div>
+
+							<div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Все документы</span></div><span class="MuiTouchRipple-root"></span>
+            </div>
+          </a>
+
+          <a href="{{ url_for('administrator_pages.upload_file')}}">  
 					<div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Dataset - A dataset is a collection of examples (e.g. a Test set or a Training set). Upload or try a predefined one, name it and select the field to annotate">
-                      <a href="./Datasets.html">
 					  <svg x="0px" y="0px" viewBox="0 0 70 70" xml:space="preserve" class="jss1372 undefined">
                         <title></title>
                         <g>
@@ -8069,15 +8073,22 @@
                           <path d="M20.1755219,12.1721582c-10.4029427,0-18.1752625,3.0381336-18.1752625,5.7550402   c0,2.7163887,7.7723193,5.7545204,18.1752625,5.7545204c10.4019032,0,18.1747398-3.0381317,18.1747398-5.7545204   C38.3502617,15.2102919,30.577425,12.1721582,20.1755219,12.1721582z"></path>
                         </g>
                       </svg>
-					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Коллекции</span></div><span class="MuiTouchRipple-root"></span></div>
+
+                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Загрузка файлов</span></div><span class="MuiTouchRipple-root"></span>
+                    </div>
+                  </a>
+
+                  <a href="{{ url_for('manager_page.gen_rules_page')}}">  
                     <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Schema - A Schema is a collection of Tags and Classes. You&#39;ll use Tags to annotate words and phrases (Person, Location etc) and Classes to annotate an entire Example (Positive / Negative)  ">
-                      <a href="./shems.html"> 
-					  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="jss1372 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+					             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="jss1372 undefined" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M14.38 14.59L11 7V3h1V2H3v1h1v4L.63 14.59A1 1 0 0 0 1.54 16h11.94c.72 0 1.2-.75.91-1.41h-.01zM3.75 10L5 7V3h5v4l1.25 3h-7.5zM8 8h1v1H8V8zM7 7H6V6h1v1zm0-3h1v1H7V4zm0-3H6V0h1v1z"></path>
                       </svg>
-					  </a>
-                      <div class="MuiListItemText-root" style="margin-left: 10px;"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Схемы</span></div><span class="MuiTouchRipple-root"></span></div>
+
+                      <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Создание правил</span></div><span class="MuiTouchRipple-root"></span>
+                    </div>
+                  </a>
+
+                    <!-- 
                     <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="Relation">
                       <a href="./relation.html">
 					  <svg id="Capa_1" x="0px" y="0px" viewBox="0 0 24.92 24.92" xml:space="preserve" class="jss1372 undefined">
@@ -8123,9 +8134,13 @@
                               <path d="M120 72c0-39.765 32.235-72 72-72s72 32.235 72 72c0 39.764-32.235 72-72 72s-72-32.236-72-72zm254.627 1.373c-12.496-12.497-32.758-12.497-45.254 0L242.745 160H141.254L54.627 73.373c-12.496-12.497-32.758-12.497-45.254 0-12.497 12.497-12.497 32.758 0 45.255L104 213.254V480c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V368h16v112c0 17.673 14.327 32 32 32h16c17.673 0 32-14.327 32-32V213.254l94.627-94.627c12.497-12.497 12.497-32.757 0-45.254z"></path>
                             </svg>
 
-                          <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff "><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчики</span></div><span class="MuiTouchRipple-root"></span>
+                          <div class="MuiListItemText-root" style="margin-left: 10px; color:#ffffff ">
+                            <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1">Обработчики</span>
+                          </div>
+                          <span class="MuiTouchRipple-root"></span>
                         </div>
                       </a>
+                      
                       <hr class="MuiDivider-root">
                       <a href="{{ url_for('manager_page.monitor_page') }}">  
   					            <div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false" title="">
