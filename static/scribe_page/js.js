@@ -635,7 +635,7 @@ function Submit(a){
     // var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
     console.log(data);
     xhr.send(data);
-    document.location.reload(True);
+    document.location.reload(true);
 }
 
 function AddGenLabel(a){
