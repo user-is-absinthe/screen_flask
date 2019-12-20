@@ -288,7 +288,7 @@ function StartEditor() {
         let newchildchild = document.createElement('img');
         newchildchild.setAttribute('width', '50');
         newchildchild.setAttribute('alt', 'logo');
-        if (UserDocStatus[i]){
+        if (ListDocStatus[i] != 'None'){
             newchildchild.setAttribute('src', './gg.png');
         }
         else {
