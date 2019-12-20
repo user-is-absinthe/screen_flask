@@ -80,13 +80,13 @@ def scribe_page():
         list_doc_name=user_docs_name,
         # id-текстов (yes)
         list_id=user_docs_ids,
-        # статусы докумеентов
+        # статусы докумеентов (yes)
         doc_status=user_docs_status,
 
         form_html=form,
         # сслыка для загрузки большой инструкции от Н (нужна ли?) (yes)
         link_to_doc=path_to_instruction,
-        # имя пользователя и роль
+        # имя пользователя и роль (yes)
         user_role=(username, user_role),
     )
 

@@ -12,6 +12,7 @@ var ListAnnLabels = [];
 var IdCurrentText = 0;
 var ListIdText = [];
 var LinkToDocs = "";
+var ListDocStatus = [];
 var Text = "Россия рассчитывает на конструктивное воздействие США на Грузию\n" +
     "\n" +
     "04/08/2008 12:08\n" +
@@ -237,6 +238,10 @@ function StartEditor() {
     ListIdText = ListIdText.split(', ');
 
     LinkToDocs = document.getElementsByTagName('body')[0].getAttribute('data-linktodoc');
+
+    ListDocStatus = document.getElementsByTagName('body')[0].getAttribute('data-docstatus');
+    ListDocStatus = ListDocStatus.slice(1,ListDocStatus.length-1);
+    ListDocStatus = ListDocStatus.split(', ');
 
     var MenuListbox = document.getElementsByClassName('visible menu transition listbox');
     var element = document.createElement('div');
