@@ -116,7 +116,13 @@ def view_doc():
     docs_name = [d.get_name() for d in docs]
     docs_rubric = [d.get_rubric() for d in docs]
     docs_desc = [d.get_description() for d in docs]
-    docs_status = [d.get_status() for d in docs]
+    # docs_status = [d.get_status() for d in docs]
+    docs_status = list()
+    for d in docs:
+        if d.get_status() is None:
+            docs_status.append('Не готов')
+        else:
+            docs_status.append('Готов')
 
     return render_template(
         'manager_pages/check_load_docs.html',

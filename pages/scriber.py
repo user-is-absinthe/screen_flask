@@ -82,7 +82,22 @@ def scribe_page(next_text_id=None):
                 path=path_to_file, data=to_base
             )
 
+            # attrs = {'Система': 'Решето', 'Год': 2019, 'Автор': 'Никита'}
+            # one_uiml_gen('collect_name', 'doc_text', 'doc_title', attrs, path)
+            # one_uiml_gen(collect_name, doc_text, doc_title, attributes, path):
 
+            path_to_uml =\
+                app.config['PATH_TO_UMLS'] + str(current_user.id_user) + '_' + str(data_json['IdCurrentText']) + '.uml'
+            attr = dict()
+            for line in to_base:
+                attr[line[3]] = line[2]
+            print(one_uiml_gen(
+                collect_name='тестовая_коллекция',
+                doc_text=opener(Document.query.get(data_json['IdCurrentText']).get_text()),
+                doc_title=Document.query.get(data_json['IdCurrentText']).get_name(),
+                attributes=attr,
+                path=path_to_uml
+            ))
 
         except KeyError:
             pass

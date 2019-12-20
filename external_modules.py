@@ -159,8 +159,9 @@ def one_uiml_gen(collect_name, doc_text, doc_title, attributes, path):
     for a_name, a_value in attributes.items():
         uiml_txt = uiml_txt + '   <EtalonAttribute Code=\"'+ str(a_name)+ '\" StringValue=\"' + str(a_value) + '\" />\n'
     uiml_txt = uiml_txt + '  </Rubric>\n </DocumentRubrics>\n</Document>'
+    print(uiml_txt)
 
-    with open(filename, mode="w", encoding="utf8") as f:
+    with open(filename, mode="w", encoding="utf-8") as f:
         f.write(uiml_txt)
     return True
 

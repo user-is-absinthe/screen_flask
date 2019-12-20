@@ -34,6 +34,7 @@ app.config['USER_ROLES'] = {
 app.config['PATH_TO_CHEMA'] = 'data/chemas/'
 app.config['PATH_TO_ANN'] = 'data/annotation/'
 app.config['PATH_TO_INFINITY_LOAD'] = 'static/instruction_mini.txt'
+app.config['PATH_TO_UMLS'] = 'data/uml/'
 
 # для создания миграции в базе не забудь импортировать здесь модель
 # или, возможно, не здесь, а где-то еще
