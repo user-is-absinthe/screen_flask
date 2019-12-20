@@ -509,6 +509,25 @@ function DelFromSelect(a) {
 
 function FocusElem(a) {
     console.log('FocusElem');
+    // document.getElementsByClassName('annotated-span choose-annotated-span')[0].setAttribute('class','annotated-span')
+    tem = document.getElementsByClassName('annotated-span');
+    for(let i = 0; i < tem.length; i++){
+        if(tem[i].getAttribute('data-id') == a.getAttribute('data-id')){
+            tem[i].setAttribute('class','choose-annotated-span')
+        }
+    }
+    a.setAttribute('onclick','UnFocusElem(this)')
+}
+function UnFocusElem(a) {
+    console.log('FocusElem');
+    // document.getElementsByClassName('annotated-span choose-annotated-span')[0].setAttribute('class','annotated-span')
+    tem = document.getElementsByClassName('choose-annotated-span');
+    for(let i = 0; i < tem.length; i++){
+        if(tem[i].getAttribute('data-id') == a.getAttribute('data-id')){
+            tem[i].setAttribute('class','annotated-span')
+        }
+    }
+    a.setAttribute('onclick','FocusElem(this)')
 }
 
 function AddElemLabelsAnn(a,b,c){
