@@ -72,7 +72,8 @@ function SelectAnnotateText(a) {
                     var LineBreakCharacter = (selection.anchorNode.parentElement.innerHTML.substring(0, DataId1).split(/\r\n|\r|\n/g).length - 1);
                     DataId1 += LineBreakCharacter;
                     DataId2 += LineBreakCharacter;
-                    MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
+                    MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, [SelectedTag, SelectedString]);
+                    console.log(MapIdSelectAnnotateText);
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
@@ -131,7 +132,8 @@ function SelectAnnotateText(a) {
                     var LineBreakCharacter = (selection.anchorNode.parentElement.textContent.substring(0, DataId1).split(/\r\n|\r|\n|\n\n/g).length - 1);
                     DataId1 += LineBreakCharacter;
                     DataId2 += LineBreakCharacter;
-                    MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, SelectedTag);
+                    MapIdSelectAnnotateText.set(DataId1 + '-' + DataId2, [SelectedTag, SelectedString]);
+                    console.log(MapIdSelectAnnotateText);
                     ListAnn.push(SelectedString);
                     ListAnnLabels.push(SelectedTag);
                     ListAnnId.push('' + DataId1 + '-' + DataId2);
@@ -153,6 +155,7 @@ function DeleteAnnotation(a,b) {
     annotated_span_text = annotated_span.innerHTML;
     annotated_span.remove();
     MapIdSelectAnnotateText.delete(idChooseDeleteOrChangeTag);
+    console.log(MapIdSelectAnnotateText);
     var previousTextLength = Number.parseInt(idChooseDeleteOrChangeTag.split('-')[0]);
     if (annotated_span_parentElement.getAttribute('id') == "annotationDoc")
     {
@@ -171,6 +174,7 @@ function DeleteAnnotation(a,b) {
         }
         HiddeAnnotationModal(a);
         MapIdSelectAnnotateText.delete(idChooseDeleteOrChangeTag);
+        console.log(MapIdSelectAnnotateText);
         DeleteElemLabelsAnn(a,idChooseDeleteOrChangeTag);
         return annotated_span_parentElement.innerHTML = annotated_span_parentElement.innerHTML.substring(0, previousTextLength) + annotated_span_text + annotated_span_parentElement.innerHTML.substring(previousTextLength, annotated_span_parentElement.innerHTML.lenght);
     }
@@ -207,6 +211,16 @@ function StartEditor() {
     for(elem in List){
         LabelsList.push(List[elem].split('\t')[0]);
         ColorTagArray.push(List[elem].split('\t')[1]);
+    }
+    for(let i = 0; i < LabelsList.length; i++){
+        let newelem = document.createElement('div');
+        newelem.setAttribute('name','' + LabelsList[i]);
+        newelem.setAttribute('class','ui mini label');
+        newelem.setAttribute('style','margin: 0.2%; background-color:' + ColorTagArray[i] + ';mix-blend-mode:difference;color:' + ColorTagArray[i] + ';');
+        newelem.setAttribute('data-idlabel','' + i);
+        newelem.setAttribute('onclick','ChooseTag(this);');
+        newelem.innerText = LabelsList[i];
+        document.getElementById('ChooseTagDiv').appendChild(newelem);
     }
 
     ListDoc = document.getElementsByTagName('body')[0].getAttribute('data-listdoc');
@@ -376,7 +390,9 @@ function AddElemLabelsAnn(a,b,c){
 
 function ChangeLabel(a,IndexChangeLabel) {
     HiddeAnnotationModal(a);
-    MapIdSelectAnnotateText.set(idChooseDeleteOrChangeTag, IndexChangeLabel);
+    let text = MapIdSelectAnnotateText.get(idChooseDeleteOrChangeTag)[1];
+    MapIdSelectAnnotateText.set(idChooseDeleteOrChangeTag, [IndexChangeLabel,text]);
+    console.log(MapIdSelectAnnotateText);
     return document.querySelector('.annotated-span[data-id="' + idChooseDeleteOrChangeTag + '"]').style.backgroundColor = ColorTagArray[IndexChangeLabel];
 
 }
@@ -427,6 +443,18 @@ function HiddeGenerelMenu(a) {
 function Submit(a){
     console.log('Submit');
     var xhr = new XMLHttpRequest();
+    var url = "url";
+    xhr.open("POST", '/scribe', true);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //         var json = JSON.parse(xhr.responseText);
+    //         console.log(json.email + ", " + json.password);
+    //     }
+    // };
+    let NextIdCurrentText = ListIdText.findIndex(IdCurrentText);
+    var data = JSON.stringify({"IdCurrentText": IdCurrentText, "NextIdCurrentText": NextIdCurrentText});
+    xhr.send(data);
 }
 
 function AddGenLabel(a){
