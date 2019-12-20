@@ -399,6 +399,8 @@ function StartEditor(a) {
         let newchildchild = document.createElement('img');
         newchildchild.setAttribute('width', '50');
         newchildchild.setAttribute('alt', 'logo');
+        newchild.setAttribute('onclick', 'gotofile(this);');
+        newchild.setAttribute('data-indextext', '' + ListIdText[i]);
         if (ListDocStatus[i] != 'None'){
             newchildchild.setAttribute('src', 'static/gg.png');
             truestatus = truestatus + 1;
@@ -708,4 +710,14 @@ function ColorInveror(a) {
         }
     }
     return str;
+}
+
+function gotofile(a) {
+    var xhr = new XMLHttpRequest();
+    var url = "url";
+    xhr.open("POST", '/scribe', true);
+
+    var data = JSON.stringify({"NextIdCurrentText": a.getAttribute('data-indextext')});
+    console.log(data);
+    xhr.send(data);
 }
