@@ -84,7 +84,7 @@ def scribe_page(next_text_id=None):
             pass
         # current_text, user_xml, user_collections = get_data_by_text_id(text_id=next_text_id)
         # current_text_id = next_text_id
-        return redirect(url_for('scribe_bp.scribe_page'))
+        return redirect(url_for('scribe_bp.empty'))
     # user_docs_status.append(Document.query.get(r.document_id).get_status())
     # user_collections.append(opener(Document.query.get(r.document_id).get_rubric(), encoding='UTF-16'))
     # user_instructions.append(opener(Document.query.get(r.document_id).get_instruction()))
