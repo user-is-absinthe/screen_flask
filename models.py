@@ -40,20 +40,8 @@ class User(UserMixin, database.Model):
     def get_username(self):
         return self.username
 
-
-# # Define the Role data-model
-# class Role(database.Model):
-#     __tablename__ = 'roles'
-#     id = database.Column(database.Integer(), primary_key=True)
-#     name = database.Column(database.String(50), unique=True)
-#
-#
-# # Define the UserRoles association table
-# class UserRoles(database.Model):
-#     __tablename__ = 'user_roles'
-#     id = database.Column(database.Integer(), primary_key=True)
-#     user_id = database.Column(database.Integer(), database.ForeignKey('user.id_user', ondelete='CASCADE'))
-#     role_id = database.Column(database.Integer(), database.ForeignKey('roles.id', ondelete='CASCADE'))
+    def get_rating(self):
+        return self.user_rating
 
 
 class Document(database.Model):

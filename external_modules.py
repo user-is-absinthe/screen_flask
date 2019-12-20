@@ -42,13 +42,13 @@ def check_user_access(current_user, good_roles):
         return False
 
 
-def redirect_user_bad(current_user, good_roles):
-    # print(not (get_user_info(current_user_object=current_user)[2] in list(good_roles)))
-    if not (get_user_info(current_user_object=current_user)[2] in list(good_roles)):
-        # print(123)
-        return redirect(url_for('all_functions_pages.need_role'))
-    # if not get_user_info(current_user_object=current_user)[2]:
-    #     return redirect(url_for('login.login_page'))
+def save_annotation(path, data):
+    with open(path, 'w') as file:
+        for l in data:
+            file.write(
+                l[1] + '-' + l[0] + '\n'
+            )
+    pass
 
 
 def similarity(attrs_text1, attrs_text2):  # подсчет похожести по BLEU

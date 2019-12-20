@@ -13,6 +13,7 @@ from app import database
 
 from models import Document
 from models import Relation
+from models import User
 
 
 admin_pages_blueprint = Blueprint(
@@ -27,18 +28,22 @@ admin_pages_blueprint = Blueprint(
 def check_and_dell_users():
     # TODO: получать всех пользователей
     # username - user_rating - user_role
-    usernames = [
-        'a1', 'a2', 'a3',
+    users = User.query.all()
+    all_data = [
+        (u.get_username(), u.get_rating(), u.get_role()) for u in users
     ]
-    user_ratings = [
-        0.3, 0.5, 0.8
-    ]
-    user_roles = [
-        'manager',
-        'executor',
-        'multi',
-    ]
-    all_data = zip(usernames, user_ratings, user_roles)
+    # usernames = [
+    #     'a1', 'a2', 'a3',
+    # ]
+    # user_ratings = [
+    #     0.3, 0.5, 0.8
+    # ]
+    # user_roles = [
+    #     'manager',
+    #     'executor',
+    #     'multi',
+    # ]
+    # all_data = zip(usernames, user_ratings, user_roles)
     return render_template(
         # 'admin_pages/all_users.html',
         'admin_pages/Annotators.html',
