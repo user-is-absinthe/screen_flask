@@ -282,8 +282,9 @@ function DeleteAnnotation(a,b) {
 }
 
 function DeleteElemLabelsAnn(a,b){
-    document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]');
-    console.log(document.querySelector('.MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable[data-id="' + b + '"]'));
+    console.log(a,b);
+    let tem = document.getElementsByClassName('MuiChip-root jss3134 jss3138 MuiChip-outlined jss3135 MuiChip-clickable');
+    console.log(tem);
 }
 
 function StartEditor(a) {
