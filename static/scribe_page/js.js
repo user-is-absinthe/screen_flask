@@ -35,7 +35,7 @@ function SelectAnnotateText(a) {
     var selection = window.getSelection();
     console.log(selection);
     var text = "";
-    var FullText = "";    
+    var FullText = "";
     if (SelectedTag > -1 && SelectedTag < ColorTagArray.length) {
         if (selection.anchorNode.parentElement.id == "annotationDoc") {
             if (selection.anchorOffset !== selection.focusOffset) {
@@ -289,10 +289,10 @@ function StartEditor() {
         newchildchild.setAttribute('width', '50');
         newchildchild.setAttribute('alt', 'logo');
         if (ListDocStatus[i] != 'None'){
-            newchildchild.setAttribute('src', './gg.png');
+            newchildchild.setAttribute('src', 'static/gg.png');
         }
         else {
-            newchildchild.setAttribute('src', './rk.png');
+            newchildchild.setAttribute('src', 'static/rk.png');
         }
         newchildchild.setAttribute('style', 'width: 25px;height: 25px;');
         newchild.appendChild(newchildchild);
