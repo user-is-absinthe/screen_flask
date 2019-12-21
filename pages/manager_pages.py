@@ -34,7 +34,7 @@ def gen_rules_page():
         colors = request.form.getlist('bg')
         # print(chema_name, fields_names, colors, sep='\n')
 
-        path_to_file = app.config['PATH_TO_SHEMA'] + chema_name + '.tsv'
+        path_to_file = app.config['PATH_TO_CHEMA'] + chema_name + '.tsv'
         del_file(path=path_to_file)
         for index in range(len(fields_names)):
             csv_line_writer(
@@ -115,7 +115,8 @@ def view_doc():
     docs = Document.query.all()
     docs_name = [d.get_name() for d in docs]
     docs_rubric = [d.get_rubric() for d in docs]
-    docs_desc = [d.get_description() for d in docs]
+    docs_desc = list()
+    # docs_desc = [d.get_description() for d in docs]
     # docs_status = [d.get_status() for d in docs]
     docs_status = list()
     for d in docs:
@@ -123,6 +124,11 @@ def view_doc():
             docs_status.append('Не готов')
         else:
             docs_status.append('Готов')
+
+        if d.get_description() is None:
+            docs_desc.append('Описание отсутствует')
+        else:
+            docs_desc.append(d.get_description())
 
     return render_template(
         'manager_pages/check_load_docs.html',
